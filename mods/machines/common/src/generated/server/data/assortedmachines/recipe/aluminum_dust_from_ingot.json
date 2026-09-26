@@ -1,0 +1,25 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "assortedlib:item_tag_populated",
+      "tag": "c:ingots/aluminum"
+    }
+  ],
+  "type": "assortedmachines:grinding_mill",
+  "cookingtime": 300,
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:tags_populated",
+      "registry": "minecraft:item",
+      "values": [
+        "c:ingots/aluminum"
+      ]
+    }
+  ],
+  "ingredient": {
+    "ingredient": "#c:ingots/aluminum"
+  },
+  "result": {
+    "id": "assortedmachines:aluminum_dust"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    "#c:raw_materials/tin",
+    "#c:raw_materials/tin",
+    "#c:raw_materials/tin",
+    "#c:raw_materials/tin",
+    "#c:raw_materials/tin",
+    "#c:raw_materials/tin",
+    "#c:raw_materials/tin",
+    "#c:raw_materials/tin",
+    "#c:raw_materials/tin"
+  ],
+  "result": {
+    "id": "assortedores:raw_tin_block"
+  }
+}

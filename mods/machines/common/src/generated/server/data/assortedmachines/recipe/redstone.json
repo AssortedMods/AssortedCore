@@ -1,0 +1,12 @@
+{
+  "type": "assortedmachines:grinding_mill",
+  "cookingtime": 600,
+  "experience": 0.2,
+  "ingredient": {
+    "ingredient": "#c:ores/redstone"
+  },
+  "result": {
+    "count": 5,
+    "id": "minecraft:redstone"
+  }
+}

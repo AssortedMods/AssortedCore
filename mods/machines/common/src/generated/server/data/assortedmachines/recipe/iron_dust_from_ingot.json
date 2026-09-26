@@ -1,0 +1,10 @@
+{
+  "type": "assortedmachines:grinding_mill",
+  "cookingtime": 300,
+  "ingredient": {
+    "ingredient": "#c:ingots/iron"
+  },
+  "result": {
+    "id": "assortedmachines:iron_dust"
+  }
+}

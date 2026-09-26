@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    "#c:nuggets/bronze",
+    "#c:nuggets/bronze",
+    "#c:nuggets/bronze",
+    "#c:nuggets/bronze",
+    "#c:nuggets/bronze",
+    "#c:nuggets/bronze",
+    "#c:nuggets/bronze",
+    "#c:nuggets/bronze",
+    "#c:nuggets/bronze"
+  ],
+  "result": {
+    "id": "assortedmachines:bronze_ingot"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "assortedlib:item_tag_populated",
+      "tag": "c:ores/silver"
+    }
+  ],
+  "type": "assortedmachines:grinding_mill",
+  "cookingtime": 600,
+  "experience": 0.4,
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:tags_populated",
+      "registry": "minecraft:item",
+      "values": [
+        "c:ores/silver"
+      ]
+    }
+  ],
+  "ingredient": {
+    "ingredient": "#c:ores/silver"
+  },
+  "result": {
+    "count": 2,
+    "id": "assortedmachines:silver_dust"
+  }
+}

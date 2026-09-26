@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    "#c:gems/peridot",
+    "#c:gems/peridot",
+    "#c:gems/peridot",
+    "#c:gems/peridot",
+    "#c:gems/peridot",
+    "#c:gems/peridot",
+    "#c:gems/peridot",
+    "#c:gems/peridot",
+    "#c:gems/peridot"
+  ],
+  "result": {
+    "id": "assortedores:peridot_block"
+  }
+}

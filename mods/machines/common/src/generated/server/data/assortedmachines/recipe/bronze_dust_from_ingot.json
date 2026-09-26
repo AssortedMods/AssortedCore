@@ -1,0 +1,10 @@
+{
+  "type": "assortedmachines:grinding_mill",
+  "cookingtime": 300,
+  "ingredient": {
+    "ingredient": "#c:ingots/bronze"
+  },
+  "result": {
+    "id": "assortedmachines:bronze_dust"
+  }
+}

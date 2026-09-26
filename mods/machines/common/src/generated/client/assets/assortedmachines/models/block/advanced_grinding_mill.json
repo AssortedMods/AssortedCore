@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/orientable",
+  "textures": {
+    "front": "assortedmachines:block/advanced_grinding_mill_front",
+    "side": "assortedmachines:block/advanced_machine_side",
+    "top": "assortedmachines:block/advanced_machine_top"
+  }
+}

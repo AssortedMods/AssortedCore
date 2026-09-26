@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    "#c:raw_materials/silver",
+    "#c:raw_materials/silver",
+    "#c:raw_materials/silver",
+    "#c:raw_materials/silver",
+    "#c:raw_materials/silver",
+    "#c:raw_materials/silver",
+    "#c:raw_materials/silver",
+    "#c:raw_materials/silver",
+    "#c:raw_materials/silver"
+  ],
+  "result": {
+    "id": "assortedores:raw_silver_block"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:blasting",
+  "experience": 1.5,
+  "ingredient": "#c:ores/platinum",
+  "result": {
+    "id": "assortedores:platinum_ingot"
+  }
+}

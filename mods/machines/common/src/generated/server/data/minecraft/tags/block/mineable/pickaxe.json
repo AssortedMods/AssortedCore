@@ -1,0 +1,17 @@
+{
+  "values": [
+    "assortedmachines:bronze_block",
+    "assortedmachines:electrum_block",
+    "assortedmachines:invar_block",
+    "assortedmachines:steel_block",
+    "assortedmachines:machine_core",
+    "assortedmachines:basic_alloy_forge",
+    "assortedmachines:intermediate_alloy_forge",
+    "assortedmachines:advanced_alloy_forge",
+    "assortedmachines:expert_alloy_forge",
+    "assortedmachines:basic_grinding_mill",
+    "assortedmachines:intermediate_grinding_mill",
+    "assortedmachines:advanced_grinding_mill",
+    "assortedmachines:expert_grinding_mill"
+  ]
+}

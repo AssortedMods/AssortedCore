@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    "#c:nuggets/invar",
+    "#c:nuggets/invar",
+    "#c:nuggets/invar",
+    "#c:nuggets/invar",
+    "#c:nuggets/invar",
+    "#c:nuggets/invar",
+    "#c:nuggets/invar",
+    "#c:nuggets/invar",
+    "#c:nuggets/invar"
+  ],
+  "result": {
+    "id": "assortedmachines:invar_ingot"
+  }
+}

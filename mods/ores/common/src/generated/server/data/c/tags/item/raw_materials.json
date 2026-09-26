@@ -1,0 +1,13 @@
+{
+  "values": [
+    "assortedores:raw_aluminum",
+    "assortedores:raw_lead",
+    "assortedores:raw_nickel",
+    "assortedores:raw_platinum",
+    "assortedores:raw_silver",
+    "assortedores:raw_tin",
+    "minecraft:raw_iron",
+    "minecraft:raw_gold",
+    "minecraft:raw_copper"
+  ]
+}

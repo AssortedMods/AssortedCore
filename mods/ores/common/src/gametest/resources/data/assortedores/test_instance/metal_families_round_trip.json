@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:function",
+  "environment": "minecraft:default",
+  "function": "assortedores:metal_families_round_trip",
+  "structure": "assortedores:test_box",
+  "max_ticks": 1,
+  "setup_ticks": 0,
+  "required": true
+}

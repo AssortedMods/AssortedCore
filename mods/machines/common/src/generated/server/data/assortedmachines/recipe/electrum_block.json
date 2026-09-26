@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    "#c:ingots/electrum",
+    "#c:ingots/electrum",
+    "#c:ingots/electrum",
+    "#c:ingots/electrum",
+    "#c:ingots/electrum",
+    "#c:ingots/electrum",
+    "#c:ingots/electrum",
+    "#c:ingots/electrum",
+    "#c:ingots/electrum"
+  ],
+  "result": {
+    "id": "assortedmachines:electrum_block"
+  }
+}

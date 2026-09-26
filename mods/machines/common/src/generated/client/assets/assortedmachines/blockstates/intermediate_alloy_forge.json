@@ -1,0 +1,34 @@
+{
+  "variants": {
+    "facing=east,on=false": {
+      "model": "assortedmachines:block/intermediate_alloy_forge",
+      "y": 90
+    },
+    "facing=east,on=true": {
+      "model": "assortedmachines:block/intermediate_alloy_forge_on",
+      "y": 90
+    },
+    "facing=north,on=false": {
+      "model": "assortedmachines:block/intermediate_alloy_forge"
+    },
+    "facing=north,on=true": {
+      "model": "assortedmachines:block/intermediate_alloy_forge_on"
+    },
+    "facing=south,on=false": {
+      "model": "assortedmachines:block/intermediate_alloy_forge",
+      "y": 180
+    },
+    "facing=south,on=true": {
+      "model": "assortedmachines:block/intermediate_alloy_forge_on",
+      "y": 180
+    },
+    "facing=west,on=false": {
+      "model": "assortedmachines:block/intermediate_alloy_forge",
+      "y": 270
+    },
+    "facing=west,on=true": {
+      "model": "assortedmachines:block/intermediate_alloy_forge_on",
+      "y": 270
+    }
+  }
+}

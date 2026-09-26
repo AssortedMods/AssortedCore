@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    "#c:nuggets/tin",
+    "#c:nuggets/tin",
+    "#c:nuggets/tin",
+    "#c:nuggets/tin",
+    "#c:nuggets/tin",
+    "#c:nuggets/tin",
+    "#c:nuggets/tin",
+    "#c:nuggets/tin",
+    "#c:nuggets/tin"
+  ],
+  "result": {
+    "id": "assortedores:tin_ingot"
+  }
+}

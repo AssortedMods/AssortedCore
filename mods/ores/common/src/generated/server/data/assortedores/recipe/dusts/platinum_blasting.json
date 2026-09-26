@@ -1,0 +1,23 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "assortedlib:item_tag_populated",
+      "tag": "c:dusts/platinum"
+    }
+  ],
+  "type": "minecraft:blasting",
+  "experience": 0.1,
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:tags_populated",
+      "registry": "minecraft:item",
+      "values": [
+        "c:dusts/platinum"
+      ]
+    }
+  ],
+  "ingredient": "#c:dusts/platinum",
+  "result": {
+    "id": "assortedores:platinum_ingot"
+  }
+}

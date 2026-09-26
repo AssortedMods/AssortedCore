@@ -1,0 +1,30 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "assortedlib:item_tag_populated",
+      "tag": "c:ingots/platinum"
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:tags_populated",
+      "registry": "minecraft:item",
+      "values": [
+        "c:ingots/platinum"
+      ]
+    }
+  ],
+  "key": {
+    "P": "#c:ingots/platinum",
+    "X": "assortedmachines:advanced_alloy_forge"
+  },
+  "pattern": [
+    " P ",
+    "PXP",
+    " P "
+  ],
+  "result": {
+    "id": "assortedmachines:expert_alloy_forge"
+  }
+}

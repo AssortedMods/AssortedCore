@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    "#c:nuggets/steel",
+    "#c:nuggets/steel",
+    "#c:nuggets/steel",
+    "#c:nuggets/steel",
+    "#c:nuggets/steel",
+    "#c:nuggets/steel",
+    "#c:nuggets/steel",
+    "#c:nuggets/steel",
+    "#c:nuggets/steel"
+  ],
+  "result": {
+    "id": "assortedmachines:steel_ingot"
+  }
+}

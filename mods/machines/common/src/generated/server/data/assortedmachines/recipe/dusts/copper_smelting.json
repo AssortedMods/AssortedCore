@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:smelting",
+  "experience": 0.1,
+  "ingredient": "#c:dusts/copper",
+  "result": {
+    "id": "minecraft:copper_ingot"
+  }
+}

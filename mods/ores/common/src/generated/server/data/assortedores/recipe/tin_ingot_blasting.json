@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:blasting",
+  "experience": 0.5,
+  "ingredient": "#c:ores/tin",
+  "result": {
+    "id": "assortedores:tin_ingot"
+  }
+}

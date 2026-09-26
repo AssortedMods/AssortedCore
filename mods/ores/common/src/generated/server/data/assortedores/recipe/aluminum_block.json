@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    "#c:ingots/aluminum",
+    "#c:ingots/aluminum",
+    "#c:ingots/aluminum",
+    "#c:ingots/aluminum",
+    "#c:ingots/aluminum",
+    "#c:ingots/aluminum",
+    "#c:ingots/aluminum",
+    "#c:ingots/aluminum",
+    "#c:ingots/aluminum"
+  ],
+  "result": {
+    "id": "assortedores:aluminum_block"
+  }
+}

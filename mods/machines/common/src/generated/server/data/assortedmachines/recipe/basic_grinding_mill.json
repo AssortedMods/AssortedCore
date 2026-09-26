@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "F": "minecraft:furnace",
+    "G": "#c:gear/iron",
+    "I": "#c:ingots/iron",
+    "P": "minecraft:iron_pickaxe",
+    "X": "assortedmachines:machine_core"
+  },
+  "pattern": [
+    "IPI",
+    "GXG",
+    "IFI"
+  ],
+  "result": {
+    "id": "assortedmachines:basic_grinding_mill"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    "#c:ingots/bronze",
+    "#c:ingots/bronze",
+    "#c:ingots/bronze",
+    "#c:ingots/bronze",
+    "#c:ingots/bronze",
+    "#c:ingots/bronze",
+    "#c:ingots/bronze",
+    "#c:ingots/bronze",
+    "#c:ingots/bronze"
+  ],
+  "result": {
+    "id": "assortedmachines:bronze_block"
+  }
+}

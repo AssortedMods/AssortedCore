@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:function",
+  "environment": "minecraft:default",
+  "function": "assortedores:manual_links_point_at_pages_that_exist",
+  "structure": "assortedores:test_box",
+  "max_ticks": 1,
+  "setup_ticks": 0,
+  "required": true
+}

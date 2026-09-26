@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    "#c:ingots/silver",
+    "#c:ingots/silver",
+    "#c:ingots/silver",
+    "#c:ingots/silver",
+    "#c:ingots/silver",
+    "#c:ingots/silver",
+    "#c:ingots/silver",
+    "#c:ingots/silver",
+    "#c:ingots/silver"
+  ],
+  "result": {
+    "id": "assortedores:silver_block"
+  }
+}

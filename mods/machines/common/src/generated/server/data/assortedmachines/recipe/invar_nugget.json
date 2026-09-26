@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    "#c:ingots/invar"
+  ],
+  "result": {
+    "count": 9,
+    "id": "assortedmachines:invar_nugget"
+  }
+}

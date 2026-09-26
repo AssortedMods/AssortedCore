@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:function",
+  "environment": "minecraft:default",
+  "function": "assortedores:ore_fortune_multiplies_drops",
+  "structure": "assortedores:test_box",
+  "max_ticks": 1,
+  "setup_ticks": 0,
+  "required": true
+}

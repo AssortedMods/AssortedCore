@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    "#c:raw_materials/lead",
+    "#c:raw_materials/lead",
+    "#c:raw_materials/lead",
+    "#c:raw_materials/lead",
+    "#c:raw_materials/lead",
+    "#c:raw_materials/lead",
+    "#c:raw_materials/lead",
+    "#c:raw_materials/lead",
+    "#c:raw_materials/lead"
+  ],
+  "result": {
+    "id": "assortedores:raw_lead_block"
+  }
+}

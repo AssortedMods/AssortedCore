@@ -1,0 +1,23 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "assortedlib:item_tag_populated",
+      "tag": "c:dusts/nickel"
+    }
+  ],
+  "type": "minecraft:smelting",
+  "experience": 0.1,
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:tags_populated",
+      "registry": "minecraft:item",
+      "values": [
+        "c:dusts/nickel"
+      ]
+    }
+  ],
+  "ingredient": "#c:dusts/nickel",
+  "result": {
+    "id": "assortedores:nickel_ingot"
+  }
+}

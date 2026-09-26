@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    "#c:raw_materials/aluminum",
+    "#c:raw_materials/aluminum",
+    "#c:raw_materials/aluminum",
+    "#c:raw_materials/aluminum",
+    "#c:raw_materials/aluminum",
+    "#c:raw_materials/aluminum",
+    "#c:raw_materials/aluminum",
+    "#c:raw_materials/aluminum",
+    "#c:raw_materials/aluminum"
+  ],
+  "result": {
+    "id": "assortedores:raw_aluminum_block"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "assortedlib:item_tag_populated",
+      "tag": "c:dusts/aluminum"
+    }
+  ],
+  "type": "minecraft:blasting",
+  "experience": 0.1,
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:tags_populated",
+      "registry": "minecraft:item",
+      "values": [
+        "c:dusts/aluminum"
+      ]
+    }
+  ],
+  "ingredient": "#c:dusts/aluminum",
+  "result": {
+    "id": "assortedores:aluminum_ingot"
+  }
+}

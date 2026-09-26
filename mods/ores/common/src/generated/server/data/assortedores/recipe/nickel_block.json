@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    "#c:ingots/nickel",
+    "#c:ingots/nickel",
+    "#c:ingots/nickel",
+    "#c:ingots/nickel",
+    "#c:ingots/nickel",
+    "#c:ingots/nickel",
+    "#c:ingots/nickel",
+    "#c:ingots/nickel",
+    "#c:ingots/nickel"
+  ],
+  "result": {
+    "id": "assortedores:nickel_block"
+  }
+}

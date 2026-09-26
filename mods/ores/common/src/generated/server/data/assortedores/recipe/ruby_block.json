@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    "#c:gems/ruby",
+    "#c:gems/ruby",
+    "#c:gems/ruby",
+    "#c:gems/ruby",
+    "#c:gems/ruby",
+    "#c:gems/ruby",
+    "#c:gems/ruby",
+    "#c:gems/ruby",
+    "#c:gems/ruby"
+  ],
+  "result": {
+    "id": "assortedores:ruby_block"
+  }
+}

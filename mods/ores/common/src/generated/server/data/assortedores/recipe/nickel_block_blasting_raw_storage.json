@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:blasting",
+  "experience": 1.4,
+  "ingredient": "#c:storage_blocks/raw_nickel",
+  "result": {
+    "id": "assortedores:nickel_block"
+  }
+}

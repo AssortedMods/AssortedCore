@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:function",
+  "environment": "minecraft:default",
+  "function": "assortedmachines:hoppers_feed_and_empty_machine",
+  "structure": "assortedmachines:test_box",
+  "max_ticks": 120,
+  "setup_ticks": 0,
+  "required": true
+}

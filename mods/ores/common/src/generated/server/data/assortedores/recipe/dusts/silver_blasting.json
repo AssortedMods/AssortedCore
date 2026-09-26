@@ -1,0 +1,23 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "assortedlib:item_tag_populated",
+      "tag": "c:dusts/silver"
+    }
+  ],
+  "type": "minecraft:blasting",
+  "experience": 0.1,
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:tags_populated",
+      "registry": "minecraft:item",
+      "values": [
+        "c:dusts/silver"
+      ]
+    }
+  ],
+  "ingredient": "#c:dusts/silver",
+  "result": {
+    "id": "assortedores:silver_ingot"
+  }
+}

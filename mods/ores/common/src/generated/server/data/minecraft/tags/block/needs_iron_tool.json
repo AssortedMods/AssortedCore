@@ -1,0 +1,28 @@
+{
+  "values": [
+    "assortedores:silver_ore",
+    "assortedores:silver_block",
+    "assortedores:nickel_ore",
+    "assortedores:nickel_block",
+    "assortedores:lead_ore",
+    "assortedores:ruby_ore",
+    "assortedores:peridot_ore",
+    "assortedores:sapphire_ore",
+    "assortedores:topaz_ore",
+    "assortedores:lead_block",
+    "assortedores:ruby_block",
+    "assortedores:peridot_block",
+    "assortedores:sapphire_block",
+    "assortedores:topaz_block",
+    "assortedores:deepslate_silver_ore",
+    "assortedores:raw_silver_block",
+    "assortedores:deepslate_nickel_ore",
+    "assortedores:raw_nickel_block",
+    "assortedores:deepslate_lead_ore",
+    "assortedores:raw_lead_block",
+    "assortedores:deepslate_ruby_ore",
+    "assortedores:deepslate_peridot_ore",
+    "assortedores:deepslate_sapphire_ore",
+    "assortedores:deepslate_topaz_ore"
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "type": "assortedmachines:alloy_forge",
+  "cookingtime": 800,
+  "experience": 0.5,
+  "ingredient1": {
+    "count": 4,
+    "ingredient": "#minecraft:coals"
+  },
+  "ingredient2": {
+    "ingredient": "#c:dusts/iron"
+  },
+  "result": {
+    "id": "assortedmachines:steel_ingot"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    "#c:gems/topaz",
+    "#c:gems/topaz",
+    "#c:gems/topaz",
+    "#c:gems/topaz",
+    "#c:gems/topaz",
+    "#c:gems/topaz",
+    "#c:gems/topaz",
+    "#c:gems/topaz",
+    "#c:gems/topaz"
+  ],
+  "result": {
+    "id": "assortedores:topaz_block"
+  }
+}

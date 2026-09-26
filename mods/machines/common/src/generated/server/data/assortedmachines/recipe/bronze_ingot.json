@@ -1,0 +1,15 @@
+{
+  "type": "assortedmachines:alloy_forge",
+  "experience": 0.5,
+  "ingredient1": {
+    "count": 3,
+    "ingredient": "#c:dusts/copper"
+  },
+  "ingredient2": {
+    "ingredient": "#c:dusts/tin"
+  },
+  "result": {
+    "count": 4,
+    "id": "assortedmachines:bronze_ingot"
+  }
+}

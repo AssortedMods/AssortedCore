@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "E": "#c:ingots/electrum",
+    "V": "#c:ingots/invar",
+    "X": "assortedmachines:intermediate_alloy_forge"
+  },
+  "pattern": [
+    "VEV",
+    "EXE",
+    "VEV"
+  ],
+  "result": {
+    "id": "assortedmachines:advanced_alloy_forge"
+  }
+}

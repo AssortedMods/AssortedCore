@@ -1,0 +1,90 @@
+{
+  "links": [
+    {
+      "blocks": [
+        "assortedmachines:machine_core"
+      ],
+      "page": "assortedcore:machines/core"
+    },
+    {
+      "blocks": [
+        "assortedmachines:basic_alloy_forge",
+        "assortedmachines:intermediate_alloy_forge",
+        "assortedmachines:advanced_alloy_forge",
+        "assortedmachines:expert_alloy_forge"
+      ],
+      "page": "assortedcore:machines/alloy_forge"
+    },
+    {
+      "blocks": [
+        "assortedmachines:bronze_block",
+        "assortedmachines:electrum_block",
+        "assortedmachines:invar_block"
+      ],
+      "items": [
+        "assortedmachines:bronze_ingot",
+        "assortedmachines:bronze_nugget",
+        "assortedmachines:electrum_ingot",
+        "assortedmachines:electrum_nugget",
+        "assortedmachines:invar_ingot",
+        "assortedmachines:invar_nugget"
+      ],
+      "page": "assortedcore:machines/alloying"
+    },
+    {
+      "blocks": [
+        "assortedmachines:basic_grinding_mill",
+        "assortedmachines:intermediate_grinding_mill",
+        "assortedmachines:advanced_grinding_mill",
+        "assortedmachines:expert_grinding_mill"
+      ],
+      "page": "assortedcore:machines/grinding_mill"
+    },
+    {
+      "items": [
+        "assortedmachines:aluminum_dust",
+        "assortedmachines:bronze_dust",
+        "assortedmachines:copper_dust",
+        "assortedmachines:electrum_dust",
+        "assortedmachines:gold_dust",
+        "assortedmachines:invar_dust",
+        "assortedmachines:iron_dust",
+        "assortedmachines:lead_dust",
+        "assortedmachines:nickel_dust",
+        "assortedmachines:platinum_dust",
+        "assortedmachines:silver_dust",
+        "assortedmachines:steel_dust",
+        "assortedmachines:tin_dust"
+      ],
+      "page": "assortedcore:machines/dusts"
+    },
+    {
+      "blocks": [
+        "assortedmachines:steel_block"
+      ],
+      "items": [
+        "assortedmachines:steel_ingot",
+        "assortedmachines:steel_nugget"
+      ],
+      "page": "assortedcore:machines/steel"
+    },
+    {
+      "items": [
+        "assortedmachines:aluminum_gear",
+        "assortedmachines:bronze_gear",
+        "assortedmachines:copper_gear",
+        "assortedmachines:electrum_gear",
+        "assortedmachines:gold_gear",
+        "assortedmachines:invar_gear",
+        "assortedmachines:iron_gear",
+        "assortedmachines:lead_gear",
+        "assortedmachines:nickel_gear",
+        "assortedmachines:platinum_gear",
+        "assortedmachines:silver_gear",
+        "assortedmachines:steel_gear",
+        "assortedmachines:tin_gear"
+      ],
+      "page": "assortedcore:machines/gears"
+    }
+  ]
+}

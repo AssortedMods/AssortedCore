@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    "#c:ingots/lead",
+    "#c:ingots/lead",
+    "#c:ingots/lead",
+    "#c:ingots/lead",
+    "#c:ingots/lead",
+    "#c:ingots/lead",
+    "#c:ingots/lead",
+    "#c:ingots/lead",
+    "#c:ingots/lead"
+  ],
+  "result": {
+    "id": "assortedores:lead_block"
+  }
+}

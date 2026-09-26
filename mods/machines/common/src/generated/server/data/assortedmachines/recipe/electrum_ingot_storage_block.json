@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    "#c:storage_blocks/electrum"
+  ],
+  "result": {
+    "count": 9,
+    "id": "assortedmachines:electrum_ingot"
+  }
+}

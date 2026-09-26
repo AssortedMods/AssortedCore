@@ -1,0 +1,25 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "assortedlib:item_tag_populated",
+      "tag": "c:ingots/lead"
+    }
+  ],
+  "type": "assortedmachines:grinding_mill",
+  "cookingtime": 300,
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:tags_populated",
+      "registry": "minecraft:item",
+      "values": [
+        "c:ingots/lead"
+      ]
+    }
+  ],
+  "ingredient": {
+    "ingredient": "#c:ingots/lead"
+  },
+  "result": {
+    "id": "assortedmachines:lead_dust"
+  }
+}

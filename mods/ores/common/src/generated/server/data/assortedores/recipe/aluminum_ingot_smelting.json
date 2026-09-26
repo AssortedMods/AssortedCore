@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:smelting",
+  "experience": 0.7,
+  "ingredient": "#c:ores/aluminum",
+  "result": {
+    "id": "assortedores:aluminum_ingot"
+  }
+}

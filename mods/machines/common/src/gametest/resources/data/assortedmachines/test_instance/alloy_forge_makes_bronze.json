@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:function",
+  "environment": "minecraft:default",
+  "function": "assortedmachines:alloy_forge_makes_bronze",
+  "structure": "assortedmachines:test_box",
+  "max_ticks": 200,
+  "setup_ticks": 0,
+  "required": true
+}
