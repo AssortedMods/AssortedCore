@@ -52,6 +52,28 @@
     },
     {
       "items": [
+        "assortedores:aluminum_dust",
+        "assortedores:lead_dust",
+        "assortedores:nickel_dust",
+        "assortedores:platinum_dust",
+        "assortedores:silver_dust",
+        "assortedores:tin_dust"
+      ],
+      "page": "assortedcore:metals/dusts"
+    },
+    {
+      "items": [
+        "assortedores:aluminum_gear",
+        "assortedores:lead_gear",
+        "assortedores:nickel_gear",
+        "assortedores:platinum_gear",
+        "assortedores:silver_gear",
+        "assortedores:tin_gear"
+      ],
+      "page": "assortedcore:metals/gears"
+    },
+    {
+      "items": [
         "assortedores:ruby",
         "assortedores:peridot",
         "assortedores:sapphire",

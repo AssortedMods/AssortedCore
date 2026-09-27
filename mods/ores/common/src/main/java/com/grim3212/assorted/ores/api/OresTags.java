@@ -104,13 +104,22 @@ public class OresTags {
         public static final TagKey<Item> NUGGETS_PLATINUM = commonTag("nuggets/platinum");
         public static final TagKey<Item> NUGGETS_LEAD = commonTag("nuggets/lead");
 
-        // Assorted Machines or another mod fills these; the dusts smelt into this mod's ingots.
+        public static final TagKey<Item> DUSTS = commonTag("dusts");
         public static final TagKey<Item> DUSTS_TIN = commonTag("dusts/tin");
         public static final TagKey<Item> DUSTS_SILVER = commonTag("dusts/silver");
         public static final TagKey<Item> DUSTS_ALUMINUM = commonTag("dusts/aluminum");
         public static final TagKey<Item> DUSTS_NICKEL = commonTag("dusts/nickel");
         public static final TagKey<Item> DUSTS_PLATINUM = commonTag("dusts/platinum");
         public static final TagKey<Item> DUSTS_LEAD = commonTag("dusts/lead");
+
+        // Singular c:gear, as Assorted Machines and the other Assorted mods name it.
+        public static final TagKey<Item> GEARS = commonTag("gear");
+        public static final TagKey<Item> GEARS_TIN = commonTag("gear/tin");
+        public static final TagKey<Item> GEARS_SILVER = commonTag("gear/silver");
+        public static final TagKey<Item> GEARS_ALUMINUM = commonTag("gear/aluminum");
+        public static final TagKey<Item> GEARS_NICKEL = commonTag("gear/nickel");
+        public static final TagKey<Item> GEARS_PLATINUM = commonTag("gear/platinum");
+        public static final TagKey<Item> GEARS_LEAD = commonTag("gear/lead");
 
         public static final TagKey<Item> GEMS = commonTag("gems");
         public static final TagKey<Item> GEMS_RUBY = commonTag("gems/ruby");

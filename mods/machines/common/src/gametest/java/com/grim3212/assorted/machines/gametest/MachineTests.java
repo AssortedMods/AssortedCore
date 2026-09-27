@@ -13,6 +13,8 @@ import net.minecraft.core.RegistryAccess;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.gametest.framework.GameTestHelper;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.resources.Identifier;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
@@ -37,8 +39,10 @@ final class MachineTests {
     }
 
     static void register(BiConsumer<String, Consumer<GameTestHelper>> out) {
+        out.accept("alloy_forge_makes_steel", MachineTests::alloyForgeMakesSteel);
         out.accept("alloy_forge_makes_bronze", MachineTests::alloyForgeMakesBronze);
         out.accept("grinding_mill_makes_dust", MachineTests::grindingMillMakesDust);
+        out.accept("grinding_mill_grinds_tin_ore", MachineTests::grindingMillGrindsTinOre);
         out.accept("grinding_mill_tool_slot", MachineTests::grindingMillToolSlot);
         out.accept("machine_drops_contents", MachineTests::machineDropsContents);
         out.accept("hoppers_feed_and_empty_machine", MachineTests::hoppersFeedAndEmptyMachine);
@@ -47,14 +51,34 @@ final class MachineTests {
         out.accept("machine_keeps_contents_across_reload", MachineTests::machineKeepsContentsAcrossReload);
     }
 
-    /** 3 copper dust + 1 tin dust -> 4 bronze ingots. */
-    private static void alloyForgeMakesBronze(GameTestHelper helper) {
+    /** 4 coal + 1 iron dust -> 1 steel ingot, the one alloy that needs nothing from Assorted Ores. */
+    private static void alloyForgeMakesSteel(GameTestHelper helper) {
         helper.setBlock(MACHINE, MachinesBlocks.EXPERT_ALLOY_FORGE.get());
         AlloyForgeBlockEntity forge = helper.getBlockEntity(MACHINE, AlloyForgeBlockEntity.class);
 
         // Through the inventory handler, not getItems(): only the handler sets cookTimeTotal.
+        loadSteel(forge);
+
+        helper.succeedWhen(() -> {
+            ItemStack result = forge.getInventory(null).getStackInSlot(3);
+            helper.assertTrue(result.is(MachinesItems.STEEL_INGOT.get()), "alloy forge did not produce steel");
+            helper.assertValueEqual(result.getCount(), 1, "steel ingot count");
+        });
+    }
+
+    /** 3 copper dust + 1 tin dust -> 4 bronze ingots, once Assorted Ores or another mod adds tin dust. */
+    private static void alloyForgeMakesBronze(GameTestHelper helper) {
+        Optional<ItemStack> tinDust = anyIn(helper, MachinesTags.Items.DUSTS_TIN);
+        if (tinDust.isEmpty()) {
+            helper.succeed();
+            return;
+        }
+
+        helper.setBlock(MACHINE, MachinesBlocks.EXPERT_ALLOY_FORGE.get());
+        AlloyForgeBlockEntity forge = helper.getBlockEntity(MACHINE, AlloyForgeBlockEntity.class);
+
         forge.getInventory(null).setStackInSlot(0, new ItemStack(MachinesItems.COPPER_DUST.get(), 3));
-        forge.getInventory(null).setStackInSlot(1, new ItemStack(MachinesItems.TIN_DUST.get(), 1));
+        forge.getInventory(null).setStackInSlot(1, tinDust.get());
         forge.getInventory(null).setStackInSlot(2, new ItemStack(Items.COAL, 8));
 
         helper.succeedWhen(() -> {
@@ -76,6 +100,29 @@ final class MachineTests {
         helper.succeedWhen(() -> helper.assertTrue(
                 mill.getInventory(null).getStackInSlot(3).is(MachinesItems.COPPER_DUST.get()),
                 "grinding mill did not produce copper dust"));
+    }
+
+    /** With Assorted Ores installed too, its tin ore grinds into two of its tin dust through its own recipe. */
+    private static void grindingMillGrindsTinOre(GameTestHelper helper) {
+        Optional<Item> ore = BuiltInRegistries.ITEM.getOptional(Identifier.fromNamespaceAndPath("assortedores", "tin_ore"));
+        Optional<Item> dust = BuiltInRegistries.ITEM.getOptional(Identifier.fromNamespaceAndPath("assortedores", "tin_dust"));
+        if (ore.isEmpty() || dust.isEmpty()) {
+            helper.succeed();
+            return;
+        }
+
+        helper.setBlock(MACHINE, MachinesBlocks.EXPERT_GRINDING_MILL.get());
+        GrindingMillBlockEntity mill = helper.getBlockEntity(MACHINE, GrindingMillBlockEntity.class);
+
+        mill.getInventory(null).setStackInSlot(0, new ItemStack(ore.get(), 1));
+        mill.getInventory(null).setStackInSlot(1, new ItemStack(Items.IRON_PICKAXE));
+        mill.getInventory(null).setStackInSlot(2, new ItemStack(Items.COAL, 8));
+
+        helper.succeedWhen(() -> {
+            ItemStack result = mill.getInventory(null).getStackInSlot(3);
+            helper.assertTrue(result.is(dust.get()), "grinding mill made " + result + " from tin ore instead of tin dust");
+            helper.assertValueEqual(result.getCount(), 2, "tin dust count");
+        });
     }
 
     /** The tool slot takes iron and above, and nothing softer. */
@@ -114,21 +161,21 @@ final class MachineTests {
         helper.setBlock(below, Blocks.HOPPER.defaultBlockState().setValue(HopperBlock.FACING, Direction.DOWN));
 
         helper.getBlockEntity(above, HopperBlockEntity.class)
-                .setItem(0, new ItemStack(MachinesItems.COPPER_DUST.get(), 1));
+                .setItem(0, new ItemStack(MachinesItems.IRON_DUST.get(), 1));
 
         BaseMachineBlockEntity forge = helper.getBlockEntity(MACHINE, AlloyForgeBlockEntity.class);
         forge.getInventory(null).setStackInSlot(3, new ItemStack(MachinesItems.BRONZE_INGOT.get(), 1));
 
         helper.succeedWhen(() -> {
-            helper.assertTrue(forge.getInventory(null).getStackInSlot(0).is(MachinesItems.COPPER_DUST.get()),
+            helper.assertTrue(forge.getInventory(null).getStackInSlot(0).is(MachinesItems.IRON_DUST.get()),
                     "hopper above did not insert into the machine");
             helper.assertContainerContains(below, MachinesItems.BRONZE_INGOT.get());
         });
     }
 
     /**
-     * The machine core and both machine lines through every tier. The core and the expert tier need aluminum
-     * and platinum, so they are only checked when Assorted Ores or another mod adds them.
+     * The machine core and both machine lines through every tier. The aluminum core and the expert tier need
+     * aluminum and platinum, so they are only checked when Assorted Ores or another mod adds them.
      */
     private static void machineRecipesCraft(GameTestHelper helper) {
         ItemStack iron = new ItemStack(Items.IRON_INGOT);
@@ -139,7 +186,10 @@ final class MachineTests {
         Optional<ItemStack> aluminum = anyIn(helper, MachinesTags.Items.INGOTS_ALUMINUM);
         Optional<ItemStack> platinum = anyIn(helper, MachinesTags.Items.INGOTS_PLATINUM);
 
-        aluminum.ifPresent(ingot -> assertCrafts(helper, 3, 3, ring(iron, ingot, new ItemStack(MachinesItems.COPPER_GEAR.get())),
+        ItemStack copperGear = new ItemStack(MachinesItems.COPPER_GEAR.get());
+        assertCrafts(helper, 3, 3, ring(iron, new ItemStack(Items.COPPER_INGOT), copperGear),
+                MachinesBlocks.MACHINE_CORE.get().asItem(), 1, "machine core from copper");
+        aluminum.ifPresent(ingot -> assertCrafts(helper, 3, 3, ring(iron, ingot, copperGear),
                 MachinesBlocks.MACHINE_CORE.get().asItem(), 1, "machine core"));
 
         ItemStack core = new ItemStack(MachinesBlocks.MACHINE_CORE.get());
@@ -194,8 +244,7 @@ final class MachineTests {
             BlockPos forgePos = new BlockPos(1 + tier * 2, 1, 3);
             helper.setBlock(forgePos, forges[tier]);
             AlloyForgeBlockEntity forge = helper.getBlockEntity(forgePos, AlloyForgeBlockEntity.class);
-            forge.getInventory(null).setStackInSlot(0, new ItemStack(MachinesItems.COPPER_DUST.get(), 3));
-            forge.getInventory(null).setStackInSlot(1, new ItemStack(MachinesItems.TIN_DUST.get(), 1));
+            loadSteel(forge);
             forgeTimes[tier] = forge.getCookTime();
         }
 
@@ -220,9 +269,7 @@ final class MachineTests {
     private static void machineKeepsContentsAcrossReload(GameTestHelper helper) {
         helper.setBlock(MACHINE, MachinesBlocks.EXPERT_ALLOY_FORGE.get());
         AlloyForgeBlockEntity forge = helper.getBlockEntity(MACHINE, AlloyForgeBlockEntity.class);
-        forge.getInventory(null).setStackInSlot(0, new ItemStack(MachinesItems.COPPER_DUST.get(), 3));
-        forge.getInventory(null).setStackInSlot(1, new ItemStack(MachinesItems.TIN_DUST.get(), 1));
-        forge.getInventory(null).setStackInSlot(2, new ItemStack(Items.COAL, 8));
+        loadSteel(forge);
 
         helper.runAfterDelay(20L, () -> {
             AlloyForgeBlockEntity running = helper.getBlockEntity(MACHINE, AlloyForgeBlockEntity.class);
@@ -248,5 +295,12 @@ final class MachineTests {
 
             helper.succeed();
         });
+    }
+
+    /** A steel smelt with fuel to spare. */
+    private static void loadSteel(AlloyForgeBlockEntity forge) {
+        forge.getInventory(null).setStackInSlot(0, new ItemStack(Items.COAL, 4));
+        forge.getInventory(null).setStackInSlot(1, new ItemStack(MachinesItems.IRON_DUST.get(), 1));
+        forge.getInventory(null).setStackInSlot(2, new ItemStack(Items.COAL, 8));
     }
 }

@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "A": "#c:ingots/copper",
+    "C": "#c:gear/copper",
+    "I": "#c:ingots/iron"
+  },
+  "pattern": [
+    "IAI",
+    "ACA",
+    "IAI"
+  ],
+  "result": {
+    "id": "assortedmachines:machine_core"
+  }
+}

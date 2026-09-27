@@ -38,7 +38,10 @@ final class MachinesTestSupport {
     /** The metals the alloy forge makes, each with an ingot, nugget, dust, gear and storage block of its own. */
     static final List<String> ALLOYS = List.of("bronze", "electrum", "invar", "steel");
 
-    /** The metals of Assorted Ores, which this mod only gives a dust and a gear. */
+    /** The vanilla metals, which this mod only gives a dust and a gear. */
+    static final List<String> VANILLA_METALS = List.of("iron", "gold", "copper");
+
+    /** The metals of Assorted Ores, whose dusts and gears are Assorted Ores' own. */
     static final List<String> ORE_METALS = List.of("tin", "silver", "aluminum", "nickel", "platinum", "lead");
 
     /** Anything in the tag, for a recipe naming a metal only Assorted Ores or another mod adds. */

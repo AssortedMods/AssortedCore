@@ -20,8 +20,8 @@ import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
 /**
- * Assorted Machines grinding mill recipes for the gem ores, written as json since this mod does not build against
- * Machines. Each only loads when Machines is installed.
+ * Assorted Machines grinding mill recipes for this mod's metals and gems, written as json since this mod does not
+ * build against Machines. Each only loads when Machines is installed.
  */
 public class OresMachineRecipes implements DataProvider {
 
@@ -46,28 +46,51 @@ public class OresMachineRecipes implements DataProvider {
         grind(bothLoaders, writes, OresTags.Items.ORES_SAPPHIRE, OresItems.SAPPHIRE.getId());
         grind(bothLoaders, writes, OresTags.Items.ORES_TOPAZ, OresItems.TOPAZ.getId());
 
+        // Two dusts for an ore or a raw chunk and one for an ingot, as the grinding mill gives for iron. Named as in Assorted Machines.
+        dusts(bothLoaders, writes, OresTags.Items.ORES_TIN, OresTags.Items.RAW_MATERIALS_TIN, OresTags.Items.INGOTS_TIN, OresItems.TIN_DUST.getId(), 0.2F);
+        dusts(bothLoaders, writes, OresTags.Items.ORES_SILVER, OresTags.Items.RAW_MATERIALS_SILVER, OresTags.Items.INGOTS_SILVER, OresItems.SILVER_DUST.getId(), 0.4F);
+        dusts(bothLoaders, writes, OresTags.Items.ORES_ALUMINUM, OresTags.Items.RAW_MATERIALS_ALUMINUM, OresTags.Items.INGOTS_ALUMINUM, OresItems.ALUMINUM_DUST.getId(), 0.2F);
+        dusts(bothLoaders, writes, OresTags.Items.ORES_NICKEL, OresTags.Items.RAW_MATERIALS_NICKEL, OresTags.Items.INGOTS_NICKEL, OresItems.NICKEL_DUST.getId(), 0.2F);
+        dusts(bothLoaders, writes, OresTags.Items.ORES_PLATINUM, OresTags.Items.RAW_MATERIALS_PLATINUM, OresTags.Items.INGOTS_PLATINUM, OresItems.PLATINUM_DUST.getId(), 0.5F);
+        dusts(bothLoaders, writes, OresTags.Items.ORES_LEAD, OresTags.Items.RAW_MATERIALS_LEAD, OresTags.Items.INGOTS_LEAD, OresItems.LEAD_DUST.getId(), 0.2F);
+
         return CompletableFuture.allOf(writes.toArray(CompletableFuture[]::new));
     }
 
     private void grind(CachedOutput output, List<CompletableFuture<?>> writes, TagKey<Item> ore, Identifier gem) {
-        String oreTag = "#" + ore.location();
-        writes.add(DataProvider.saveStable(output, grindingMill(oreTag, gem, 2, 0.3F), this.recipes.json(gem)));
-        writes.add(DataProvider.saveStable(output, unlockAdvancement(gem, oreTag), this.advancements.json(gem.withPrefix("recipes/"))));
+        grind(output, writes, gem, ore, gem, 2, 0.3F, 600);
     }
 
-    private static JsonObject grindingMill(String oreTag, Identifier result, int count, float experience) {
+    private void dusts(CachedOutput output, List<CompletableFuture<?>> writes, TagKey<Item> ore, TagKey<Item> raw, TagKey<Item> ingot, Identifier dust, float experience) {
+        grind(output, writes, dust, ore, dust, 2, experience, 600);
+        grind(output, writes, dust.withSuffix("_from_raw_ore"), raw, dust, 2, 0.0F, 300);
+        grind(output, writes, dust.withSuffix("_from_ingot"), ingot, dust, 1, 0.0F, 300);
+    }
+
+    private void grind(CachedOutput output, List<CompletableFuture<?>> writes, Identifier id, TagKey<Item> input, Identifier result, int count, float experience, int cookTime) {
+        String inputTag = "#" + input.location();
+        writes.add(DataProvider.saveStable(output, grindingMill(inputTag, result, count, experience, cookTime), this.recipes.json(id)));
+        writes.add(DataProvider.saveStable(output, unlockAdvancement(id, inputTag), this.advancements.json(id.withPrefix("recipes/"))));
+    }
+
+    /** Leaves out a count of one and no experience, as the Machines recipe codec does. */
+    private static JsonObject grindingMill(String inputTag, Identifier result, int count, float experience, int cookTime) {
         JsonObject ingredient = new JsonObject();
-        ingredient.addProperty("ingredient", oreTag);
+        ingredient.addProperty("ingredient", inputTag);
 
         JsonObject output = new JsonObject();
-        output.addProperty("count", count);
+        if (count != 1) {
+            output.addProperty("count", count);
+        }
         output.addProperty("id", result.toString());
 
         JsonObject recipe = new JsonObject();
         recipe.add(CrossLoaderData.NEOFORGE_CONDITIONS, machinesLoaded());
         recipe.addProperty("type", MACHINES + ":grinding_mill");
-        recipe.addProperty("cookingtime", 600);
-        recipe.addProperty("experience", experience);
+        recipe.addProperty("cookingtime", cookTime);
+        if (experience != 0.0F) {
+            recipe.addProperty("experience", experience);
+        }
         recipe.add("ingredient", ingredient);
         recipe.add("result", output);
         return recipe;

@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:function",
+  "environment": "minecraft:default",
+  "function": "assortedmachines:alloy_forge_makes_steel",
+  "structure": "assortedmachines:test_box",
+  "max_ticks": 400,
+  "setup_ticks": 0,
+  "required": true
+}

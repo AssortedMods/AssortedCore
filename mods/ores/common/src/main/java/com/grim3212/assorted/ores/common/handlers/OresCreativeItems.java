@@ -24,49 +24,61 @@ public class OresCreativeItems {
         items.add(OresBlocks.DEEPSLATE_TIN_ORE.get());
         items.add(OresBlocks.RAW_TIN_BLOCK.get());
         items.add(OresBlocks.TIN_BLOCK.get());
+        items.add(OresItems.TIN_DUST.get());
         items.add(OresItems.TIN_NUGGET.get());
         items.add(OresItems.TIN_INGOT.get());
         items.add(OresItems.RAW_TIN.get());
+        items.add(OresItems.TIN_GEAR.get());
 
         items.add(OresBlocks.SILVER_ORE.get());
         items.add(OresBlocks.DEEPSLATE_SILVER_ORE.get());
         items.add(OresBlocks.RAW_SILVER_BLOCK.get());
         items.add(OresBlocks.SILVER_BLOCK.get());
+        items.add(OresItems.SILVER_DUST.get());
         items.add(OresItems.SILVER_NUGGET.get());
         items.add(OresItems.SILVER_INGOT.get());
         items.add(OresItems.RAW_SILVER.get());
+        items.add(OresItems.SILVER_GEAR.get());
 
         items.add(OresBlocks.ALUMINUM_ORE.get());
         items.add(OresBlocks.DEEPSLATE_ALUMINUM_ORE.get());
         items.add(OresBlocks.RAW_ALUMINUM_BLOCK.get());
         items.add(OresBlocks.ALUMINUM_BLOCK.get());
+        items.add(OresItems.ALUMINUM_DUST.get());
         items.add(OresItems.ALUMINUM_NUGGET.get());
         items.add(OresItems.ALUMINUM_INGOT.get());
         items.add(OresItems.RAW_ALUMINUM.get());
+        items.add(OresItems.ALUMINUM_GEAR.get());
 
         items.add(OresBlocks.NICKEL_ORE.get());
         items.add(OresBlocks.DEEPSLATE_NICKEL_ORE.get());
         items.add(OresBlocks.RAW_NICKEL_BLOCK.get());
         items.add(OresBlocks.NICKEL_BLOCK.get());
+        items.add(OresItems.NICKEL_DUST.get());
         items.add(OresItems.NICKEL_NUGGET.get());
         items.add(OresItems.NICKEL_INGOT.get());
         items.add(OresItems.RAW_NICKEL.get());
+        items.add(OresItems.NICKEL_GEAR.get());
 
         items.add(OresBlocks.PLATINUM_ORE.get());
         items.add(OresBlocks.DEEPSLATE_PLATINUM_ORE.get());
         items.add(OresBlocks.RAW_PLATINUM_BLOCK.get());
         items.add(OresBlocks.PLATINUM_BLOCK.get());
+        items.add(OresItems.PLATINUM_DUST.get());
         items.add(OresItems.PLATINUM_NUGGET.get());
         items.add(OresItems.PLATINUM_INGOT.get());
         items.add(OresItems.RAW_PLATINUM.get());
+        items.add(OresItems.PLATINUM_GEAR.get());
 
         items.add(OresBlocks.LEAD_ORE.get());
         items.add(OresBlocks.DEEPSLATE_LEAD_ORE.get());
         items.add(OresBlocks.RAW_LEAD_BLOCK.get());
         items.add(OresBlocks.LEAD_BLOCK.get());
+        items.add(OresItems.LEAD_DUST.get());
         items.add(OresItems.LEAD_NUGGET.get());
         items.add(OresItems.LEAD_INGOT.get());
         items.add(OresItems.RAW_LEAD.get());
+        items.add(OresItems.LEAD_GEAR.get());
 
         items.add(OresBlocks.RUBY_ORE.get());
         items.add(OresBlocks.DEEPSLATE_RUBY_ORE.get());
@@ -94,7 +106,7 @@ public class OresCreativeItems {
     }
 
     public static void init() {
-        // After the machines and before the dusts, gears and alloys, as the tab was when this was all one mod.
+        // After the machines and before the alloys, as the tab was when this was all one mod.
         SharedCreativeTabs.add(TAB, 200, OresCreativeItems::getCreativeItems);
     }
 }

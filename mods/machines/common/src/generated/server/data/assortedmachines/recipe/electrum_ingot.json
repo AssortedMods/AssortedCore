@@ -1,6 +1,21 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "assortedlib:item_tag_populated",
+      "tag": "c:dusts/silver"
+    }
+  ],
   "type": "assortedmachines:alloy_forge",
   "experience": 0.7,
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:tags_populated",
+      "registry": "minecraft:item",
+      "values": [
+        "c:dusts/silver"
+      ]
+    }
+  ],
   "ingredient1": {
     "ingredient": "#c:dusts/silver"
   },

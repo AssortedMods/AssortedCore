@@ -1,12 +1,6 @@
 {
   "values": [
-    "assortedmachines:tin_dust",
     "assortedmachines:copper_dust",
-    "assortedmachines:silver_dust",
-    "assortedmachines:aluminum_dust",
-    "assortedmachines:nickel_dust",
-    "assortedmachines:platinum_dust",
-    "assortedmachines:lead_dust",
     "assortedmachines:bronze_dust",
     "assortedmachines:electrum_dust",
     "assortedmachines:invar_dust",

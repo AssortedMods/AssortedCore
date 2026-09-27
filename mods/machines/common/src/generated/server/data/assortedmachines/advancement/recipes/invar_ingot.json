@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "assortedlib:item_tag_populated",
+      "tag": "c:dusts/nickel"
+    }
+  ],
   "parent": "minecraft:recipes/root",
   "criteria": {
     "has_ingredient1": {
@@ -28,6 +34,15 @@
       "trigger": "minecraft:recipe_unlocked"
     }
   },
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:tags_populated",
+      "registry": "minecraft:item",
+      "values": [
+        "c:dusts/nickel"
+      ]
+    }
+  ],
   "requirements": [
     [
       "has_the_recipe",

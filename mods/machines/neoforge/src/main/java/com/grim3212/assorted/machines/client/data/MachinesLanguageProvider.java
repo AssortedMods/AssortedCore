@@ -31,8 +31,8 @@ public class MachinesLanguageProvider extends LibLanguageProvider {
         this.add("tag.item.c.gear", "Gears");
 
         // c: item tags this mod adds that neither loader names, one family at a time.
-        this.tagFamily("dusts", "%s Dusts", "aluminum", "bronze", "copper", "electrum", "gold", "invar", "iron", "lead", "nickel", "platinum", "silver", "steel", "tin");
-        this.tagFamily("gear", "%s Gears", "aluminum", "bronze", "copper", "electrum", "gold", "invar", "iron", "lead", "nickel", "platinum", "silver", "steel", "tin");
+        this.tagFamily("dusts", "%s Dusts", "bronze", "copper", "electrum", "gold", "invar", "iron", "steel");
+        this.tagFamily("gear", "%s Gears", "bronze", "copper", "electrum", "gold", "invar", "iron", "steel");
         this.tagFamily("ingots", "%s Ingots", "bronze", "electrum", "invar", "steel");
         this.tagFamily("nuggets", "%s Nuggets", "bronze", "electrum", "invar", "steel");
         this.tagFamily("storage_blocks", "%s Storage Blocks", "bronze", "electrum", "invar", "steel");

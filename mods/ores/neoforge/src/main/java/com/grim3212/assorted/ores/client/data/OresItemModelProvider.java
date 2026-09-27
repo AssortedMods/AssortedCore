@@ -64,6 +64,20 @@ public class OresItemModelProvider extends ModelProvider {
         generatedItem(itemModels, OresItems.PERIDOT.get());
         generatedItem(itemModels, OresItems.SAPPHIRE.get());
         generatedItem(itemModels, OresItems.TOPAZ.get());
+
+        generatedItem(itemModels, OresItems.TIN_DUST.get());
+        generatedItem(itemModels, OresItems.SILVER_DUST.get());
+        generatedItem(itemModels, OresItems.ALUMINUM_DUST.get());
+        generatedItem(itemModels, OresItems.NICKEL_DUST.get());
+        generatedItem(itemModels, OresItems.PLATINUM_DUST.get());
+        generatedItem(itemModels, OresItems.LEAD_DUST.get());
+
+        generatedItem(itemModels, OresItems.TIN_GEAR.get());
+        generatedItem(itemModels, OresItems.SILVER_GEAR.get());
+        generatedItem(itemModels, OresItems.ALUMINUM_GEAR.get());
+        generatedItem(itemModels, OresItems.NICKEL_GEAR.get());
+        generatedItem(itemModels, OresItems.PLATINUM_GEAR.get());
+        generatedItem(itemModels, OresItems.LEAD_GEAR.get());
     }
 
     private void generatedItem(ItemModelGenerators itemModels, Item i) {

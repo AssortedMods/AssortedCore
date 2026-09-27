@@ -1,6 +1,21 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "assortedlib:item_tag_populated",
+      "tag": "c:dusts/tin"
+    }
+  ],
   "type": "assortedmachines:alloy_forge",
   "experience": 0.5,
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:tags_populated",
+      "registry": "minecraft:item",
+      "values": [
+        "c:dusts/tin"
+      ]
+    }
+  ],
   "ingredient1": {
     "count": 3,
     "ingredient": "#c:dusts/copper"

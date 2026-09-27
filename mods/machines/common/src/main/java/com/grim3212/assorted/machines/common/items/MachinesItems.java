@@ -22,13 +22,7 @@ public class MachinesItems {
     public static final IRegistryObject<Item> INVAR_NUGGET = register("invar_nugget", props -> new Item(props));
     public static final IRegistryObject<Item> STEEL_NUGGET = register("steel_nugget", props -> new Item(props));
 
-    public static final IRegistryObject<Item> TIN_DUST = register("tin_dust", props -> new Item(props));
     public static final IRegistryObject<Item> COPPER_DUST = register("copper_dust", props -> new Item(props));
-    public static final IRegistryObject<Item> SILVER_DUST = register("silver_dust", props -> new Item(props));
-    public static final IRegistryObject<Item> ALUMINUM_DUST = register("aluminum_dust", props -> new Item(props));
-    public static final IRegistryObject<Item> NICKEL_DUST = register("nickel_dust", props -> new Item(props));
-    public static final IRegistryObject<Item> PLATINUM_DUST = register("platinum_dust", props -> new Item(props));
-    public static final IRegistryObject<Item> LEAD_DUST = register("lead_dust", props -> new Item(props));
     public static final IRegistryObject<Item> BRONZE_DUST = register("bronze_dust", props -> new Item(props));
     public static final IRegistryObject<Item> ELECTRUM_DUST = register("electrum_dust", props -> new Item(props));
     public static final IRegistryObject<Item> INVAR_DUST = register("invar_dust", props -> new Item(props));
@@ -36,13 +30,7 @@ public class MachinesItems {
     public static final IRegistryObject<Item> IRON_DUST = register("iron_dust", props -> new Item(props));
     public static final IRegistryObject<Item> GOLD_DUST = register("gold_dust", props -> new Item(props));
 
-    public static final IRegistryObject<Item> TIN_GEAR = register("tin_gear", props -> new Item(props));
     public static final IRegistryObject<Item> COPPER_GEAR = register("copper_gear", props -> new Item(props));
-    public static final IRegistryObject<Item> SILVER_GEAR = register("silver_gear", props -> new Item(props));
-    public static final IRegistryObject<Item> ALUMINUM_GEAR = register("aluminum_gear", props -> new Item(props));
-    public static final IRegistryObject<Item> NICKEL_GEAR = register("nickel_gear", props -> new Item(props));
-    public static final IRegistryObject<Item> PLATINUM_GEAR = register("platinum_gear", props -> new Item(props));
-    public static final IRegistryObject<Item> LEAD_GEAR = register("lead_gear", props -> new Item(props));
     public static final IRegistryObject<Item> BRONZE_GEAR = register("bronze_gear", props -> new Item(props));
     public static final IRegistryObject<Item> ELECTRUM_GEAR = register("electrum_gear", props -> new Item(props));
     public static final IRegistryObject<Item> INVAR_GEAR = register("invar_gear", props -> new Item(props));

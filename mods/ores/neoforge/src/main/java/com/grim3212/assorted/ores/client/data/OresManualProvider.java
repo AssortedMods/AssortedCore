@@ -47,6 +47,12 @@ public class OresManualProvider extends LibManualProvider {
                 .opensEveryItem(family(ORE_METALS, "_ingot", "_nugget"))
                 .opensEveryItem(raw(ORE_METALS))
                 .opensEveryItem(id -> id.getPath().equals("copper_nugget"));
+        metals.recipesById("dusts", recipeId("dusts/tin_smelting"), recipeId("dusts/silver_smelting"), recipeId("dusts/aluminum_smelting"),
+                        recipeId("dusts/nickel_smelting"), recipeId("dusts/platinum_smelting"), recipeId("dusts/lead_smelting")).every(60)
+                .opensEveryItem(family(ORE_METALS, "_dust"));
+        metals.recipes("gears", OresItems.TIN_GEAR.get(), OresItems.SILVER_GEAR.get(), OresItems.ALUMINUM_GEAR.get(),
+                        OresItems.NICKEL_GEAR.get(), OresItems.PLATINUM_GEAR.get(), OresItems.LEAD_GEAR.get()).every(60)
+                .opensEveryItem(family(ORE_METALS, "_gear"));
     }
 
     private void addGems() {

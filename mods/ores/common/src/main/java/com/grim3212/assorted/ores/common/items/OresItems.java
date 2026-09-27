@@ -39,6 +39,20 @@ public class OresItems {
     public static final IRegistryObject<Item> RAW_PLATINUM = register("raw_platinum", props -> new Item(props));
     public static final IRegistryObject<Item> RAW_LEAD = register("raw_lead", props -> new Item(props));
 
+    public static final IRegistryObject<Item> TIN_DUST = register("tin_dust", props -> new Item(props));
+    public static final IRegistryObject<Item> SILVER_DUST = register("silver_dust", props -> new Item(props));
+    public static final IRegistryObject<Item> ALUMINUM_DUST = register("aluminum_dust", props -> new Item(props));
+    public static final IRegistryObject<Item> NICKEL_DUST = register("nickel_dust", props -> new Item(props));
+    public static final IRegistryObject<Item> PLATINUM_DUST = register("platinum_dust", props -> new Item(props));
+    public static final IRegistryObject<Item> LEAD_DUST = register("lead_dust", props -> new Item(props));
+
+    public static final IRegistryObject<Item> TIN_GEAR = register("tin_gear", props -> new Item(props));
+    public static final IRegistryObject<Item> SILVER_GEAR = register("silver_gear", props -> new Item(props));
+    public static final IRegistryObject<Item> ALUMINUM_GEAR = register("aluminum_gear", props -> new Item(props));
+    public static final IRegistryObject<Item> NICKEL_GEAR = register("nickel_gear", props -> new Item(props));
+    public static final IRegistryObject<Item> PLATINUM_GEAR = register("platinum_gear", props -> new Item(props));
+    public static final IRegistryObject<Item> LEAD_GEAR = register("lead_gear", props -> new Item(props));
+
     private static <T extends Item> IRegistryObject<T> register(final String name, final Function<Item.Properties, ? extends T> factory) {
         // Since 1.21.2 every item has to know its own id before it is constructed, so the
         // properties are built here where the registration name is known.

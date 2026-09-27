@@ -48,13 +48,7 @@ public class MachinesItemModelProvider extends ModelProvider {
         generatedItem(itemModels, MachinesItems.INVAR_NUGGET.get());
         generatedItem(itemModels, MachinesItems.STEEL_NUGGET.get());
 
-        generatedItem(itemModels, MachinesItems.TIN_DUST.get());
         generatedItem(itemModels, MachinesItems.COPPER_DUST.get());
-        generatedItem(itemModels, MachinesItems.SILVER_DUST.get());
-        generatedItem(itemModels, MachinesItems.ALUMINUM_DUST.get());
-        generatedItem(itemModels, MachinesItems.NICKEL_DUST.get());
-        generatedItem(itemModels, MachinesItems.PLATINUM_DUST.get());
-        generatedItem(itemModels, MachinesItems.LEAD_DUST.get());
         generatedItem(itemModels, MachinesItems.BRONZE_DUST.get());
         generatedItem(itemModels, MachinesItems.ELECTRUM_DUST.get());
         generatedItem(itemModels, MachinesItems.INVAR_DUST.get());
@@ -62,13 +56,7 @@ public class MachinesItemModelProvider extends ModelProvider {
         generatedItem(itemModels, MachinesItems.IRON_DUST.get());
         generatedItem(itemModels, MachinesItems.GOLD_DUST.get());
 
-        generatedItem(itemModels, MachinesItems.TIN_GEAR.get());
         generatedItem(itemModels, MachinesItems.COPPER_GEAR.get());
-        generatedItem(itemModels, MachinesItems.SILVER_GEAR.get());
-        generatedItem(itemModels, MachinesItems.ALUMINUM_GEAR.get());
-        generatedItem(itemModels, MachinesItems.NICKEL_GEAR.get());
-        generatedItem(itemModels, MachinesItems.PLATINUM_GEAR.get());
-        generatedItem(itemModels, MachinesItems.LEAD_GEAR.get());
         generatedItem(itemModels, MachinesItems.BRONZE_GEAR.get());
         generatedItem(itemModels, MachinesItems.ELECTRUM_GEAR.get());
         generatedItem(itemModels, MachinesItems.INVAR_GEAR.get());

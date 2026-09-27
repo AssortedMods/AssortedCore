@@ -119,6 +119,31 @@ public class OresItemTagProvider extends LibItemTagProvider {
         tagger.apply(OresTags.Items.NUGGETS_PLATINUM).add(OresItems.PLATINUM_NUGGET.get());
         tagger.apply(OresTags.Items.NUGGETS_LEAD).add(OresItems.LEAD_NUGGET.get());
 
+        tagger.apply(OresTags.Items.DUSTS).add(OresItems.TIN_DUST.get());
+        tagger.apply(OresTags.Items.DUSTS).add(OresItems.SILVER_DUST.get());
+        tagger.apply(OresTags.Items.DUSTS).add(OresItems.ALUMINUM_DUST.get());
+        tagger.apply(OresTags.Items.DUSTS).add(OresItems.NICKEL_DUST.get());
+        tagger.apply(OresTags.Items.DUSTS).add(OresItems.PLATINUM_DUST.get());
+        tagger.apply(OresTags.Items.DUSTS).add(OresItems.LEAD_DUST.get());
+        tagger.apply(OresTags.Items.DUSTS_TIN).add(OresItems.TIN_DUST.get());
+        tagger.apply(OresTags.Items.DUSTS_SILVER).add(OresItems.SILVER_DUST.get());
+        tagger.apply(OresTags.Items.DUSTS_ALUMINUM).add(OresItems.ALUMINUM_DUST.get());
+        tagger.apply(OresTags.Items.DUSTS_NICKEL).add(OresItems.NICKEL_DUST.get());
+        tagger.apply(OresTags.Items.DUSTS_PLATINUM).add(OresItems.PLATINUM_DUST.get());
+        tagger.apply(OresTags.Items.DUSTS_LEAD).add(OresItems.LEAD_DUST.get());
+
+        tagger.apply(OresTags.Items.GEARS).add(OresItems.TIN_GEAR.get());
+        tagger.apply(OresTags.Items.GEARS).add(OresItems.SILVER_GEAR.get());
+        tagger.apply(OresTags.Items.GEARS).add(OresItems.ALUMINUM_GEAR.get());
+        tagger.apply(OresTags.Items.GEARS).add(OresItems.NICKEL_GEAR.get());
+        tagger.apply(OresTags.Items.GEARS).add(OresItems.PLATINUM_GEAR.get());
+        tagger.apply(OresTags.Items.GEARS).add(OresItems.LEAD_GEAR.get());
+        tagger.apply(OresTags.Items.GEARS_TIN).add(OresItems.TIN_GEAR.get());
+        tagger.apply(OresTags.Items.GEARS_SILVER).add(OresItems.SILVER_GEAR.get());
+        tagger.apply(OresTags.Items.GEARS_ALUMINUM).add(OresItems.ALUMINUM_GEAR.get());
+        tagger.apply(OresTags.Items.GEARS_NICKEL).add(OresItems.NICKEL_GEAR.get());
+        tagger.apply(OresTags.Items.GEARS_PLATINUM).add(OresItems.PLATINUM_GEAR.get());
+        tagger.apply(OresTags.Items.GEARS_LEAD).add(OresItems.LEAD_GEAR.get());
     }
 
     private record ItemTagger(TagAppender<Item> appender) {

@@ -16,6 +16,7 @@ public final class OresGameTests {
     /** Every test in this mod, named once, so both loaders register the same set. */
     public static void forEach(BiConsumer<String, Consumer<GameTestHelper>> out) {
         OreTests.register(out);
+        DustAndGearTests.register(out);
         AssetTests.register(out);
         ManualLinkTests.register(out);
         CrossLoaderDataTests.register(out);

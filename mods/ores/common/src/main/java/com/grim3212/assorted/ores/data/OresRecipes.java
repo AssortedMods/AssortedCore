@@ -6,6 +6,7 @@ import com.grim3212.assorted.ores.common.blocks.OresBlocks;
 import com.grim3212.assorted.ores.common.items.OresItems;
 import com.grim3212.assorted.lib.core.conditions.ConditionalRecipeProvider;
 import com.grim3212.assorted.lib.platform.Services;
+import com.grim3212.assorted.lib.util.LibCommonTags;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
@@ -33,18 +34,17 @@ public class OresRecipes extends ConditionalRecipeProvider {
 
     @Override
     public void registerConditions() {
-        // A recipe naming a tag no pack declares fails to load, and the dusts come from another mod.
-        this.onlyWith(OresTags.Items.DUSTS_TIN);
-        this.onlyWith(OresTags.Items.DUSTS_SILVER);
-        this.onlyWith(OresTags.Items.DUSTS_ALUMINUM);
-        this.onlyWith(OresTags.Items.DUSTS_NICKEL);
-        this.onlyWith(OresTags.Items.DUSTS_PLATINUM);
-        this.onlyWith(OresTags.Items.DUSTS_LEAD);
+        // This mod always fills the ingot tags, but the gears keep the condition they had in Assorted Machines.
+        this.onlyWith(OresTags.Items.INGOTS_TIN, "tin_gear");
+        this.onlyWith(OresTags.Items.INGOTS_SILVER, "silver_gear");
+        this.onlyWith(OresTags.Items.INGOTS_ALUMINUM, "aluminum_gear");
+        this.onlyWith(OresTags.Items.INGOTS_NICKEL, "nickel_gear");
+        this.onlyWith(OresTags.Items.INGOTS_PLATINUM, "platinum_gear");
+        this.onlyWith(OresTags.Items.INGOTS_LEAD, "lead_gear");
     }
 
-    private void onlyWith(TagKey<Item> dust) {
-        String path = dust.location().getPath();
-        this.addConditions(itemTagExists(dust), prefix(path + "_blasting"), prefix(path + "_smelting"));
+    private void onlyWith(TagKey<Item> tag, String recipe) {
+        this.addConditions(itemTagExists(tag), prefix(recipe));
     }
 
     @Override
@@ -96,13 +96,24 @@ public class OresRecipes extends ConditionalRecipeProvider {
         rawStorageBlastingSmelting(OresTags.Items.RAW_STORAGE_BLOCKS_PLATINUM, OresBlocks.PLATINUM_BLOCK.get(), 3.0f);
         rawStorageBlastingSmelting(OresTags.Items.RAW_STORAGE_BLOCKS_LEAD, OresBlocks.LEAD_BLOCK.get(), 1.0f);
 
-        // Assorted Machines or another mod adds the dusts, and grinds the gem ores in OresMachineRecipes.
+        // Assorted Machines grinds the ores into these dusts, see OresMachineRecipes.
         ingotDust(OresTags.Items.DUSTS_TIN, OresItems.TIN_INGOT.get());
         ingotDust(OresTags.Items.DUSTS_SILVER, OresItems.SILVER_INGOT.get());
         ingotDust(OresTags.Items.DUSTS_ALUMINUM, OresItems.ALUMINUM_INGOT.get());
         ingotDust(OresTags.Items.DUSTS_NICKEL, OresItems.NICKEL_INGOT.get());
         ingotDust(OresTags.Items.DUSTS_PLATINUM, OresItems.PLATINUM_INGOT.get());
         ingotDust(OresTags.Items.DUSTS_LEAD, OresItems.LEAD_INGOT.get());
+
+        gear(OresTags.Items.INGOTS_TIN, OresItems.TIN_GEAR.get());
+        gear(OresTags.Items.INGOTS_SILVER, OresItems.SILVER_GEAR.get());
+        gear(OresTags.Items.INGOTS_ALUMINUM, OresItems.ALUMINUM_GEAR.get());
+        gear(OresTags.Items.INGOTS_NICKEL, OresItems.NICKEL_GEAR.get());
+        gear(OresTags.Items.INGOTS_PLATINUM, OresItems.PLATINUM_GEAR.get());
+        gear(OresTags.Items.INGOTS_LEAD, OresItems.LEAD_GEAR.get());
+    }
+
+    private void gear(TagKey<Item> material, ItemLike gear) {
+        ShapedRecipeBuilder.shaped(this.items, RecipeCategory.MISC, gear).define('M', material).define('S', LibCommonTags.Items.RODS_WOODEN).pattern(" M ").pattern("MSM").pattern(" M ").unlockedBy("has_material", has(material)).save(this.output);
     }
 
     private void ingotDust(TagKey<Item> dust, ItemLike ingot) {

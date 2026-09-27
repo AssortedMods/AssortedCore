@@ -1,7 +1,10 @@
 package com.grim3212.assorted.machines.gametest;
 
+import com.grim3212.assorted.machines.Constants;
 import com.grim3212.assorted.machines.common.items.MachinesItems;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.gametest.framework.GameTestHelper;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -13,7 +16,7 @@ import java.util.function.Consumer;
 import static com.grim3212.assorted.machines.gametest.MachinesTestSupport.*;
 
 /**
- * The metals this mod makes: the alloy families, and the dusts and gears of every metal.
+ * The metals this mod makes: the alloy families, and the dusts and gears of the vanilla metals.
  */
 final class MetalTests {
 
@@ -27,7 +30,7 @@ final class MetalTests {
 
     /**
      * Every alloy owns an ingot, a nugget, a dust, a gear and a storage block, and the ingot goes to nuggets and
-     * to a block and back again. The ore metals' ingots are Assorted Ores', so here they only need a dust and a gear.
+     * to a block and back again. The vanilla metals only get a dust and a gear, and Assorted Ores' metals none.
      */
     private static void metalFamiliesRoundTrip(GameTestHelper helper) {
         for (String metal : ALLOYS) {
@@ -49,9 +52,16 @@ final class MetalTests {
             assertCrafts(helper, 3, 3, cross(ingotStack, new ItemStack(Items.STICK)), gear, 1, metal + " gear");
         }
 
-        for (String metal : ORE_METALS) {
+        for (String metal : VANILLA_METALS) {
             item(helper, metal + "_dust");
             item(helper, metal + "_gear");
+        }
+
+        for (String metal : ORE_METALS) {
+            helper.assertFalse(BuiltInRegistries.ITEM.containsKey(Identifier.fromNamespaceAndPath(Constants.MOD_ID, metal + "_dust")),
+                    metal + " dust is Assorted Ores' now but is still registered here");
+            helper.assertFalse(BuiltInRegistries.ITEM.containsKey(Identifier.fromNamespaceAndPath(Constants.MOD_ID, metal + "_gear")),
+                    metal + " gear is Assorted Ores' now but is still registered here");
         }
 
         helper.succeed();

@@ -38,19 +38,6 @@ public class MachinesCreativeItems {
     private static List<ItemStack> getMetals() {
         CreativeTabItems items = new CreativeTabItems();
 
-        items.add(MachinesItems.TIN_DUST.get());
-        items.add(MachinesItems.TIN_GEAR.get());
-        items.add(MachinesItems.SILVER_DUST.get());
-        items.add(MachinesItems.SILVER_GEAR.get());
-        items.add(MachinesItems.ALUMINUM_DUST.get());
-        items.add(MachinesItems.ALUMINUM_GEAR.get());
-        items.add(MachinesItems.NICKEL_DUST.get());
-        items.add(MachinesItems.NICKEL_GEAR.get());
-        items.add(MachinesItems.PLATINUM_DUST.get());
-        items.add(MachinesItems.PLATINUM_GEAR.get());
-        items.add(MachinesItems.LEAD_DUST.get());
-        items.add(MachinesItems.LEAD_GEAR.get());
-
         items.add(MachinesBlocks.BRONZE_BLOCK.get());
         items.add(MachinesItems.BRONZE_DUST.get());
         items.add(MachinesItems.BRONZE_NUGGET.get());
@@ -88,7 +75,7 @@ public class MachinesCreativeItems {
     }
 
     public static void init() {
-        // The machines led the tab when this was all one mod, and the metals they make came after the ores.
+        // The machines led the tab when this was all one mod, and the alloys and vanilla metals came after the ores.
         SharedCreativeTabs.add(TAB, 100, MachinesCreativeItems::getMachines);
         SharedCreativeTabs.add(TAB, 300, MachinesCreativeItems::getMetals);
     }

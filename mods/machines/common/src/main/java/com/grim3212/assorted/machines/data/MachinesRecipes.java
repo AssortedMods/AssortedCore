@@ -40,27 +40,12 @@ public class MachinesRecipes extends ConditionalRecipeProvider {
 
     @Override
     public void registerConditions() {
-        // The ore metals come from Assorted Ores or another mod, and a recipe naming a tag no pack declares fails to load.
-        this.onlyWith(MachinesTags.Items.ORES_TIN, "tin_dust");
-        this.onlyWith(MachinesTags.Items.ORES_SILVER, "silver_dust");
-        this.onlyWith(MachinesTags.Items.ORES_ALUMINUM, "aluminum_dust");
-        this.onlyWith(MachinesTags.Items.ORES_NICKEL, "nickel_dust");
-        this.onlyWith(MachinesTags.Items.ORES_PLATINUM, "platinum_dust");
-        this.onlyWith(MachinesTags.Items.ORES_LEAD, "lead_dust");
-
-        this.onlyWith(MachinesTags.Items.RAW_MATERIALS_TIN, "tin_dust_from_raw_ore");
-        this.onlyWith(MachinesTags.Items.RAW_MATERIALS_SILVER, "silver_dust_from_raw_ore");
-        this.onlyWith(MachinesTags.Items.RAW_MATERIALS_ALUMINUM, "aluminum_dust_from_raw_ore");
-        this.onlyWith(MachinesTags.Items.RAW_MATERIALS_NICKEL, "nickel_dust_from_raw_ore");
-        this.onlyWith(MachinesTags.Items.RAW_MATERIALS_PLATINUM, "platinum_dust_from_raw_ore");
-        this.onlyWith(MachinesTags.Items.RAW_MATERIALS_LEAD, "lead_dust_from_raw_ore");
-
-        this.onlyWith(MachinesTags.Items.INGOTS_TIN, "tin_dust_from_ingot", "tin_gear");
-        this.onlyWith(MachinesTags.Items.INGOTS_SILVER, "silver_dust_from_ingot", "silver_gear");
-        this.onlyWith(MachinesTags.Items.INGOTS_ALUMINUM, "aluminum_dust_from_ingot", "aluminum_gear", "machine_core");
-        this.onlyWith(MachinesTags.Items.INGOTS_NICKEL, "nickel_dust_from_ingot", "nickel_gear");
-        this.onlyWith(MachinesTags.Items.INGOTS_PLATINUM, "platinum_dust_from_ingot", "platinum_gear", "expert_alloy_forge", "expert_grinding_mill");
-        this.onlyWith(MachinesTags.Items.INGOTS_LEAD, "lead_dust_from_ingot", "lead_gear");
+        // The ore metals and their dusts come from Assorted Ores or another mod, and a recipe naming a tag no pack declares fails to load.
+        this.onlyWith(MachinesTags.Items.INGOTS_ALUMINUM, "machine_core");
+        this.onlyWith(MachinesTags.Items.INGOTS_PLATINUM, "expert_alloy_forge", "expert_grinding_mill");
+        this.onlyWith(MachinesTags.Items.DUSTS_TIN, "bronze_ingot");
+        this.onlyWith(MachinesTags.Items.DUSTS_SILVER, "electrum_ingot");
+        this.onlyWith(MachinesTags.Items.DUSTS_NICKEL, "invar_ingot");
     }
 
     private void onlyWith(TagKey<Item> tag, String... recipes) {
@@ -78,7 +63,6 @@ public class MachinesRecipes extends ConditionalRecipeProvider {
         storageIngotNugget(MachinesTags.Items.STORAGE_BLOCKS_INVAR, MachinesTags.Items.INGOTS_INVAR, MachinesTags.Items.NUGGETS_INVAR, MachinesBlocks.INVAR_BLOCK.get(), MachinesItems.INVAR_INGOT.get(), MachinesItems.INVAR_NUGGET.get());
         storageIngotNugget(MachinesTags.Items.STORAGE_BLOCKS_STEEL, MachinesTags.Items.INGOTS_STEEL, MachinesTags.Items.NUGGETS_STEEL, MachinesBlocks.STEEL_BLOCK.get(), MachinesItems.STEEL_INGOT.get(), MachinesItems.STEEL_NUGGET.get());
 
-        // The ore metals' dusts smelt back in Assorted Ores, which owns their ingots.
         ingotDust(MachinesTags.Items.DUSTS_COPPER, Items.COPPER_INGOT);
         ingotDust(MachinesTags.Items.DUSTS_BRONZE, MachinesItems.BRONZE_INGOT.get());
         ingotDust(MachinesTags.Items.DUSTS_ELECTRUM, MachinesItems.ELECTRUM_INGOT.get());
@@ -87,13 +71,7 @@ public class MachinesRecipes extends ConditionalRecipeProvider {
         ingotDust(MachinesTags.Items.DUSTS_IRON, Items.IRON_INGOT);
         ingotDust(MachinesTags.Items.DUSTS_GOLD, Items.GOLD_INGOT);
 
-        gear(MachinesTags.Items.INGOTS_TIN, MachinesItems.TIN_GEAR.get());
         gear(MachinesTags.Items.INGOTS_COPPER, MachinesItems.COPPER_GEAR.get());
-        gear(MachinesTags.Items.INGOTS_SILVER, MachinesItems.SILVER_GEAR.get());
-        gear(MachinesTags.Items.INGOTS_ALUMINUM, MachinesItems.ALUMINUM_GEAR.get());
-        gear(MachinesTags.Items.INGOTS_NICKEL, MachinesItems.NICKEL_GEAR.get());
-        gear(MachinesTags.Items.INGOTS_PLATINUM, MachinesItems.PLATINUM_GEAR.get());
-        gear(MachinesTags.Items.INGOTS_LEAD, MachinesItems.LEAD_GEAR.get());
         gear(MachinesTags.Items.INGOTS_BRONZE, MachinesItems.BRONZE_GEAR.get());
         gear(MachinesTags.Items.INGOTS_ELECTRUM, MachinesItems.ELECTRUM_GEAR.get());
         gear(MachinesTags.Items.INGOTS_INVAR, MachinesItems.INVAR_GEAR.get());
@@ -106,14 +84,8 @@ public class MachinesRecipes extends ConditionalRecipeProvider {
         alloy(MachinesTags.Items.DUSTS_IRON, 2, MachinesTags.Items.DUSTS_NICKEL, 1, new ItemStackTemplate(MachinesItems.INVAR_INGOT.get(), 3), 0.7F, 500);
         alloy(MachinesTags.Items.DUSTS_SILVER, MachinesTags.Items.DUSTS_GOLD, new ItemStackTemplate(MachinesItems.ELECTRUM_INGOT.get(), 2), 0.7F);
 
-        // The gem ores grind in Assorted Ores, which owns the gems.
-        grinding(MachinesTags.Items.ORES_TIN, new ItemStackTemplate(MachinesItems.TIN_DUST.get(), 2), 0.2F, 600);
+        // Assorted Ores' metals and gems grind in Assorted Ores, which owns their dusts and gems.
         grinding(MachinesTags.Items.ORES_COPPER, new ItemStackTemplate(MachinesItems.COPPER_DUST.get(), 2), 0.2F, 600);
-        grinding(MachinesTags.Items.ORES_SILVER, new ItemStackTemplate(MachinesItems.SILVER_DUST.get(), 2), 0.4F, 600);
-        grinding(MachinesTags.Items.ORES_ALUMINUM, new ItemStackTemplate(MachinesItems.ALUMINUM_DUST.get(), 2), 0.2F, 600);
-        grinding(MachinesTags.Items.ORES_NICKEL, new ItemStackTemplate(MachinesItems.NICKEL_DUST.get(), 2), 0.2F, 600);
-        grinding(MachinesTags.Items.ORES_PLATINUM, new ItemStackTemplate(MachinesItems.PLATINUM_DUST.get(), 2), 0.5F, 600);
-        grinding(MachinesTags.Items.ORES_LEAD, new ItemStackTemplate(MachinesItems.LEAD_DUST.get(), 2), 0.2F, 600);
 
         grinding(LibCommonTags.Items.ORES_GOLD, new ItemStackTemplate(MachinesItems.GOLD_DUST.get(), 2), 0.2F, 600);
         grinding(LibCommonTags.Items.ORES_IRON, new ItemStackTemplate(MachinesItems.IRON_DUST.get(), 2), 0.2F, 600);
@@ -127,13 +99,7 @@ public class MachinesRecipes extends ConditionalRecipeProvider {
         grindingDustFromIngot(LibCommonTags.Items.INGOTS_GOLD, new ItemStackTemplate(MachinesItems.GOLD_DUST.get(), 1), 0.0F, 300);
         grindingDustFromIngot(LibCommonTags.Items.INGOTS_IRON, new ItemStackTemplate(MachinesItems.IRON_DUST.get(), 1), 0.0F, 300);
 
-        grindingDustFromIngot(MachinesTags.Items.INGOTS_TIN, new ItemStackTemplate(MachinesItems.TIN_DUST.get(), 1), 0.0F, 300);
         grindingDustFromIngot(MachinesTags.Items.INGOTS_COPPER, new ItemStackTemplate(MachinesItems.COPPER_DUST.get(), 1), 0.0F, 300);
-        grindingDustFromIngot(MachinesTags.Items.INGOTS_SILVER, new ItemStackTemplate(MachinesItems.SILVER_DUST.get(), 1), 0.0F, 300);
-        grindingDustFromIngot(MachinesTags.Items.INGOTS_ALUMINUM, new ItemStackTemplate(MachinesItems.ALUMINUM_DUST.get(), 1), 0.0F, 300);
-        grindingDustFromIngot(MachinesTags.Items.INGOTS_NICKEL, new ItemStackTemplate(MachinesItems.NICKEL_DUST.get(), 1), 0.0F, 300);
-        grindingDustFromIngot(MachinesTags.Items.INGOTS_PLATINUM, new ItemStackTemplate(MachinesItems.PLATINUM_DUST.get(), 1), 0.0F, 300);
-        grindingDustFromIngot(MachinesTags.Items.INGOTS_LEAD, new ItemStackTemplate(MachinesItems.LEAD_DUST.get(), 1), 0.0F, 300);
         grindingDustFromIngot(MachinesTags.Items.INGOTS_BRONZE, new ItemStackTemplate(MachinesItems.BRONZE_DUST.get(), 1), 0.0F, 300);
         grindingDustFromIngot(MachinesTags.Items.INGOTS_ELECTRUM, new ItemStackTemplate(MachinesItems.ELECTRUM_DUST.get(), 1), 0.0F, 300);
         grindingDustFromIngot(MachinesTags.Items.INGOTS_STEEL, new ItemStackTemplate(MachinesItems.STEEL_DUST.get(), 1), 0.0F, 300);
@@ -141,15 +107,11 @@ public class MachinesRecipes extends ConditionalRecipeProvider {
 
         grindingDustFromRawOre(MachinesTags.Items.RAW_MATERIALS_GOLD, new ItemStackTemplate(MachinesItems.GOLD_DUST.get(), 2), 0.0F, 300);
         grindingDustFromRawOre(MachinesTags.Items.RAW_MATERIALS_IRON, new ItemStackTemplate(MachinesItems.IRON_DUST.get(), 2), 0.0F, 300);
-        grindingDustFromRawOre(MachinesTags.Items.RAW_MATERIALS_TIN, new ItemStackTemplate(MachinesItems.TIN_DUST.get(), 2), 0.0F, 300);
         grindingDustFromRawOre(MachinesTags.Items.RAW_MATERIALS_COPPER, new ItemStackTemplate(MachinesItems.COPPER_DUST.get(), 2), 0.0F, 300);
-        grindingDustFromRawOre(MachinesTags.Items.RAW_MATERIALS_SILVER, new ItemStackTemplate(MachinesItems.SILVER_DUST.get(), 2), 0.0F, 300);
-        grindingDustFromRawOre(MachinesTags.Items.RAW_MATERIALS_ALUMINUM, new ItemStackTemplate(MachinesItems.ALUMINUM_DUST.get(), 2), 0.0F, 300);
-        grindingDustFromRawOre(MachinesTags.Items.RAW_MATERIALS_NICKEL, new ItemStackTemplate(MachinesItems.NICKEL_DUST.get(), 2), 0.0F, 300);
-        grindingDustFromRawOre(MachinesTags.Items.RAW_MATERIALS_PLATINUM, new ItemStackTemplate(MachinesItems.PLATINUM_DUST.get(), 2), 0.0F, 300);
-        grindingDustFromRawOre(MachinesTags.Items.RAW_MATERIALS_LEAD, new ItemStackTemplate(MachinesItems.LEAD_DUST.get(), 2), 0.0F, 300);
 
         ShapedRecipeBuilder.shaped(this.items, RecipeCategory.MISC, MachinesBlocks.MACHINE_CORE.get()).define('A', MachinesTags.Items.INGOTS_ALUMINUM).define('C', MachinesTags.Items.GEARS_COPPER).define('I', LibCommonTags.Items.INGOTS_IRON).pattern("IAI").pattern("ACA").pattern("IAI").unlockedBy("has_iron", has(LibCommonTags.Items.INGOTS_IRON)).save(this.output);
+        // The aluminum core needs Assorted Ores or another mod, so copper keeps the machines within reach without one.
+        ShapedRecipeBuilder.shaped(this.items, RecipeCategory.MISC, MachinesBlocks.MACHINE_CORE.get()).define('A', MachinesTags.Items.INGOTS_COPPER).define('C', MachinesTags.Items.GEARS_COPPER).define('I', LibCommonTags.Items.INGOTS_IRON).pattern("IAI").pattern("ACA").pattern("IAI").unlockedBy("has_iron", has(LibCommonTags.Items.INGOTS_IRON)).save(this.output, key("machine_core_from_copper"));
         ShapedRecipeBuilder.shaped(this.items, RecipeCategory.MISC, MachinesBlocks.BASIC_ALLOY_FORGE.get()).define('X', MachinesBlocks.MACHINE_CORE.get()).define('B', Blocks.BLAST_FURNACE).define('I', LibCommonTags.Items.INGOTS_IRON).pattern("III").pattern("BXB").pattern("III").unlockedBy("has_iron", has(LibCommonTags.Items.INGOTS_IRON)).unlockedBy("has_blast_furnace", has(Blocks.BLAST_FURNACE)).save(this.output);
         ShapedRecipeBuilder.shaped(this.items, RecipeCategory.MISC, MachinesBlocks.INTERMEDIATE_ALLOY_FORGE.get()).define('X', MachinesBlocks.BASIC_ALLOY_FORGE.get()).define('S', MachinesTags.Items.INGOTS_STEEL).pattern("SSS").pattern("SXS").pattern("SSS").unlockedBy("has_steel", has(MachinesTags.Items.INGOTS_STEEL)).save(this.output);
         ShapedRecipeBuilder.shaped(this.items, RecipeCategory.MISC, MachinesBlocks.ADVANCED_ALLOY_FORGE.get()).define('X', MachinesBlocks.INTERMEDIATE_ALLOY_FORGE.get()).define('E', MachinesTags.Items.INGOTS_ELECTRUM).define('V', MachinesTags.Items.INGOTS_INVAR).pattern("VEV").pattern("EXE").pattern("VEV").unlockedBy("has_electrum", has(MachinesTags.Items.INGOTS_ELECTRUM)).save(this.output);

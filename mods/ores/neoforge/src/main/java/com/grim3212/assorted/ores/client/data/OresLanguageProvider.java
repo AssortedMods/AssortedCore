@@ -20,7 +20,11 @@ public class OresLanguageProvider extends LibLanguageProvider {
     protected void addNames() {
         this.add("itemGroup." + Family.ID, "Assorted Core");
 
+        this.add("tag.item.c.gear", "Gears");
+
         // c: item tags this mod adds that neither loader names, one family at a time.
+        this.tagFamily("dusts", "%s Dusts", "aluminum", "lead", "nickel", "platinum", "silver", "tin");
+        this.tagFamily("gear", "%s Gears", "aluminum", "lead", "nickel", "platinum", "silver", "tin");
         this.tagFamily("gems", "%s Gems", "peridot", "ruby", "sapphire", "topaz");
         this.tagFamily("ingots", "%s Ingots", "aluminum", "lead", "nickel", "platinum", "silver", "tin");
         this.tagFamily("nuggets", "%s Nuggets", "aluminum", "lead", "nickel", "platinum", "silver", "tin");
@@ -51,6 +55,14 @@ public class OresLanguageProvider extends LibLanguageProvider {
         this.add(chapter + ".ores.title", "Ores");
         this.add(chapter + ".ores",
                 "Six metals are added to the world, each with a deepslate form deeper down.");
+
+        this.add(chapter + ".dusts.title", "Dusts");
+        this.add(chapter + ".dusts",
+                "Every metal here has a dust. The grinding mill from Assorted Machines turns an ore into two of them, and each one smelts back into an ingot.");
+
+        this.add(chapter + ".gears.title", "Gears");
+        this.add(chapter + ".gears",
+                "Four ingots around a stick make a gear. Machines and the other Assorted mods can be built out of them.");
     }
 
     private void addGemsChapter() {

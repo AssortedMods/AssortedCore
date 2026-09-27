@@ -42,19 +42,13 @@
     },
     {
       "items": [
-        "assortedmachines:aluminum_dust",
         "assortedmachines:bronze_dust",
         "assortedmachines:copper_dust",
         "assortedmachines:electrum_dust",
         "assortedmachines:gold_dust",
         "assortedmachines:invar_dust",
         "assortedmachines:iron_dust",
-        "assortedmachines:lead_dust",
-        "assortedmachines:nickel_dust",
-        "assortedmachines:platinum_dust",
-        "assortedmachines:silver_dust",
-        "assortedmachines:steel_dust",
-        "assortedmachines:tin_dust"
+        "assortedmachines:steel_dust"
       ],
       "page": "assortedcore:machines/dusts"
     },
@@ -70,19 +64,13 @@
     },
     {
       "items": [
-        "assortedmachines:aluminum_gear",
         "assortedmachines:bronze_gear",
         "assortedmachines:copper_gear",
         "assortedmachines:electrum_gear",
         "assortedmachines:gold_gear",
         "assortedmachines:invar_gear",
         "assortedmachines:iron_gear",
-        "assortedmachines:lead_gear",
-        "assortedmachines:nickel_gear",
-        "assortedmachines:platinum_gear",
-        "assortedmachines:silver_gear",
-        "assortedmachines:steel_gear",
-        "assortedmachines:tin_gear"
+        "assortedmachines:steel_gear"
       ],
       "page": "assortedcore:machines/gears"
     }
