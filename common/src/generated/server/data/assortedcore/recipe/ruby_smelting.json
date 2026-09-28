@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:smelting",
-  "experience": 1.0,
-  "ingredient": "#c:ores/ruby",
-  "result": {
-    "id": "assortedcore:ruby"
-  }
-}

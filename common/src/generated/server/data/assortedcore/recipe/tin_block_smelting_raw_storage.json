@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:smelting",
-  "experience": 1.0,
-  "ingredient": "#c:storage_blocks/raw_tin",
-  "result": {
-    "id": "assortedcore:tin_block"
-  }
-}

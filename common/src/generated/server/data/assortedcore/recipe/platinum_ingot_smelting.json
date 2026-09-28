@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:smelting",
-  "experience": 1.5,
-  "ingredient": "#c:ores/platinum",
-  "result": {
-    "id": "assortedcore:platinum_ingot"
-  }
-}

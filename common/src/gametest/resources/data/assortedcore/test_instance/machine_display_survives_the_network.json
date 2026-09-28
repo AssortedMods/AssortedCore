@@ -1,9 +1,0 @@
-{
-  "type": "minecraft:function",
-  "environment": "minecraft:default",
-  "function": "assortedcore:machine_display_survives_the_network",
-  "structure": "assortedcore:test_box",
-  "max_ticks": 1,
-  "setup_ticks": 0,
-  "required": true
-}

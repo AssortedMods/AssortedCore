@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:blasting",
-  "experience": 1.4,
-  "ingredient": "#c:storage_blocks/raw_nickel",
-  "result": {
-    "id": "assortedcore:nickel_block"
-  }
-}

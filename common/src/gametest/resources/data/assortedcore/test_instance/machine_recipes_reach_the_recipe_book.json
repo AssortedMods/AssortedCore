@@ -1,9 +1,0 @@
-{
-  "type": "minecraft:function",
-  "environment": "minecraft:default",
-  "function": "assortedcore:machine_recipes_reach_the_recipe_book",
-  "structure": "assortedcore:test_box",
-  "max_ticks": 1,
-  "setup_ticks": 0,
-  "required": true
-}

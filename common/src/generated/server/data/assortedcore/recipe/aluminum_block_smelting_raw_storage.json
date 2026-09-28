@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:smelting",
-  "experience": 1.4,
-  "ingredient": "#c:storage_blocks/raw_aluminum",
-  "result": {
-    "id": "assortedcore:aluminum_block"
-  }
-}

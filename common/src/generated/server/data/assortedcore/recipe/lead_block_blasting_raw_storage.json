@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:blasting",
-  "experience": 1.0,
-  "ingredient": "#c:storage_blocks/raw_lead",
-  "result": {
-    "id": "assortedcore:lead_block"
-  }
-}

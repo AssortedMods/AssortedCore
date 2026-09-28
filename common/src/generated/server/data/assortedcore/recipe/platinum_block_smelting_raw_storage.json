@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:smelting",
-  "experience": 3.0,
-  "ingredient": "#c:storage_blocks/raw_platinum",
-  "result": {
-    "id": "assortedcore:platinum_block"
-  }
-}

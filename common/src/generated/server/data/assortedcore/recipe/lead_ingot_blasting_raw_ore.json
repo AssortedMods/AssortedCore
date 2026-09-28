@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:blasting",
-  "experience": 1.0,
-  "ingredient": "#c:raw_materials/lead",
-  "result": {
-    "id": "assortedcore:lead_ingot"
-  }
-}

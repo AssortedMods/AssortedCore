@@ -1,9 +1,0 @@
-{
-  "type": "minecraft:function",
-  "environment": "minecraft:default",
-  "function": "assortedcore:ore_silk_touch_drops_the_ore",
-  "structure": "assortedcore:test_box",
-  "max_ticks": 1,
-  "setup_ticks": 0,
-  "required": true
-}

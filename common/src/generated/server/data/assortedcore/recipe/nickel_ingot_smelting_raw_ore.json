@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:smelting",
-  "experience": 0.7,
-  "ingredient": "#c:raw_materials/nickel",
-  "result": {
-    "id": "assortedcore:nickel_ingot"
-  }
-}
