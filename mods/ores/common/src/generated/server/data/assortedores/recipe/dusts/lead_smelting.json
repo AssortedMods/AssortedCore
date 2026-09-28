@@ -1,6 +1,18 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "assortedlib:part_enabled",
+      "part": "assortedores"
+    }
+  ],
   "type": "minecraft:smelting",
   "experience": 0.1,
+  "fabric:load_conditions": [
+    {
+      "condition": "assortedlib:part_enabled",
+      "part": "assortedores"
+    }
+  ],
   "ingredient": "#c:dusts/lead",
   "result": {
     "id": "assortedores:lead_ingot"

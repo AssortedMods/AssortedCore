@@ -85,7 +85,7 @@ public class OresMachineRecipes implements DataProvider {
         output.addProperty("id", result.toString());
 
         JsonObject recipe = new JsonObject();
-        recipe.add(CrossLoaderData.NEOFORGE_CONDITIONS, machinesLoaded());
+        recipe.add(CrossLoaderData.NEOFORGE_CONDITIONS, loadConditions());
         recipe.addProperty("type", MACHINES + ":grinding_mill");
         recipe.addProperty("cookingtime", cookTime);
         if (experience != 0.0F) {
@@ -122,7 +122,7 @@ public class OresMachineRecipes implements DataProvider {
         rewards.add("recipes", unlocked);
 
         JsonObject advancement = new JsonObject();
-        advancement.add(CrossLoaderData.NEOFORGE_CONDITIONS, machinesLoaded());
+        advancement.add(CrossLoaderData.NEOFORGE_CONDITIONS, loadConditions());
         advancement.addProperty("parent", "minecraft:recipes/root");
         advancement.add("criteria", criteria);
         advancement.add("requirements", requirements);
@@ -139,12 +139,17 @@ public class OresMachineRecipes implements DataProvider {
         return criterion;
     }
 
-    private static JsonArray machinesLoaded() {
+    private static JsonArray loadConditions() {
         JsonObject condition = new JsonObject();
         condition.addProperty("type", "neoforge:mod_loaded");
         condition.addProperty("modid", MACHINES);
+        // Off with this part too, as the recipes written through ConditionalRecipeProvider are.
+        JsonObject part = new JsonObject();
+        part.addProperty("type", "assortedlib:part_enabled");
+        part.addProperty("part", Constants.MOD_ID);
         JsonArray conditions = new JsonArray();
         conditions.add(condition);
+        conditions.add(part);
         return conditions;
     }
 

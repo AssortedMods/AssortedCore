@@ -2,7 +2,6 @@ package com.grim3212.assorted.machines.client.data;
 
 import com.grim3212.assorted.lib.data.LibLanguageProvider;
 import com.grim3212.assorted.machines.Constants;
-import com.grim3212.assorted.machines.Family;
 import net.minecraft.data.PackOutput;
 
 /**
@@ -18,7 +17,7 @@ public class MachinesLanguageProvider extends LibLanguageProvider {
 
     @Override
     protected void addNames() {
-        this.add("itemGroup." + Family.ID, "Assorted Core");
+        this.add("itemGroup." + Constants.FAMILY_ID, "Assorted Core");
 
         this.add(Constants.MOD_ID + ".container.alloy_forge", "Alloy Forge");
         this.add(Constants.MOD_ID + ".container.grinding_mill", "Grinding Mill");
@@ -45,15 +44,15 @@ public class MachinesLanguageProvider extends LibLanguageProvider {
 
     /** The section is the family's, so every part writes its title and description the same. */
     private void addManual() {
-        this.add("manual." + Family.ID + ".title", "Assorted Core");
-        this.add("manual." + Family.ID + ".description",
+        this.add("manual." + Constants.FAMILY_ID + ".title", "Assorted Core");
+        this.add("manual." + Constants.FAMILY_ID + ".description",
                 "The ores, metals and gems the other Assorted mods build on, and the two machines that work them.");
 
         this.addMachinesChapter();
     }
 
     private void addMachinesChapter() {
-        String chapter = "manual." + Family.ID + ".chapter.machines";
+        String chapter = "manual." + Constants.FAMILY_ID + ".chapter.machines";
         this.add(chapter, "Machines");
 
         this.add(chapter + ".core.title", "Machine Core");

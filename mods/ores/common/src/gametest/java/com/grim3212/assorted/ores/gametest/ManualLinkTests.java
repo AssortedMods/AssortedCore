@@ -3,7 +3,6 @@ package com.grim3212.assorted.ores.gametest;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.grim3212.assorted.ores.Constants;
-import com.grim3212.assorted.ores.Family;
 import com.grim3212.assorted.lib.manual.ManualLinks;
 import com.grim3212.assorted.lib.manual.ManualPageRef;
 import com.mojang.serialization.JsonOps;
@@ -72,7 +71,7 @@ final class ManualLinkTests {
 
         for (ManualLinks.Group group : groups(helper)) {
             ManualPageRef page = group.page();
-            if (!Family.ID.equals(page.section())) {
+            if (!Constants.FAMILY_ID.equals(page.section())) {
                 // A link may point into another mod's section, which this mod cannot check.
                 continue;
             }
@@ -93,7 +92,7 @@ final class ManualLinkTests {
 
     /** The page ids of one chapter this mod ships into the family's section; empty when there is no such chapter. */
     private static Set<String> pagesOf(GameTestHelper helper, String chapter) {
-        String path = "/assets/" + Family.ID + "/manual/chapters/" + chapter + ".json";
+        String path = "/assets/" + Constants.FAMILY_ID + "/manual/chapters/" + chapter + ".json";
         if (!resourceExists(path)) {
             return Set.of();
         }

@@ -24,5 +24,6 @@ public final class MachinesGameTests {
         ManualLinkTests.register(out);
         CrossLoaderDataTests.register(out);
         AliasTests.register(out);
+        FamilyTests.register(out);
     }
 }

@@ -2,10 +2,10 @@ package com.grim3212.assorted.machines.common.handlers;
 
 import com.grim3212.assorted.lib.core.creative.CreativeTabItems;
 import com.grim3212.assorted.lib.core.creative.SharedCreativeTabs;
-import com.grim3212.assorted.machines.Family;
+import com.grim3212.assorted.lib.family.Families;
+import com.grim3212.assorted.machines.Constants;
 import com.grim3212.assorted.machines.common.blocks.MachinesBlocks;
 import com.grim3212.assorted.machines.common.items.MachinesItems;
-import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
@@ -15,7 +15,7 @@ import java.util.List;
 /** This part's share of the Assorted Core tab, which every part asks for and the first to load registers. */
 public class MachinesCreativeItems {
 
-    public static final ResourceKey<CreativeModeTab> TAB = SharedCreativeTabs.tab(Identifier.fromNamespaceAndPath(Family.ID, "tab"), Family.ICONS);
+    public static final ResourceKey<CreativeModeTab> TAB = Families.tab(Constants.FAMILY_ID);
 
     private static List<ItemStack> getMachines() {
         CreativeTabItems items = new CreativeTabItems();

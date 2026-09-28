@@ -2,7 +2,7 @@ package com.grim3212.assorted.machines.gametest;
 
 import com.google.gson.JsonParser;
 import com.grim3212.assorted.lib.registry.IRegistryObject;
-import com.grim3212.assorted.machines.Family;
+import com.grim3212.assorted.machines.Constants;
 import com.grim3212.assorted.machines.common.blocks.MachinesBlocks;
 import com.grim3212.assorted.machines.common.blocks.blockentity.MachinesBlockEntityTypes;
 import com.grim3212.assorted.machines.common.crafting.MachinesRecipeSerializers;
@@ -61,6 +61,6 @@ final class AliasTests {
     }
 
     private static Identifier old(Identifier id) {
-        return Identifier.fromNamespaceAndPath(Family.ID, id.getPath());
+        return Identifier.fromNamespaceAndPath(Constants.FAMILY_ID, id.getPath());
     }
 }

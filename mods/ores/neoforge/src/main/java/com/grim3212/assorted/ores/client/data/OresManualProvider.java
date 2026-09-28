@@ -2,7 +2,6 @@ package com.grim3212.assorted.ores.client.data;
 
 import com.grim3212.assorted.lib.data.LibManualProvider;
 import com.grim3212.assorted.ores.Constants;
-import com.grim3212.assorted.ores.Family;
 import com.grim3212.assorted.ores.common.blocks.OresBlocks;
 import com.grim3212.assorted.ores.common.items.OresItems;
 import net.minecraft.data.PackOutput;
@@ -24,13 +23,11 @@ public class OresManualProvider extends LibManualProvider {
     private static final List<String> GEMS = List.of("ruby", "peridot", "sapphire", "topaz");
 
     public OresManualProvider(PackOutput output) {
-        super(output, Constants.MOD_ID, Family.ID);
+        super(output, Constants.MOD_ID, Constants.FAMILY_ID);
     }
 
     @Override
     protected void addChapters() {
-        this.section(Family.MANUAL_ORDER, Family.ICONS.toArray(Identifier[]::new));
-
         this.addMetals();
         this.addGems();
     }

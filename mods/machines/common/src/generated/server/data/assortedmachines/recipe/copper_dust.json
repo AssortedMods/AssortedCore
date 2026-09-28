@@ -1,7 +1,19 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "assortedlib:part_enabled",
+      "part": "assortedmachines"
+    }
+  ],
   "type": "assortedmachines:grinding_mill",
   "cookingtime": 600,
   "experience": 0.2,
+  "fabric:load_conditions": [
+    {
+      "condition": "assortedlib:part_enabled",
+      "part": "assortedmachines"
+    }
+  ],
   "ingredient": {
     "ingredient": "#c:ores/copper"
   },

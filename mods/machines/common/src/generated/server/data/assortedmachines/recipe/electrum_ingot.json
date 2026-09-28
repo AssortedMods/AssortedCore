@@ -3,6 +3,10 @@
     {
       "type": "assortedlib:item_tag_populated",
       "tag": "c:dusts/silver"
+    },
+    {
+      "type": "assortedlib:part_enabled",
+      "part": "assortedmachines"
     }
   ],
   "type": "assortedmachines:alloy_forge",
@@ -14,6 +18,10 @@
       "values": [
         "c:dusts/silver"
       ]
+    },
+    {
+      "condition": "assortedlib:part_enabled",
+      "part": "assortedmachines"
     }
   ],
   "ingredient1": {

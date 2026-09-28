@@ -1,6 +1,18 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "assortedlib:part_enabled",
+      "part": "assortedores"
+    }
+  ],
   "type": "minecraft:blasting",
   "experience": 0.7,
+  "fabric:load_conditions": [
+    {
+      "condition": "assortedlib:part_enabled",
+      "part": "assortedores"
+    }
+  ],
   "ingredient": "#c:ores/nickel",
   "result": {
     "id": "assortedores:nickel_ingot"

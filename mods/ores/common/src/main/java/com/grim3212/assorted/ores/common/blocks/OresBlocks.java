@@ -1,7 +1,6 @@
 package com.grim3212.assorted.ores.common.blocks;
 
 import com.grim3212.assorted.ores.Constants;
-import com.grim3212.assorted.ores.Family;
 import com.grim3212.assorted.lib.registry.IRegistryObject;
 import com.grim3212.assorted.lib.registry.RegistryProvider;
 import net.minecraft.core.registries.Registries;
@@ -21,8 +20,8 @@ import java.util.function.Supplier;
 
 public class OresBlocks {
 
-    public static final RegistryProvider<Block> BLOCKS = RegistryProvider.create(Registries.BLOCK, Constants.MOD_ID).aliasFrom(Family.ID);
-    public static final RegistryProvider<Item> ITEMS = RegistryProvider.create(Registries.ITEM, Constants.MOD_ID).aliasFrom(Family.ID);
+    public static final RegistryProvider<Block> BLOCKS = RegistryProvider.create(Registries.BLOCK, Constants.MOD_ID).aliasFrom(Constants.FAMILY_ID);
+    public static final RegistryProvider<Item> ITEMS = RegistryProvider.create(Registries.ITEM, Constants.MOD_ID).aliasFrom(Constants.FAMILY_ID);
 
     public static final IRegistryObject<OreBlock> TIN_ORE = register("tin_ore", props -> new OreBlock(props.mapColor(MapColor.STONE).instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.STONE).strength(3.0f, 3.0f).requiresCorrectToolForDrops()));
     public static final IRegistryObject<OreBlock> SILVER_ORE = register("silver_ore", props -> new OreBlock(props.mapColor(MapColor.STONE).instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.STONE).strength(3.0f, 3.0f).requiresCorrectToolForDrops()));

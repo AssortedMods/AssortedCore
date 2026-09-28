@@ -1,5 +1,17 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "assortedlib:part_enabled",
+      "part": "assortedmachines"
+    }
+  ],
   "type": "minecraft:crafting_shaped",
+  "fabric:load_conditions": [
+    {
+      "condition": "assortedlib:part_enabled",
+      "part": "assortedmachines"
+    }
+  ],
   "key": {
     "B": "minecraft:blast_furnace",
     "I": "#c:ingots/iron",

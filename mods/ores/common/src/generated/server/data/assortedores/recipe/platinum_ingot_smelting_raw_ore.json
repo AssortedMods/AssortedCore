@@ -1,6 +1,18 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "assortedlib:part_enabled",
+      "part": "assortedores"
+    }
+  ],
   "type": "minecraft:smelting",
   "experience": 1.5,
+  "fabric:load_conditions": [
+    {
+      "condition": "assortedlib:part_enabled",
+      "part": "assortedores"
+    }
+  ],
   "ingredient": "#c:raw_materials/platinum",
   "result": {
     "id": "assortedores:platinum_ingot"

@@ -1,7 +1,6 @@
 package com.grim3212.assorted.machines.common.blocks.blockentity;
 
 import com.grim3212.assorted.machines.Constants;
-import com.grim3212.assorted.machines.Family;
 import com.grim3212.assorted.machines.common.blocks.MachinesBlocks;
 import com.grim3212.assorted.lib.platform.Services;
 import com.grim3212.assorted.lib.registry.IRegistryObject;
@@ -11,7 +10,7 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 
 public class MachinesBlockEntityTypes {
 
-    public static final RegistryProvider<BlockEntityType<?>> BLOCK_ENTITIES = RegistryProvider.create(Registries.BLOCK_ENTITY_TYPE, Constants.MOD_ID).aliasFrom(Family.ID);
+    public static final RegistryProvider<BlockEntityType<?>> BLOCK_ENTITIES = RegistryProvider.create(Registries.BLOCK_ENTITY_TYPE, Constants.MOD_ID).aliasFrom(Constants.FAMILY_ID);
 
     public static final IRegistryObject<BlockEntityType<AlloyForgeBlockEntity>> BASIC_ALLOY_FORGE = BLOCK_ENTITIES.register("basic_alloy_forge", () -> Services.PLATFORM.createBlockEntityType(AlloyForgeBlockEntity::basicBlockEntity, MachinesBlocks.BASIC_ALLOY_FORGE.get()));
     public static final IRegistryObject<BlockEntityType<AlloyForgeBlockEntity>> INTERMEDIATE_ALLOY_FORGE = BLOCK_ENTITIES.register("intermediate_alloy_forge", () -> Services.PLATFORM.createBlockEntityType(AlloyForgeBlockEntity::intermediateBlockEntity, MachinesBlocks.INTERMEDIATE_ALLOY_FORGE.get()));

@@ -1,5 +1,17 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "assortedlib:part_enabled",
+      "part": "assortedmachines"
+    }
+  ],
   "type": "minecraft:crafting_shapeless",
+  "fabric:load_conditions": [
+    {
+      "condition": "assortedlib:part_enabled",
+      "part": "assortedmachines"
+    }
+  ],
   "ingredients": [
     "#c:ingots/electrum",
     "#c:ingots/electrum",

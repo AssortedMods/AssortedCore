@@ -8,7 +8,6 @@ import net.minecraft.server.MinecraftServer;
 import com.grim3212.assorted.lib.platform.Services;
 import java.io.BufferedReader;
 import com.grim3212.assorted.machines.Constants;
-import com.grim3212.assorted.machines.Family;
 import com.grim3212.assorted.machines.common.handlers.MachinesCreativeItems;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
@@ -79,8 +78,8 @@ final class AssetTests {
         if (!BuiltInRegistries.CREATIVE_MODE_TAB.containsKey(MachinesCreativeItems.TAB)) {
             problems.add("the creative tab " + MachinesCreativeItems.TAB.identifier() + " is not registered");
         }
-        if (!lang.has("itemGroup." + Family.ID)) {
-            problems.add("no lang key itemGroup." + Family.ID);
+        if (!lang.has("itemGroup." + Constants.FAMILY_ID)) {
+            problems.add("no lang key itemGroup." + Constants.FAMILY_ID);
         }
 
         helper.assertTrue(problems.isEmpty(), problems.size() + " missing assets: " + String.join("; ", problems));

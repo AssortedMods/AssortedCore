@@ -1,7 +1,6 @@
 package com.grim3212.assorted.machines.common.blocks;
 
 import com.grim3212.assorted.machines.Constants;
-import com.grim3212.assorted.machines.Family;
 import com.grim3212.assorted.machines.api.machines.MachineTier;
 import com.grim3212.assorted.lib.registry.IRegistryObject;
 import com.grim3212.assorted.lib.registry.RegistryProvider;
@@ -22,8 +21,8 @@ import java.util.function.ToIntFunction;
 
 public class MachinesBlocks {
 
-    public static final RegistryProvider<Block> BLOCKS = RegistryProvider.create(Registries.BLOCK, Constants.MOD_ID).aliasFrom(Family.ID);
-    public static final RegistryProvider<Item> ITEMS = RegistryProvider.create(Registries.ITEM, Constants.MOD_ID).aliasFrom(Family.ID);
+    public static final RegistryProvider<Block> BLOCKS = RegistryProvider.create(Registries.BLOCK, Constants.MOD_ID).aliasFrom(Constants.FAMILY_ID);
+    public static final RegistryProvider<Item> ITEMS = RegistryProvider.create(Registries.ITEM, Constants.MOD_ID).aliasFrom(Constants.FAMILY_ID);
 
     public static final IRegistryObject<Block> BRONZE_BLOCK = register("bronze_block", props -> new Block(props.mapColor(MapColor.METAL).sound(SoundType.METAL).strength(5.0F, 6.0F).requiresCorrectToolForDrops()));
     public static final IRegistryObject<Block> ELECTRUM_BLOCK = register("electrum_block", props -> new Block(props.mapColor(MapColor.METAL).sound(SoundType.METAL).strength(5.0F, 6.0F).requiresCorrectToolForDrops()));

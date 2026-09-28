@@ -2,7 +2,6 @@ package com.grim3212.assorted.ores.client.data;
 
 import com.grim3212.assorted.lib.data.LibLanguageProvider;
 import com.grim3212.assorted.ores.Constants;
-import com.grim3212.assorted.ores.Family;
 import net.minecraft.data.PackOutput;
 
 /**
@@ -18,7 +17,7 @@ public class OresLanguageProvider extends LibLanguageProvider {
 
     @Override
     protected void addNames() {
-        this.add("itemGroup." + Family.ID, "Assorted Core");
+        this.add("itemGroup." + Constants.FAMILY_ID, "Assorted Core");
 
         this.add("tag.item.c.gear", "Gears");
 
@@ -40,8 +39,8 @@ public class OresLanguageProvider extends LibLanguageProvider {
 
     /** The section is the family's, so every part writes its title and description the same. */
     private void addManual() {
-        this.add("manual." + Family.ID + ".title", "Assorted Core");
-        this.add("manual." + Family.ID + ".description",
+        this.add("manual." + Constants.FAMILY_ID + ".title", "Assorted Core");
+        this.add("manual." + Constants.FAMILY_ID + ".description",
                 "The ores, metals and gems the other Assorted mods build on, and the two machines that work them.");
 
         this.addMetalsChapter();
@@ -49,7 +48,7 @@ public class OresLanguageProvider extends LibLanguageProvider {
     }
 
     private void addMetalsChapter() {
-        String chapter = "manual." + Family.ID + ".chapter.metals";
+        String chapter = "manual." + Constants.FAMILY_ID + ".chapter.metals";
         this.add(chapter, "Ores and Metals");
 
         this.add(chapter + ".ores.title", "Ores");
@@ -66,7 +65,7 @@ public class OresLanguageProvider extends LibLanguageProvider {
     }
 
     private void addGemsChapter() {
-        String chapter = "manual." + Family.ID + ".chapter.gems";
+        String chapter = "manual." + Constants.FAMILY_ID + ".chapter.gems";
         this.add(chapter, "Gems");
 
         this.add(chapter + ".gems.title", "Gems");

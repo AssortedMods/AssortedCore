@@ -1,6 +1,18 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "assortedlib:part_enabled",
+      "part": "assortedores"
+    }
+  ],
   "type": "minecraft:smelting",
   "experience": 0.5,
+  "fabric:load_conditions": [
+    {
+      "condition": "assortedlib:part_enabled",
+      "part": "assortedores"
+    }
+  ],
   "ingredient": "#c:raw_materials/tin",
   "result": {
     "id": "assortedores:tin_ingot"

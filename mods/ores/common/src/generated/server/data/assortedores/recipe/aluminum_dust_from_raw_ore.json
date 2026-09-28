@@ -3,6 +3,10 @@
     {
       "type": "neoforge:mod_loaded",
       "modid": "assortedmachines"
+    },
+    {
+      "type": "assortedlib:part_enabled",
+      "part": "assortedores"
     }
   ],
   "type": "assortedmachines:grinding_mill",
@@ -13,6 +17,10 @@
       "values": [
         "assortedmachines"
       ]
+    },
+    {
+      "condition": "assortedlib:part_enabled",
+      "part": "assortedores"
     }
   ],
   "ingredient": {

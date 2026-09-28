@@ -1,7 +1,7 @@
 package com.grim3212.assorted.ores.gametest;
 
 import com.google.gson.JsonParser;
-import com.grim3212.assorted.ores.Family;
+import com.grim3212.assorted.ores.Constants;
 import com.mojang.serialization.JsonOps;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.gametest.framework.GameTestHelper;
@@ -37,7 +37,7 @@ final class DustAndGearTests {
                 helper.assertFalse(BuiltInRegistries.ITEM.containsKey(Identifier.fromNamespaceAndPath("assortedmachines", name)),
                         "assortedmachines:" + name + " is still registered");
 
-                Identifier old = Identifier.fromNamespaceAndPath(Family.ID, name);
+                Identifier old = Identifier.fromNamespaceAndPath(Constants.FAMILY_ID, name);
                 ItemStack stack = ItemStack.CODEC.parse(helper.getLevel().registryAccess().createSerializationContext(JsonOps.INSTANCE),
                         JsonParser.parseString("{\"id\": \"" + old + "\", \"count\": 1}")).getOrThrow();
                 helper.assertTrue(stack.is(item), "a stack saved as " + old + " reads back as " + stack);

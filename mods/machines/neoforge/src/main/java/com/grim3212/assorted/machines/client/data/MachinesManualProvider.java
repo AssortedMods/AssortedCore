@@ -2,7 +2,6 @@ package com.grim3212.assorted.machines.client.data;
 
 import com.grim3212.assorted.lib.data.LibManualProvider;
 import com.grim3212.assorted.machines.Constants;
-import com.grim3212.assorted.machines.Family;
 import com.grim3212.assorted.machines.common.blocks.MachinesBlocks;
 import com.grim3212.assorted.machines.common.items.MachinesItems;
 import net.minecraft.data.PackOutput;
@@ -21,13 +20,11 @@ public class MachinesManualProvider extends LibManualProvider {
     private static final List<String> ALLOYS = List.of("bronze", "electrum", "invar");
 
     public MachinesManualProvider(PackOutput output) {
-        super(output, Constants.MOD_ID, Family.ID);
+        super(output, Constants.MOD_ID, Constants.FAMILY_ID);
     }
 
     @Override
     protected void addChapters() {
-        this.section(Family.MANUAL_ORDER, Family.ICONS.toArray(Identifier[]::new));
-
         ChapterBuilder machines = this.chapter("machines", 0);
 
         machines.recipes("core", MachinesBlocks.MACHINE_CORE.get()).opens(MachinesBlocks.MACHINE_CORE.get());

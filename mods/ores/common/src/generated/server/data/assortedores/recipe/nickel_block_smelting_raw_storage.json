@@ -1,6 +1,18 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "assortedlib:part_enabled",
+      "part": "assortedores"
+    }
+  ],
   "type": "minecraft:smelting",
   "experience": 1.4,
+  "fabric:load_conditions": [
+    {
+      "condition": "assortedlib:part_enabled",
+      "part": "assortedores"
+    }
+  ],
   "ingredient": "#c:storage_blocks/raw_nickel",
   "result": {
     "id": "assortedores:nickel_block"

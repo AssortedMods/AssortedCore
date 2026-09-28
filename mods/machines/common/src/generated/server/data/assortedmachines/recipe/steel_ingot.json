@@ -1,7 +1,19 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "assortedlib:part_enabled",
+      "part": "assortedmachines"
+    }
+  ],
   "type": "assortedmachines:alloy_forge",
   "cookingtime": 800,
   "experience": 0.5,
+  "fabric:load_conditions": [
+    {
+      "condition": "assortedlib:part_enabled",
+      "part": "assortedmachines"
+    }
+  ],
   "ingredient1": {
     "count": 4,
     "ingredient": "#minecraft:coals"

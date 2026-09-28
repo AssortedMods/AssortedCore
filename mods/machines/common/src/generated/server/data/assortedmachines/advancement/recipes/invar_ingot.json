@@ -3,6 +3,10 @@
     {
       "type": "assortedlib:item_tag_populated",
       "tag": "c:dusts/nickel"
+    },
+    {
+      "type": "assortedlib:part_enabled",
+      "part": "assortedmachines"
     }
   ],
   "parent": "minecraft:recipes/root",
@@ -41,6 +45,10 @@
       "values": [
         "c:dusts/nickel"
       ]
+    },
+    {
+      "condition": "assortedlib:part_enabled",
+      "part": "assortedmachines"
     }
   ],
   "requirements": [

@@ -1,4 +1,10 @@
 {
+  "conditions": [
+    {
+      "type": "assortedlib:part_enabled",
+      "part": "assortedores"
+    }
+  ],
   "pages": [
     {
       "type": "assortedlib:item",

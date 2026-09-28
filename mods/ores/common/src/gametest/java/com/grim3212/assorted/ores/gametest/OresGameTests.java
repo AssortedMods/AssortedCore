@@ -21,5 +21,6 @@ public final class OresGameTests {
         ManualLinkTests.register(out);
         CrossLoaderDataTests.register(out);
         AliasTests.register(out);
+        FamilyTests.register(out);
     }
 }
