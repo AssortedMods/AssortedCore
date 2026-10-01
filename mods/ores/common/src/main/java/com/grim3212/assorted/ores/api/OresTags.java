@@ -97,7 +97,6 @@ public class OresTags {
 
         public static final TagKey<Item> NUGGETS = commonTag("nuggets");
         public static final TagKey<Item> NUGGETS_TIN = commonTag("nuggets/tin");
-        public static final TagKey<Item> NUGGETS_COPPER = commonTag("nuggets/copper");
         public static final TagKey<Item> NUGGETS_SILVER = commonTag("nuggets/silver");
         public static final TagKey<Item> NUGGETS_ALUMINUM = commonTag("nuggets/aluminum");
         public static final TagKey<Item> NUGGETS_NICKEL = commonTag("nuggets/nickel");

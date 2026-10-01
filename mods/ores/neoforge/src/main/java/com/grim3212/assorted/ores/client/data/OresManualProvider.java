@@ -42,8 +42,7 @@ public class OresManualProvider extends LibManualProvider {
                 .opensEveryBlock(deepslate(ORE_METALS))
                 .opensEveryBlock(rawBlocks(ORE_METALS))
                 .opensEveryItem(family(ORE_METALS, "_ingot", "_nugget"))
-                .opensEveryItem(raw(ORE_METALS))
-                .opensEveryItem(id -> id.getPath().equals("copper_nugget"));
+                .opensEveryItem(raw(ORE_METALS));
         metals.recipesById("dusts", recipeId("dusts/tin_smelting"), recipeId("dusts/silver_smelting"), recipeId("dusts/aluminum_smelting"),
                         recipeId("dusts/nickel_smelting"), recipeId("dusts/platinum_smelting"), recipeId("dusts/lead_smelting")).every(60)
                 .opensEveryItem(family(ORE_METALS, "_dust"));

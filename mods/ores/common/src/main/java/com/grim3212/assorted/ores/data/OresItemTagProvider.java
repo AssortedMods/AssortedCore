@@ -105,14 +105,12 @@ public class OresItemTagProvider extends LibItemTagProvider {
         tagger.apply(OresTags.Items.INGOTS_LEAD).add(OresItems.LEAD_INGOT.get());
 
         tagger.apply(OresTags.Items.NUGGETS).add(OresItems.TIN_NUGGET.get());
-        tagger.apply(OresTags.Items.NUGGETS).add(OresItems.COPPER_NUGGET.get());
         tagger.apply(OresTags.Items.NUGGETS).add(OresItems.SILVER_NUGGET.get());
         tagger.apply(OresTags.Items.NUGGETS).add(OresItems.ALUMINUM_NUGGET.get());
         tagger.apply(OresTags.Items.NUGGETS).add(OresItems.NICKEL_NUGGET.get());
         tagger.apply(OresTags.Items.NUGGETS).add(OresItems.PLATINUM_NUGGET.get());
         tagger.apply(OresTags.Items.NUGGETS).add(OresItems.LEAD_NUGGET.get());
         tagger.apply(OresTags.Items.NUGGETS_TIN).add(OresItems.TIN_NUGGET.get());
-        tagger.apply(OresTags.Items.NUGGETS_COPPER).add(OresItems.COPPER_NUGGET.get());
         tagger.apply(OresTags.Items.NUGGETS_SILVER).add(OresItems.SILVER_NUGGET.get());
         tagger.apply(OresTags.Items.NUGGETS_ALUMINUM).add(OresItems.ALUMINUM_NUGGET.get());
         tagger.apply(OresTags.Items.NUGGETS_NICKEL).add(OresItems.NICKEL_NUGGET.get());

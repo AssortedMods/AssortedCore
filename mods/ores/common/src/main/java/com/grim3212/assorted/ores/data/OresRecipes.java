@@ -16,7 +16,6 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.CookingBookCategory;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.level.ItemLike;
@@ -52,7 +51,6 @@ public class OresRecipes extends ConditionalRecipeProvider {
         super.buildRecipes();
 
         storageIngotNugget(OresTags.Items.STORAGE_BLOCKS_TIN, OresTags.Items.INGOTS_TIN, OresTags.Items.NUGGETS_TIN, OresBlocks.TIN_BLOCK.get(), OresItems.TIN_INGOT.get(), OresItems.TIN_NUGGET.get());
-        ingotNugget(OresTags.Items.INGOTS_COPPER, OresTags.Items.NUGGETS_COPPER, Items.COPPER_INGOT, OresItems.COPPER_NUGGET.get());
         storageIngotNugget(OresTags.Items.STORAGE_BLOCKS_SILVER, OresTags.Items.INGOTS_SILVER, OresTags.Items.NUGGETS_SILVER, OresBlocks.SILVER_BLOCK.get(), OresItems.SILVER_INGOT.get(), OresItems.SILVER_NUGGET.get());
         storageIngotNugget(OresTags.Items.STORAGE_BLOCKS_ALUMINUM, OresTags.Items.INGOTS_ALUMINUM, OresTags.Items.NUGGETS_ALUMINUM, OresBlocks.ALUMINUM_BLOCK.get(), OresItems.ALUMINUM_INGOT.get(), OresItems.ALUMINUM_NUGGET.get());
         storageIngotNugget(OresTags.Items.STORAGE_BLOCKS_NICKEL, OresTags.Items.INGOTS_NICKEL, OresTags.Items.NUGGETS_NICKEL, OresBlocks.NICKEL_BLOCK.get(), OresItems.NICKEL_INGOT.get(), OresItems.NICKEL_NUGGET.get());

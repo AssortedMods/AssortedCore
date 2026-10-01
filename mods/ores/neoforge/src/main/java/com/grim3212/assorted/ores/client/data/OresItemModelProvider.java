@@ -53,7 +53,6 @@ public class OresItemModelProvider extends ModelProvider {
         generatedItem(itemModels, OresItems.RAW_LEAD.get());
 
         generatedItem(itemModels, OresItems.TIN_NUGGET.get());
-        generatedItem(itemModels, OresItems.COPPER_NUGGET.get());
         generatedItem(itemModels, OresItems.SILVER_NUGGET.get());
         generatedItem(itemModels, OresItems.ALUMINUM_NUGGET.get());
         generatedItem(itemModels, OresItems.NICKEL_NUGGET.get());

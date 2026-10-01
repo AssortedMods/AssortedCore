@@ -2,12 +2,14 @@ package com.grim3212.assorted.ores.common.items;
 
 import com.grim3212.assorted.ores.Constants;
 import com.grim3212.assorted.ores.common.blocks.OresBlocks;
+import com.grim3212.assorted.lib.platform.Services;
 import com.grim3212.assorted.lib.registry.IRegistryObject;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.Item;
 
+import java.util.List;
 import java.util.function.Function;
 
 public class OresItems {
@@ -25,7 +27,6 @@ public class OresItems {
     public static final IRegistryObject<Item> LEAD_INGOT = register("lead_ingot", props -> new Item(props));
 
     public static final IRegistryObject<Item> TIN_NUGGET = register("tin_nugget", props -> new Item(props));
-    public static final IRegistryObject<Item> COPPER_NUGGET = register("copper_nugget", props -> new Item(props));
     public static final IRegistryObject<Item> SILVER_NUGGET = register("silver_nugget", props -> new Item(props));
     public static final IRegistryObject<Item> ALUMINUM_NUGGET = register("aluminum_nugget", props -> new Item(props));
     public static final IRegistryObject<Item> NICKEL_NUGGET = register("nickel_nugget", props -> new Item(props));
@@ -52,6 +53,13 @@ public class OresItems {
     public static final IRegistryObject<Item> NICKEL_GEAR = register("nickel_gear", props -> new Item(props));
     public static final IRegistryObject<Item> PLATINUM_GEAR = register("platinum_gear", props -> new Item(props));
     public static final IRegistryObject<Item> LEAD_GEAR = register("lead_gear", props -> new Item(props));
+
+    /** Ores had its own copper nugget until vanilla added one, so old copper nuggets turn into the vanilla one. */
+    static {
+        for (String namespace : List.of(Constants.FAMILY_ID, Constants.MOD_ID)) {
+            Services.REGISTRY_FACTORY.alias(Registries.ITEM, Identifier.fromNamespaceAndPath(namespace, "copper_nugget"), Identifier.withDefaultNamespace("copper_nugget"));
+        }
+    }
 
     private static <T extends Item> IRegistryObject<T> register(final String name, final Function<Item.Properties, ? extends T> factory) {
         // Since 1.21.2 every item has to know its own id before it is constructed, so the
