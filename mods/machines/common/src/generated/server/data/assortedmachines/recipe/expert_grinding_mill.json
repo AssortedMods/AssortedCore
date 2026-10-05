@@ -1,0 +1,38 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "assortedlib:item_tag_populated",
+      "tag": "c:ingots/platinum"
+    },
+    {
+      "type": "assortedlib:part_enabled",
+      "part": "assortedmachines"
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:tags_populated",
+      "registry": "minecraft:item",
+      "values": [
+        "c:ingots/platinum"
+      ]
+    },
+    {
+      "condition": "assortedlib:part_enabled",
+      "part": "assortedmachines"
+    }
+  ],
+  "key": {
+    "P": "#c:ingots/platinum",
+    "X": "assortedmachines:advanced_grinding_mill"
+  },
+  "pattern": [
+    " P ",
+    "PXP",
+    " P "
+  ],
+  "result": {
+    "id": "assortedmachines:expert_grinding_mill"
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "assortedlib:item_tag_populated",
+      "tag": "c:dusts/silver"
+    },
+    {
+      "type": "assortedlib:part_enabled",
+      "part": "assortedmachines"
+    }
+  ],
+  "type": "assortedmachines:alloy_forge",
+  "experience": 0.7,
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:tags_populated",
+      "registry": "minecraft:item",
+      "values": [
+        "c:dusts/silver"
+      ]
+    },
+    {
+      "condition": "assortedlib:part_enabled",
+      "part": "assortedmachines"
+    }
+  ],
+  "ingredient1": {
+    "ingredient": "#c:dusts/silver"
+  },
+  "ingredient2": {
+    "ingredient": "#c:dusts/gold"
+  },
+  "result": {
+    "count": 2,
+    "id": "assortedmachines:electrum_ingot"
+  }
+}

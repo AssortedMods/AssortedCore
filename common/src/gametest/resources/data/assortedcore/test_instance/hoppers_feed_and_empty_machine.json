@@ -1,9 +1,0 @@
-{
-  "type": "minecraft:function",
-  "environment": "minecraft:default",
-  "function": "assortedcore:hoppers_feed_and_empty_machine",
-  "structure": "assortedcore:test_box",
-  "max_ticks": 120,
-  "setup_ticks": 0,
-  "required": true
-}

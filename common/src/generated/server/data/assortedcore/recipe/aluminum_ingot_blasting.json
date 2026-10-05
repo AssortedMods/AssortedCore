@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:blasting",
-  "experience": 0.7,
-  "ingredient": "#c:ores/aluminum",
-  "result": {
-    "id": "assortedcore:aluminum_ingot"
-  }
-}

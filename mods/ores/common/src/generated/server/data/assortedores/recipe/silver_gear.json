@@ -1,0 +1,38 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "assortedlib:item_tag_populated",
+      "tag": "c:ingots/silver"
+    },
+    {
+      "type": "assortedlib:part_enabled",
+      "part": "assortedores"
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:tags_populated",
+      "registry": "minecraft:item",
+      "values": [
+        "c:ingots/silver"
+      ]
+    },
+    {
+      "condition": "assortedlib:part_enabled",
+      "part": "assortedores"
+    }
+  ],
+  "key": {
+    "M": "#c:ingots/silver",
+    "S": "#c:rods/wooden"
+  },
+  "pattern": [
+    " M ",
+    "MSM",
+    " M "
+  ],
+  "result": {
+    "id": "assortedores:silver_gear"
+  }
+}

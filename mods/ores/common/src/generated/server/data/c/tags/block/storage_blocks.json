@@ -1,0 +1,22 @@
+{
+  "values": [
+    "assortedores:tin_block",
+    "minecraft:copper_block",
+    "assortedores:silver_block",
+    "assortedores:aluminum_block",
+    "assortedores:nickel_block",
+    "assortedores:platinum_block",
+    "assortedores:lead_block",
+    "assortedores:ruby_block",
+    "assortedores:peridot_block",
+    "assortedores:sapphire_block",
+    "assortedores:topaz_block",
+    "minecraft:raw_copper_block",
+    "assortedores:raw_tin_block",
+    "assortedores:raw_silver_block",
+    "assortedores:raw_aluminum_block",
+    "assortedores:raw_nickel_block",
+    "assortedores:raw_platinum_block",
+    "assortedores:raw_lead_block"
+  ]
+}

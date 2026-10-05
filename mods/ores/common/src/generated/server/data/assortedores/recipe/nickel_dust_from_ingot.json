@@ -1,0 +1,32 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "assortedmachines"
+    },
+    {
+      "type": "assortedlib:part_enabled",
+      "part": "assortedores"
+    }
+  ],
+  "type": "assortedmachines:grinding_mill",
+  "cookingtime": 300,
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": [
+        "assortedmachines"
+      ]
+    },
+    {
+      "condition": "assortedlib:part_enabled",
+      "part": "assortedores"
+    }
+  ],
+  "ingredient": {
+    "ingredient": "#c:ingots/nickel"
+  },
+  "result": {
+    "id": "assortedores:nickel_dust"
+  }
+}

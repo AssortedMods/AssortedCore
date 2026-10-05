@@ -1,0 +1,106 @@
+{
+  "conditions": [
+    {
+      "type": "assortedlib:part_enabled",
+      "part": "assortedmachines"
+    }
+  ],
+  "pages": [
+    {
+      "type": "assortedlib:recipe",
+      "id": "core",
+      "recipes": [
+        "assortedmachines:machine_core"
+      ],
+      "text": "manual.assortedcore.chapter.machines.core",
+      "title": "manual.assortedcore.chapter.machines.core.title"
+    },
+    {
+      "type": "assortedlib:recipe",
+      "id": "tiers",
+      "recipes": [
+        "assortedmachines:basic_alloy_forge",
+        "assortedmachines:intermediate_alloy_forge",
+        "assortedmachines:advanced_alloy_forge",
+        "assortedmachines:expert_alloy_forge"
+      ],
+      "text": "manual.assortedcore.chapter.machines.tiers",
+      "title": "manual.assortedcore.chapter.machines.tiers.title"
+    },
+    {
+      "type": "assortedlib:recipe",
+      "id": "alloy_forge",
+      "recipes": [
+        "assortedmachines:basic_alloy_forge"
+      ],
+      "text": "manual.assortedcore.chapter.machines.alloy_forge",
+      "title": "manual.assortedcore.chapter.machines.alloy_forge.title"
+    },
+    {
+      "type": "assortedlib:recipe",
+      "id": "alloying",
+      "interval": 60,
+      "recipes": [
+        "assortedmachines:steel_ingot",
+        "assortedmachines:bronze_ingot",
+        "assortedmachines:electrum_ingot",
+        "assortedmachines:invar_ingot"
+      ],
+      "text": "manual.assortedcore.chapter.machines.alloying",
+      "title": "manual.assortedcore.chapter.machines.alloying.title"
+    },
+    {
+      "type": "assortedlib:recipe",
+      "id": "grinding_mill",
+      "recipes": [
+        "assortedmachines:basic_grinding_mill"
+      ],
+      "text": "manual.assortedcore.chapter.machines.grinding_mill",
+      "title": "manual.assortedcore.chapter.machines.grinding_mill.title"
+    },
+    {
+      "type": "assortedlib:recipe",
+      "id": "grinding",
+      "interval": 60,
+      "recipes": [
+        "assortedmachines:iron_dust",
+        "assortedmachines:iron_dust_from_ingot",
+        "assortedmachines:iron_dust_from_raw_ore"
+      ],
+      "text": "manual.assortedcore.chapter.machines.grinding",
+      "title": "manual.assortedcore.chapter.machines.grinding.title"
+    },
+    {
+      "type": "assortedlib:recipe",
+      "id": "dusts",
+      "interval": 60,
+      "recipes": [
+        "assortedmachines:dusts/iron_smelting",
+        "assortedmachines:dusts/iron_blasting"
+      ],
+      "text": "manual.assortedcore.chapter.machines.dusts",
+      "title": "manual.assortedcore.chapter.machines.dusts.title"
+    },
+    {
+      "type": "assortedlib:recipe",
+      "id": "steel",
+      "recipes": [
+        "assortedmachines:steel_ingot"
+      ],
+      "text": "manual.assortedcore.chapter.machines.steel",
+      "title": "manual.assortedcore.chapter.machines.steel.title"
+    },
+    {
+      "type": "assortedlib:recipe",
+      "id": "gears",
+      "interval": 60,
+      "recipes": [
+        "assortedmachines:steel_gear",
+        "assortedmachines:copper_gear",
+        "assortedmachines:iron_gear"
+      ],
+      "text": "manual.assortedcore.chapter.machines.gears",
+      "title": "manual.assortedcore.chapter.machines.gears.title"
+    }
+  ]
+}

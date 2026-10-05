@@ -1,0 +1,29 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "assortedlib:part_enabled",
+      "part": "assortedmachines"
+    }
+  ],
+  "type": "minecraft:crafting_shapeless",
+  "fabric:load_conditions": [
+    {
+      "condition": "assortedlib:part_enabled",
+      "part": "assortedmachines"
+    }
+  ],
+  "ingredients": [
+    "#c:nuggets/steel",
+    "#c:nuggets/steel",
+    "#c:nuggets/steel",
+    "#c:nuggets/steel",
+    "#c:nuggets/steel",
+    "#c:nuggets/steel",
+    "#c:nuggets/steel",
+    "#c:nuggets/steel",
+    "#c:nuggets/steel"
+  ],
+  "result": {
+    "id": "assortedmachines:steel_ingot"
+  }
+}

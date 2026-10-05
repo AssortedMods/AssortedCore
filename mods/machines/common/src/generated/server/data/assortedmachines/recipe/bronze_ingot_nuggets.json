@@ -1,0 +1,29 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "assortedlib:part_enabled",
+      "part": "assortedmachines"
+    }
+  ],
+  "type": "minecraft:crafting_shapeless",
+  "fabric:load_conditions": [
+    {
+      "condition": "assortedlib:part_enabled",
+      "part": "assortedmachines"
+    }
+  ],
+  "ingredients": [
+    "#c:nuggets/bronze",
+    "#c:nuggets/bronze",
+    "#c:nuggets/bronze",
+    "#c:nuggets/bronze",
+    "#c:nuggets/bronze",
+    "#c:nuggets/bronze",
+    "#c:nuggets/bronze",
+    "#c:nuggets/bronze",
+    "#c:nuggets/bronze"
+  ],
+  "result": {
+    "id": "assortedmachines:bronze_ingot"
+  }
+}

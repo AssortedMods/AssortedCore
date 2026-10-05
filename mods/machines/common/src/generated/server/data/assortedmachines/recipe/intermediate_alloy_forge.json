@@ -1,0 +1,27 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "assortedlib:part_enabled",
+      "part": "assortedmachines"
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "fabric:load_conditions": [
+    {
+      "condition": "assortedlib:part_enabled",
+      "part": "assortedmachines"
+    }
+  ],
+  "key": {
+    "S": "#c:ingots/steel",
+    "X": "assortedmachines:basic_alloy_forge"
+  },
+  "pattern": [
+    "SSS",
+    "SXS",
+    "SSS"
+  ],
+  "result": {
+    "id": "assortedmachines:intermediate_alloy_forge"
+  }
+}

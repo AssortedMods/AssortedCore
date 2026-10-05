@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "assortedores:ruby_block"
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "assortedores:blocks/ruby_block"
+}

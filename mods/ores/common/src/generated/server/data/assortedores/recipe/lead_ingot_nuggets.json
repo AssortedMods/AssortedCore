@@ -1,0 +1,29 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "assortedlib:part_enabled",
+      "part": "assortedores"
+    }
+  ],
+  "type": "minecraft:crafting_shapeless",
+  "fabric:load_conditions": [
+    {
+      "condition": "assortedlib:part_enabled",
+      "part": "assortedores"
+    }
+  ],
+  "ingredients": [
+    "#c:nuggets/lead",
+    "#c:nuggets/lead",
+    "#c:nuggets/lead",
+    "#c:nuggets/lead",
+    "#c:nuggets/lead",
+    "#c:nuggets/lead",
+    "#c:nuggets/lead",
+    "#c:nuggets/lead",
+    "#c:nuggets/lead"
+  ],
+  "result": {
+    "id": "assortedores:lead_ingot"
+  }
+}

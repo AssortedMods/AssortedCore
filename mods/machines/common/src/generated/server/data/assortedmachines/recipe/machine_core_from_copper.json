@@ -1,0 +1,28 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "assortedlib:part_enabled",
+      "part": "assortedmachines"
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "fabric:load_conditions": [
+    {
+      "condition": "assortedlib:part_enabled",
+      "part": "assortedmachines"
+    }
+  ],
+  "key": {
+    "A": "#c:ingots/copper",
+    "C": "#c:gear/copper",
+    "I": "#c:ingots/iron"
+  },
+  "pattern": [
+    "IAI",
+    "ACA",
+    "IAI"
+  ],
+  "result": {
+    "id": "assortedmachines:machine_core"
+  }
+}

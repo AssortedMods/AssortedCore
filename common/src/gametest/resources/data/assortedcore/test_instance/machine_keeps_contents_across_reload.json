@@ -1,9 +1,0 @@
-{
-  "type": "minecraft:function",
-  "environment": "minecraft:default",
-  "function": "assortedcore:machine_keeps_contents_across_reload",
-  "structure": "assortedcore:test_box",
-  "max_ticks": 60,
-  "setup_ticks": 0,
-  "required": true
-}

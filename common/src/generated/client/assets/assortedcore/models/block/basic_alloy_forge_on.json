@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/orientable",
-  "textures": {
-    "front": "assortedcore:block/basic_alloy_forge_front_on",
-    "side": "assortedcore:block/basic_machine_side",
-    "top": "assortedcore:block/basic_machine_top"
-  }
-}

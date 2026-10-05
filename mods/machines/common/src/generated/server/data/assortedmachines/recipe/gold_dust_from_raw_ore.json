@@ -1,0 +1,23 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "assortedlib:part_enabled",
+      "part": "assortedmachines"
+    }
+  ],
+  "type": "assortedmachines:grinding_mill",
+  "cookingtime": 300,
+  "fabric:load_conditions": [
+    {
+      "condition": "assortedlib:part_enabled",
+      "part": "assortedmachines"
+    }
+  ],
+  "ingredient": {
+    "ingredient": "#c:raw_materials/gold"
+  },
+  "result": {
+    "count": 2,
+    "id": "assortedmachines:gold_dust"
+  }
+}

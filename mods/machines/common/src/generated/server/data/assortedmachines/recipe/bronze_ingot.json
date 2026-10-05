@@ -1,0 +1,38 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "assortedlib:item_tag_populated",
+      "tag": "c:dusts/tin"
+    },
+    {
+      "type": "assortedlib:part_enabled",
+      "part": "assortedmachines"
+    }
+  ],
+  "type": "assortedmachines:alloy_forge",
+  "experience": 0.5,
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:tags_populated",
+      "registry": "minecraft:item",
+      "values": [
+        "c:dusts/tin"
+      ]
+    },
+    {
+      "condition": "assortedlib:part_enabled",
+      "part": "assortedmachines"
+    }
+  ],
+  "ingredient1": {
+    "count": 3,
+    "ingredient": "#c:dusts/copper"
+  },
+  "ingredient2": {
+    "ingredient": "#c:dusts/tin"
+  },
+  "result": {
+    "count": 4,
+    "id": "assortedmachines:bronze_ingot"
+  }
+}

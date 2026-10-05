@@ -1,0 +1,29 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "assortedlib:part_enabled",
+      "part": "assortedores"
+    }
+  ],
+  "type": "minecraft:crafting_shapeless",
+  "fabric:load_conditions": [
+    {
+      "condition": "assortedlib:part_enabled",
+      "part": "assortedores"
+    }
+  ],
+  "ingredients": [
+    "#c:gems/sapphire",
+    "#c:gems/sapphire",
+    "#c:gems/sapphire",
+    "#c:gems/sapphire",
+    "#c:gems/sapphire",
+    "#c:gems/sapphire",
+    "#c:gems/sapphire",
+    "#c:gems/sapphire",
+    "#c:gems/sapphire"
+  ],
+  "result": {
+    "id": "assortedores:sapphire_block"
+  }
+}

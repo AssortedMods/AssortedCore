@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:blasting",
-  "experience": 1.0,
-  "ingredient": "#c:ores/topaz",
-  "result": {
-    "id": "assortedcore:topaz"
-  }
-}

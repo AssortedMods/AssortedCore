@@ -1,0 +1,106 @@
+{
+  "links": [
+    {
+      "blocks": [
+        "assortedores:aluminum_block",
+        "assortedores:aluminum_ore",
+        "assortedores:lead_block",
+        "assortedores:lead_ore",
+        "assortedores:nickel_block",
+        "assortedores:nickel_ore",
+        "assortedores:platinum_block",
+        "assortedores:platinum_ore",
+        "assortedores:silver_block",
+        "assortedores:silver_ore",
+        "assortedores:tin_block",
+        "assortedores:tin_ore",
+        "assortedores:deepslate_aluminum_ore",
+        "assortedores:deepslate_lead_ore",
+        "assortedores:deepslate_nickel_ore",
+        "assortedores:deepslate_platinum_ore",
+        "assortedores:deepslate_silver_ore",
+        "assortedores:deepslate_tin_ore",
+        "assortedores:raw_aluminum_block",
+        "assortedores:raw_lead_block",
+        "assortedores:raw_nickel_block",
+        "assortedores:raw_platinum_block",
+        "assortedores:raw_silver_block",
+        "assortedores:raw_tin_block"
+      ],
+      "items": [
+        "assortedores:aluminum_ingot",
+        "assortedores:aluminum_nugget",
+        "assortedores:lead_ingot",
+        "assortedores:lead_nugget",
+        "assortedores:nickel_ingot",
+        "assortedores:nickel_nugget",
+        "assortedores:platinum_ingot",
+        "assortedores:platinum_nugget",
+        "assortedores:silver_ingot",
+        "assortedores:silver_nugget",
+        "assortedores:tin_ingot",
+        "assortedores:tin_nugget",
+        "assortedores:raw_aluminum",
+        "assortedores:raw_lead",
+        "assortedores:raw_nickel",
+        "assortedores:raw_platinum",
+        "assortedores:raw_silver",
+        "assortedores:raw_tin"
+      ],
+      "page": "assortedcore:metals/ores"
+    },
+    {
+      "items": [
+        "assortedores:aluminum_dust",
+        "assortedores:lead_dust",
+        "assortedores:nickel_dust",
+        "assortedores:platinum_dust",
+        "assortedores:silver_dust",
+        "assortedores:tin_dust"
+      ],
+      "page": "assortedcore:metals/dusts"
+    },
+    {
+      "items": [
+        "assortedores:aluminum_gear",
+        "assortedores:lead_gear",
+        "assortedores:nickel_gear",
+        "assortedores:platinum_gear",
+        "assortedores:silver_gear",
+        "assortedores:tin_gear"
+      ],
+      "page": "assortedcore:metals/gears"
+    },
+    {
+      "items": [
+        "assortedores:ruby",
+        "assortedores:peridot",
+        "assortedores:sapphire",
+        "assortedores:topaz"
+      ],
+      "page": "assortedcore:gems/gems"
+    },
+    {
+      "blocks": [
+        "assortedores:peridot_ore",
+        "assortedores:ruby_ore",
+        "assortedores:sapphire_ore",
+        "assortedores:topaz_ore",
+        "assortedores:deepslate_peridot_ore",
+        "assortedores:deepslate_ruby_ore",
+        "assortedores:deepslate_sapphire_ore",
+        "assortedores:deepslate_topaz_ore"
+      ],
+      "page": "assortedcore:gems/smelting"
+    },
+    {
+      "blocks": [
+        "assortedores:peridot_block",
+        "assortedores:ruby_block",
+        "assortedores:sapphire_block",
+        "assortedores:topaz_block"
+      ],
+      "page": "assortedcore:gems/storage"
+    }
+  ]
+}

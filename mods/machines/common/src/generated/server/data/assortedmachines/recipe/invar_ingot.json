@@ -1,0 +1,39 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "assortedlib:item_tag_populated",
+      "tag": "c:dusts/nickel"
+    },
+    {
+      "type": "assortedlib:part_enabled",
+      "part": "assortedmachines"
+    }
+  ],
+  "type": "assortedmachines:alloy_forge",
+  "cookingtime": 500,
+  "experience": 0.7,
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:tags_populated",
+      "registry": "minecraft:item",
+      "values": [
+        "c:dusts/nickel"
+      ]
+    },
+    {
+      "condition": "assortedlib:part_enabled",
+      "part": "assortedmachines"
+    }
+  ],
+  "ingredient1": {
+    "count": 2,
+    "ingredient": "#c:dusts/iron"
+  },
+  "ingredient2": {
+    "ingredient": "#c:dusts/nickel"
+  },
+  "result": {
+    "count": 3,
+    "id": "assortedmachines:invar_ingot"
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "assortedlib:item_tag_populated",
+      "tag": "c:dusts/silver"
+    },
+    {
+      "type": "assortedlib:part_enabled",
+      "part": "assortedmachines"
+    }
+  ],
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_ingredient1": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#c:dusts/silver"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_ingredient2": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#c:dusts/gold"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "assortedmachines:electrum_ingot"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:tags_populated",
+      "registry": "minecraft:item",
+      "values": [
+        "c:dusts/silver"
+      ]
+    },
+    {
+      "condition": "assortedlib:part_enabled",
+      "part": "assortedmachines"
+    }
+  ],
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_ingredient1",
+      "has_ingredient2"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "assortedmachines:electrum_ingot"
+    ]
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "conditions": [
+    {
+      "type": "assortedlib:part_enabled",
+      "part": "assortedores"
+    }
+  ],
+  "pages": [
+    {
+      "type": "assortedlib:item",
+      "id": "ores",
+      "interval": 50,
+      "items": [
+        "assortedores:tin_ore",
+        "assortedores:silver_ore",
+        "assortedores:aluminum_ore",
+        "assortedores:nickel_ore",
+        "assortedores:platinum_ore",
+        "assortedores:lead_ore"
+      ],
+      "text": "manual.assortedcore.chapter.metals.ores",
+      "title": "manual.assortedcore.chapter.metals.ores.title"
+    },
+    {
+      "type": "assortedlib:recipe",
+      "id": "dusts",
+      "interval": 60,
+      "recipes": [
+        "assortedores:dusts/tin_smelting",
+        "assortedores:dusts/silver_smelting",
+        "assortedores:dusts/aluminum_smelting",
+        "assortedores:dusts/nickel_smelting",
+        "assortedores:dusts/platinum_smelting",
+        "assortedores:dusts/lead_smelting"
+      ],
+      "text": "manual.assortedcore.chapter.metals.dusts",
+      "title": "manual.assortedcore.chapter.metals.dusts.title"
+    },
+    {
+      "type": "assortedlib:recipe",
+      "id": "gears",
+      "interval": 60,
+      "recipes": [
+        "assortedores:tin_gear",
+        "assortedores:silver_gear",
+        "assortedores:aluminum_gear",
+        "assortedores:nickel_gear",
+        "assortedores:platinum_gear",
+        "assortedores:lead_gear"
+      ],
+      "text": "manual.assortedcore.chapter.metals.gears",
+      "title": "manual.assortedcore.chapter.metals.gears.title"
+    }
+  ],
+  "sort_order": 1
+}

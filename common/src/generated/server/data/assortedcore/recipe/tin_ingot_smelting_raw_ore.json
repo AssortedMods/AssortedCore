@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:smelting",
-  "experience": 0.5,
-  "ingredient": "#c:raw_materials/tin",
-  "result": {
-    "id": "assortedcore:tin_ingot"
-  }
-}

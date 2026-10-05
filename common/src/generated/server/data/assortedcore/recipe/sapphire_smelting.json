@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:smelting",
-  "experience": 1.0,
-  "ingredient": "#c:ores/sapphire",
-  "result": {
-    "id": "assortedcore:sapphire"
-  }
-}

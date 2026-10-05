@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:function",
+  "environment": "minecraft:default",
+  "function": "assortedores:ore_metal_gears_craft_and_dusts_smelt",
+  "structure": "assortedores:test_box",
+  "max_ticks": 1,
+  "setup_ticks": 0,
+  "required": true
+}

@@ -1,0 +1,29 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "assortedlib:part_enabled",
+      "part": "assortedores"
+    }
+  ],
+  "type": "minecraft:crafting_shapeless",
+  "fabric:load_conditions": [
+    {
+      "condition": "assortedlib:part_enabled",
+      "part": "assortedores"
+    }
+  ],
+  "ingredients": [
+    "#c:gems/topaz",
+    "#c:gems/topaz",
+    "#c:gems/topaz",
+    "#c:gems/topaz",
+    "#c:gems/topaz",
+    "#c:gems/topaz",
+    "#c:gems/topaz",
+    "#c:gems/topaz",
+    "#c:gems/topaz"
+  ],
+  "result": {
+    "id": "assortedores:topaz_block"
+  }
+}

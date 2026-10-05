@@ -1,0 +1,12 @@
+{
+  "values": [
+    "assortedores:tin_ore",
+    "assortedores:tin_block",
+    "assortedores:aluminum_ore",
+    "assortedores:aluminum_block",
+    "assortedores:deepslate_tin_ore",
+    "assortedores:raw_tin_block",
+    "assortedores:deepslate_aluminum_ore",
+    "assortedores:raw_aluminum_block"
+  ]
+}
