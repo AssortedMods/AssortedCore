@@ -1,5 +1,7 @@
 package com.grim3212.assorted.ores.gametest;
 
+import com.grim3212.assorted.ores.Constants;
+import com.grim3212.assorted.lib.test.CommonTests;
 import net.minecraft.gametest.framework.GameTestHelper;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
@@ -24,5 +26,6 @@ public final class OresGameTests {
         CrossLoaderDataTests.register(out);
         AliasTests.register(out);
         FamilyTests.register(out);
+        CommonTests.register(out, Constants.MOD_ID);
     }
 }

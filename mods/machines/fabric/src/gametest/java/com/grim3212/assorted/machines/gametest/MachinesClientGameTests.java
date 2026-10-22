@@ -1,7 +1,7 @@
 package com.grim3212.assorted.machines.gametest;
 
+import com.grim3212.assorted.lib.test.ClientChecks;
 import com.grim3212.assorted.lib.crafting.SyncedRecipes;
-import com.grim3212.assorted.lib.test.ClientModelCheck;
 import com.grim3212.assorted.lib.test.ManualCheck;
 import com.grim3212.assorted.machines.Constants;
 import com.grim3212.assorted.machines.client.screen.AlloyForgeScreen;
@@ -35,7 +35,6 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 
 import java.lang.reflect.Field;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -50,23 +49,14 @@ public class MachinesClientGameTests implements FabricClientGameTest {
     @Override
     public void runTest(ClientGameTestContext context) {
         try (TestSingleplayerContext world = context.worldBuilder().create()) {
+            ClientChecks.assertDrawsRight(context, Constants.MOD_ID);
             world.getServer().runCommand("gamemode survival @a");
             context.waitFor(client -> ManualCheck.recipesHaveSynced() && !SyncedRecipes.byType(MachinesRecipeTypes.GRINDING_MILL.get()).isEmpty(), 200);
 
-            artAndManualDraw(context);
             jeiShowsEveryMachineRecipe(context);
             grindingMillWorksByHand(context, world);
             recipeBookFillsTheAlloyForge(context, world);
         }
-    }
-
-    private static void artAndManualDraw(ClientGameTestContext context) {
-        List<String> problems = context.computeOnClient(client -> {
-            List<String> found = new ArrayList<>(ClientModelCheck.problems(Constants.MOD_ID));
-            found.addAll(ManualCheck.problems());
-            return found;
-        });
-        check(problems.isEmpty(), "Assorted Machines does not draw right:\n  " + String.join("\n  ", problems));
     }
 
     /** JEI lists recipes the client was sent, not ones it loaded, so they arrive after the world opens. */
