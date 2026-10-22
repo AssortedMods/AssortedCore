@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:function",
+  "environment": "minecraft:default",
+  "function": "assortedores:ores_place_in_stone_and_deepslate",
+  "structure": "assortedores:test_box",
+  "max_ticks": 1,
+  "setup_ticks": 0,
+  "required": true
+}

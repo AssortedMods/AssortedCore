@@ -9,6 +9,8 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.item.enchantment.Enchantments;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
@@ -29,7 +31,10 @@ final class OreTests {
         out.accept("ore_silk_touch_drops_the_ore", OreTests::oreSilkTouchDropsTheOre);
         out.accept("metal_families_round_trip", OreTests::metalFamiliesRoundTrip);
         out.accept("raw_ore_smelts_to_ingots", OreTests::rawOreSmeltsToIngots);
+        out.accept("raw_ore_and_gem_blocks_round_trip", OreTests::rawOreAndGemBlocksRoundTrip);
     }
+
+    private static final List<String> GEMS = List.of("ruby", "sapphire", "topaz", "peridot");
 
     /** Every ore drops its raw metal or its gem, one per block, for a plain pickaxe. */
     private static void oreDropsRawMetalAndGem(GameTestHelper helper) {
@@ -137,6 +142,24 @@ final class OreTests {
             assertCooks(helper, RecipeType.BLASTING, raw, ingot, "blasting");
             assertCooks(helper, RecipeType.SMELTING, ore, ingot, "smelting");
             assertCooks(helper, RecipeType.BLASTING, ore, ingot, "blasting");
+        }
+
+        helper.succeed();
+    }
+
+    /** Nine raw ore or gems pack into a block and come back out, as the site promises for each. */
+    private static void rawOreAndGemBlocksRoundTrip(GameTestHelper helper) {
+        List<String> stored = new ArrayList<>();
+        ORE_METALS.forEach(metal -> stored.add("raw_" + metal));
+        stored.addAll(GEMS);
+
+        for (String name : stored) {
+            Item loose = item(helper, name);
+            Item block = item(helper, name + "_block");
+            ItemStack looseStack = new ItemStack(loose);
+
+            assertCrafts(helper, 3, 3, Collections.nCopies(9, looseStack), block, 1, name + " -> block");
+            assertCrafts(helper, 1, 1, List.of(new ItemStack(block)), loose, 9, name + " block -> " + name);
         }
 
         helper.succeed();

@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:function",
+  "environment": "minecraft:default",
+  "function": "assortedmachines:machine_faces_and_keeps_the_name_it_was_placed_with",
+  "structure": "assortedmachines:test_box",
+  "max_ticks": 40,
+  "setup_ticks": 0,
+  "required": true
+}

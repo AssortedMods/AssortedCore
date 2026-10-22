@@ -10,6 +10,7 @@
       "type": "assortedlib:recipe",
       "id": "core",
       "recipes": [
+        "assortedmachines:machine_core_from_copper",
         "assortedmachines:machine_core"
       ],
       "text": "manual.assortedcore.chapter.machines.core",

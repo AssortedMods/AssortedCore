@@ -20,6 +20,10 @@ public class BaseMachineInventory extends ItemStackStorageHandler {
         this.direction = direction;
     }
 
+    public BaseMachineBlockEntity machine() {
+        return this.machine;
+    }
+
     private int getSlot(int slot) {
         if (this.direction == null) {
             return slot;

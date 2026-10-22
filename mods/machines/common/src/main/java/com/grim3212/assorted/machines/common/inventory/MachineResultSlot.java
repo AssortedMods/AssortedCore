@@ -1,6 +1,5 @@
 package com.grim3212.assorted.machines.common.inventory;
 
-import com.grim3212.assorted.machines.common.blocks.blockentity.BaseMachineBlockEntity;
 import com.grim3212.assorted.lib.core.inventory.IItemStorageHandler;
 import com.grim3212.assorted.lib.core.inventory.slot.SlotStorageHandler;
 import net.minecraft.world.entity.player.Player;
@@ -44,8 +43,9 @@ public class MachineResultSlot extends SlotStorageHandler {
     @Override
     protected void checkTakeAchievements(ItemStack stack) {
         stack.onCraftedBy(this.player, this.removeCount);
-        if (!this.player.level().isClientSide() && this.container instanceof BaseMachineBlockEntity) {
-            ((BaseMachineBlockEntity) this.container).unlockRecipes(this.player);
+        // The slot's container is a wrapper around the handler, never the machine itself.
+        if (!this.player.level().isClientSide() && this.getItemHandler() instanceof BaseMachineInventory inventory) {
+            inventory.machine().unlockRecipes(this.player);
         }
 
         this.removeCount = 0;

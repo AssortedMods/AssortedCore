@@ -27,7 +27,9 @@ public class MachinesManualProvider extends LibManualProvider {
     protected void addChapters() {
         ChapterBuilder machines = this.chapter("machines", 0);
 
-        machines.recipes("core", MachinesBlocks.MACHINE_CORE.get()).opens(MachinesBlocks.MACHINE_CORE.get());
+        // The copper recipe first: the aluminum one needs Assorted Ores, and the page skips it when absent.
+        machines.recipesById("core", Identifier.fromNamespaceAndPath(Constants.MOD_ID, "machine_core_from_copper"),
+                Identifier.fromNamespaceAndPath(Constants.MOD_ID, "machine_core")).opens(MachinesBlocks.MACHINE_CORE.get());
         machines.recipes("tiers", MachinesBlocks.BASIC_ALLOY_FORGE.get().asItem(),
                 MachinesBlocks.INTERMEDIATE_ALLOY_FORGE.get().asItem(),
                 MachinesBlocks.ADVANCED_ALLOY_FORGE.get().asItem(),

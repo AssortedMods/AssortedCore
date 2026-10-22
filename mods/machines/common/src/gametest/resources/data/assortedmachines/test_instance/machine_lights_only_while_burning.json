@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:function",
+  "environment": "minecraft:default",
+  "function": "assortedmachines:machine_lights_only_while_burning",
+  "structure": "assortedmachines:test_box",
+  "max_ticks": 300,
+  "setup_ticks": 0,
+  "required": true
+}

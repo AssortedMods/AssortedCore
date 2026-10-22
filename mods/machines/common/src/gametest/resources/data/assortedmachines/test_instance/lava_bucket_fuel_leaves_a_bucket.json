@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:function",
+  "environment": "minecraft:default",
+  "function": "assortedmachines:lava_bucket_fuel_leaves_a_bucket",
+  "structure": "assortedmachines:test_box",
+  "max_ticks": 100,
+  "setup_ticks": 0,
+  "required": true
+}

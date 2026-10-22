@@ -12,6 +12,12 @@
   "entrypoints": {
     "main": [
       "com.grim3212.assorted.machines.gametest.MachinesFabricGameTests"
+    ],
+    "fabric-client-gametest": [
+      "com.grim3212.assorted.machines.gametest.MachinesClientGameTests"
+    ],
+    "jei_mod_plugin": [
+      "com.grim3212.assorted.machines.gametest.MachinesJeiProbe"
     ]
   },
   "depends": {

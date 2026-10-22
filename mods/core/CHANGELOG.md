@@ -5,6 +5,8 @@
 Updated to Minecraft 26.3, for NeoForge and Fabric.
 
 - Requires Assorted Lib 5.0.0
+- Taking what a machine made out of it now gives you the experience it earned. Before you only got it by breaking the machine
+- The manual's machine core page shows the copper recipe, so it no longer says the recipe is missing without Assorted Ores
 
 ## 11.0.0
 
