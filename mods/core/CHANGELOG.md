@@ -1,5 +1,11 @@
 # Changelog
 
+## 12.0.0
+
+Updated to Minecraft 26.3, for NeoForge and Fabric.
+
+- Requires Assorted Lib 5.0.0
+
 ## 11.0.0
 
 - Split into two mods that can also be installed on their own. Assorted Machines and Assorted Ores
