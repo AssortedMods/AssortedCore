@@ -5,6 +5,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonPrimitive;
 import com.grim3212.assorted.lib.data.CrossLoaderData;
+import com.grim3212.assorted.lib.data.HandWrittenData;
 import com.grim3212.assorted.ores.Constants;
 import com.grim3212.assorted.ores.api.OresTags;
 import com.grim3212.assorted.ores.common.items.OresItems;
@@ -70,7 +71,7 @@ public class OresMachineRecipes implements DataProvider {
     private void grind(CachedOutput output, List<CompletableFuture<?>> writes, Identifier id, TagKey<Item> input, Identifier result, int count, float experience, int cookTime) {
         String inputTag = "#" + input.location();
         writes.add(DataProvider.saveStable(output, grindingMill(inputTag, result, count, experience, cookTime), this.recipes.json(id)));
-        writes.add(DataProvider.saveStable(output, unlockAdvancement(id, inputTag), this.advancements.json(id.withPrefix("recipes/"))));
+        writes.add(DataProvider.saveStable(output, HandWrittenData.advancement(unlockAdvancement(id, inputTag)), this.advancements.json(id.withPrefix("recipes/"))));
     }
 
     /** Leaves out a count of one and no experience, as the Machines recipe codec does. */
