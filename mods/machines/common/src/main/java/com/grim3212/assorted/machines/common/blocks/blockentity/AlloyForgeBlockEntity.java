@@ -1,5 +1,6 @@
 package com.grim3212.assorted.machines.common.blocks.blockentity;
 
+import com.grim3212.assorted.lib.platform.Services;
 import com.grim3212.assorted.machines.Constants;
 import com.grim3212.assorted.machines.api.crafting.AlloyForgeRecipe;
 import com.grim3212.assorted.machines.api.crafting.BaseMachineRecipe;
@@ -143,7 +144,7 @@ public class AlloyForgeBlockEntity extends BaseMachineBlockEntity {
         } else if (index != this.fuelSlot()) {
             return MachineUtil.isValidAlloyForgeInput(this.level, stack);
         } else {
-            return getBurnTime(stack) > 0;
+            return Services.PLATFORM.isFuel(stack);
         }
     }
 }

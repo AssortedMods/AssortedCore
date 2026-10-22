@@ -23,7 +23,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "assortedmachines:expert_grinding_mill"
+        "recipes": "assortedmachines:expert_grinding_mill"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

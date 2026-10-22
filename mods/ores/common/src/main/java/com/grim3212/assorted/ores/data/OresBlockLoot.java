@@ -3,15 +3,14 @@ package com.grim3212.assorted.ores.data;
 import com.grim3212.assorted.ores.common.blocks.OresBlocks;
 import com.grim3212.assorted.ores.common.items.OresItems;
 import com.grim3212.assorted.lib.data.LibBlockLootProvider;
-import net.minecraft.core.HolderLookup;
+import net.minecraft.data.loot.LootTableSubProvider;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
 public class OresBlockLoot extends LibBlockLootProvider {
 
-    // Loot sub providers are handed the registry lookup at construction now.
-    public OresBlockLoot(HolderLookup.Provider registries) {
-        super(registries, () -> OresBlocks.BLOCKS.getEntries().stream().map(Supplier::get).collect(Collectors.toList()));
+    public OresBlockLoot(LootTableSubProvider.Context context) {
+        super(context, () -> OresBlocks.BLOCKS.getEntries().stream().map(Supplier::get).collect(Collectors.toList()));
     }
 
     @Override

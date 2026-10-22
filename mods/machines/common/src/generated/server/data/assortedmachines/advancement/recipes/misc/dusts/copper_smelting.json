@@ -19,7 +19,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "assortedmachines:dusts/copper_smelting"
+        "recipes": "assortedmachines:dusts/copper_smelting"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

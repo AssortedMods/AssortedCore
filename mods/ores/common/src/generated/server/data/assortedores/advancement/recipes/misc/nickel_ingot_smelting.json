@@ -19,7 +19,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "assortedores:nickel_ingot_smelting"
+        "recipes": "assortedores:nickel_ingot_smelting"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

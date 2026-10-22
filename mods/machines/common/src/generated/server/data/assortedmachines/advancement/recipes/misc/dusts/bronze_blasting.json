@@ -19,7 +19,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "assortedmachines:dusts/bronze_blasting"
+        "recipes": "assortedmachines:dusts/bronze_blasting"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

@@ -19,7 +19,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "assortedores:nickel_block_smelting_raw_storage"
+        "recipes": "assortedores:nickel_block_smelting_raw_storage"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

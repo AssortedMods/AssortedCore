@@ -19,7 +19,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "assortedmachines:dusts/gold_smelting"
+        "recipes": "assortedmachines:dusts/gold_smelting"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

@@ -19,7 +19,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "assortedmachines:lapis_lazuli"
+        "recipes": "assortedmachines:lapis_lazuli"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

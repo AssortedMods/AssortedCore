@@ -19,7 +19,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "assortedmachines:intermediate_alloy_forge"
+        "recipes": "assortedmachines:intermediate_alloy_forge"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

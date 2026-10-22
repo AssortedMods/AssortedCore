@@ -19,7 +19,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "assortedmachines:dusts/bronze_smelting"
+        "recipes": "assortedmachines:dusts/bronze_smelting"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

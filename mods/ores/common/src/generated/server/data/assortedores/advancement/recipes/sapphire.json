@@ -23,7 +23,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "assortedores:sapphire"
+        "recipes": "assortedores:sapphire"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

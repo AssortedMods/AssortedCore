@@ -19,7 +19,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "assortedmachines:bronze_nugget"
+        "recipes": "assortedmachines:bronze_nugget"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

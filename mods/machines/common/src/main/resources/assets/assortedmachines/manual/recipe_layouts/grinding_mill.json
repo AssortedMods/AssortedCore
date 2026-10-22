@@ -10,7 +10,7 @@
   "extras": [
     {
       "position": [34, 2],
-      "display": { "type": "minecraft:tag", "tag": "assortedmachines:grinding_mill_allowed_tools" }
+      "display": { "type": "minecraft:tag", "tag": "#assortedmachines:grinding_mill_allowed_tools" }
     },
     {
       "position": [34, 59],

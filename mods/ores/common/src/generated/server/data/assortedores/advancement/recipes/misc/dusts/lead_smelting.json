@@ -19,7 +19,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "assortedores:dusts/lead_smelting"
+        "recipes": "assortedores:dusts/lead_smelting"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

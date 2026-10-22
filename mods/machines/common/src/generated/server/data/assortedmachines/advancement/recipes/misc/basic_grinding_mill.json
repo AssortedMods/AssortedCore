@@ -29,7 +29,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "assortedmachines:basic_grinding_mill"
+        "recipes": "assortedmachines:basic_grinding_mill"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

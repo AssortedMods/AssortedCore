@@ -19,7 +19,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "assortedores:dusts/tin_smelting"
+        "recipes": "assortedores:dusts/tin_smelting"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

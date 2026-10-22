@@ -1,5 +1,6 @@
 package com.grim3212.assorted.machines.common.blocks.blockentity;
 
+import com.grim3212.assorted.lib.platform.Services;
 import com.grim3212.assorted.machines.Constants;
 import com.grim3212.assorted.machines.MachinesCommonMod;
 import com.grim3212.assorted.machines.api.crafting.BaseMachineRecipe;
@@ -167,7 +168,7 @@ public class GrindingMillBlockEntity extends BaseMachineBlockEntity {
                 return MachineUtil.isValidGrindingMillInput(this.level, stack);
             }
         } else {
-            return getBurnTime(stack) > 0;
+            return Services.PLATFORM.isFuel(stack);
         }
     }
 }

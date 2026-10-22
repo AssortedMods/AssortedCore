@@ -19,7 +19,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "assortedores:silver_ingot_blasting_raw_ore"
+        "recipes": "assortedores:silver_ingot_blasting_raw_ore"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

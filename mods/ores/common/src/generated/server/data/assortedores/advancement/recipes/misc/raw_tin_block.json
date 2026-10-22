@@ -19,7 +19,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "assortedores:raw_tin_block"
+        "recipes": "assortedores:raw_tin_block"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

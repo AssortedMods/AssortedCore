@@ -170,7 +170,7 @@ public abstract class BaseMachineBlockEntity extends BlockEntity implements IInv
         } else if (index != this.fuelSlot()) {
             return true;
         } else {
-            return this.getBurnTime(stack) > 0;
+            return Services.PLATFORM.isFuel(stack);
         }
     }
 
@@ -269,10 +269,10 @@ public abstract class BaseMachineBlockEntity extends BlockEntity implements IInv
     }
 
     public int getBurnTime(ItemStack fuel) {
-        if (fuel.isEmpty() || this.level == null) {
+        if (fuel.isEmpty() || !(this.level instanceof ServerLevel serverLevel)) {
             return 0;
         } else {
-            return Services.PLATFORM.getFuelTime(this.level, fuel);
+            return Services.PLATFORM.getFuelTime(fuel, Services.PLATFORM.containerProcessContext(serverLevel, this, this.items));
         }
     }
 

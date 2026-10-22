@@ -33,7 +33,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "assortedmachines:bronze_ingot"
+        "recipes": "assortedmachines:bronze_ingot"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

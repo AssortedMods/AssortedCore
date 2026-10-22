@@ -19,7 +19,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "assortedmachines:gold_dust_from_raw_ore"
+        "recipes": "assortedmachines:gold_dust_from_raw_ore"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

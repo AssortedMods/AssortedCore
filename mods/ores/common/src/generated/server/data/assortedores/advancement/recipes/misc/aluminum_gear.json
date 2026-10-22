@@ -23,7 +23,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "assortedores:aluminum_gear"
+        "recipes": "assortedores:aluminum_gear"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

@@ -19,7 +19,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "assortedmachines:bronze_ingot_nuggets"
+        "recipes": "assortedmachines:bronze_ingot_nuggets"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

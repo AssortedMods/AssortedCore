@@ -19,7 +19,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "assortedores:dusts/platinum_blasting"
+        "recipes": "assortedores:dusts/platinum_blasting"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

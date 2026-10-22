@@ -19,7 +19,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "assortedmachines:dusts/steel_blasting"
+        "recipes": "assortedmachines:dusts/steel_blasting"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

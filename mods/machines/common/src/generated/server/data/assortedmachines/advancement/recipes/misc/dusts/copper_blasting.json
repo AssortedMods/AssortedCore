@@ -19,7 +19,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "assortedmachines:dusts/copper_blasting"
+        "recipes": "assortedmachines:dusts/copper_blasting"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

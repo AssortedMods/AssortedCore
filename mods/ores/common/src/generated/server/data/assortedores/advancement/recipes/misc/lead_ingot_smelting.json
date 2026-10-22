@@ -19,7 +19,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "assortedores:lead_ingot_smelting"
+        "recipes": "assortedores:lead_ingot_smelting"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

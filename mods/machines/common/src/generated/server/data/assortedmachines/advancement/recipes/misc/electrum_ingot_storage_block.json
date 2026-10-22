@@ -19,7 +19,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "assortedmachines:electrum_ingot_storage_block"
+        "recipes": "assortedmachines:electrum_ingot_storage_block"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

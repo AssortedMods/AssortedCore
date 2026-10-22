@@ -19,7 +19,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "assortedores:peridot_smelting"
+        "recipes": "assortedores:peridot_smelting"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

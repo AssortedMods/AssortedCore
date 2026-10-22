@@ -19,7 +19,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "assortedmachines:dusts/electrum_blasting"
+        "recipes": "assortedmachines:dusts/electrum_blasting"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

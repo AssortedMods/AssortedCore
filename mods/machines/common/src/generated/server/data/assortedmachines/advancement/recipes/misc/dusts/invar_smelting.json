@@ -19,7 +19,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "assortedmachines:dusts/invar_smelting"
+        "recipes": "assortedmachines:dusts/invar_smelting"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

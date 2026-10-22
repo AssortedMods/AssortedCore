@@ -23,7 +23,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "assortedores:platinum_gear"
+        "recipes": "assortedores:platinum_gear"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

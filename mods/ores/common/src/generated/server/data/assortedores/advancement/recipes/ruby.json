@@ -23,7 +23,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "assortedores:ruby"
+        "recipes": "assortedores:ruby"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

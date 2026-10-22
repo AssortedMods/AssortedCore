@@ -19,7 +19,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "assortedores:aluminum_ingot_blasting_raw_ore"
+        "recipes": "assortedores:aluminum_ingot_blasting_raw_ore"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

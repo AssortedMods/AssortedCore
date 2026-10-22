@@ -19,7 +19,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "assortedmachines:electrum_gear"
+        "recipes": "assortedmachines:electrum_gear"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

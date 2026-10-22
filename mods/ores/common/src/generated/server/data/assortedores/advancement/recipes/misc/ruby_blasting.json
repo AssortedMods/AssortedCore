@@ -19,7 +19,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "assortedores:ruby_blasting"
+        "recipes": "assortedores:ruby_blasting"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

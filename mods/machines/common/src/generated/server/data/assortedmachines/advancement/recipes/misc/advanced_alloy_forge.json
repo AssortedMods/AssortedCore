@@ -19,7 +19,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "assortedmachines:advanced_alloy_forge"
+        "recipes": "assortedmachines:advanced_alloy_forge"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

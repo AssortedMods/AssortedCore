@@ -23,7 +23,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "assortedores:aluminum_dust"
+        "recipes": "assortedores:aluminum_dust"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

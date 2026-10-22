@@ -19,7 +19,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "assortedmachines:machine_core_from_copper"
+        "recipes": "assortedmachines:machine_core_from_copper"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

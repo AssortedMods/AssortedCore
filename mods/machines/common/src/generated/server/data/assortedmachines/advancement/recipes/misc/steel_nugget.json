@@ -19,7 +19,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "assortedmachines:steel_nugget"
+        "recipes": "assortedmachines:steel_nugget"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

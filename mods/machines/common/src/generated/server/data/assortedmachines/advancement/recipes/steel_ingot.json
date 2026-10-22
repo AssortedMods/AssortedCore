@@ -29,7 +29,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "assortedmachines:steel_ingot"
+        "recipes": "assortedmachines:steel_ingot"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

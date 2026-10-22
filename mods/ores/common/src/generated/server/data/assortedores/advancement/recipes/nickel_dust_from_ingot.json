@@ -23,7 +23,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "assortedores:nickel_dust_from_ingot"
+        "recipes": "assortedores:nickel_dust_from_ingot"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

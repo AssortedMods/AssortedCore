@@ -19,7 +19,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "assortedores:aluminum_nugget"
+        "recipes": "assortedores:aluminum_nugget"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

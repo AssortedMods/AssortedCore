@@ -12,9 +12,8 @@ import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
-import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
-import net.minecraft.world.level.levelgen.feature.configurations.OreConfiguration;
+import net.minecraft.world.level.levelgen.feature.OreFeature;
 import net.minecraft.world.level.levelgen.placement.*;
 
 import java.util.HashMap;
@@ -37,9 +36,9 @@ public class OresWorldGenData extends LibDatapackRegistryProvider {
 
     @Override
     public void addEntries(RegistrySetBuilder builder) {
-        builder.add(Registries.CONFIGURED_FEATURE, context -> {
+        builder.add(Registries.FEATURE, context -> {
             OresWorldGenData.getConfiguredFeatures().forEach((r, f) -> {
-                context.register(ResourceKey.create(Registries.CONFIGURED_FEATURE, r), f);
+                context.register(ResourceKey.create(Registries.FEATURE, r), f);
             });
         });
 
@@ -52,27 +51,27 @@ public class OresWorldGenData extends LibDatapackRegistryProvider {
 
     @Override
     public List<ResourceKey<? extends Registry<?>>> registries() {
-        return Lists.newArrayList(Registries.CONFIGURED_FEATURE, Registries.PLACED_FEATURE);
+        return Lists.newArrayList(Registries.FEATURE, Registries.PLACED_FEATURE);
     }
 
-    private static ResourceKey<ConfiguredFeature<?, ?>> configuredFeatureResourceKey(Identifier key) {
-        return ResourceKey.create(Registries.CONFIGURED_FEATURE, key);
+    private static ResourceKey<Feature> configuredFeatureResourceKey(Identifier key) {
+        return ResourceKey.create(Registries.FEATURE, key);
     }
 
-    private static Map<Identifier, ConfiguredFeature<?, ?>> getConfiguredFeatures() {
-        Map<Identifier, ConfiguredFeature<?, ?>> map = new HashMap<>();
+    private static Map<Identifier, Feature> getConfiguredFeatures() {
+        Map<Identifier, Feature> map = new HashMap<>();
 
-        map.put(ORE_ALUMINUM_KEY, new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(OresWorldGenTargets.ORE_ALUMINUM_TARGET_LIST, 12)));
-        map.put(ORE_NICKEL_KEY, new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(OresWorldGenTargets.ORE_NICKEL_TARGET_LIST, 9)));
-        map.put(ORE_TIN_KEY, new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(OresWorldGenTargets.ORE_TIN_TARGET_LIST, 9)));
-        map.put(ORE_LEAD_KEY, new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(OresWorldGenTargets.ORE_LEAD_TARGET_LIST, 8)));
-        map.put(ORE_SILVER_KEY, new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(OresWorldGenTargets.ORE_SILVER_TARGET_LIST, 8)));
-        map.put(ORE_PLATINUM_KEY, new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(OresWorldGenTargets.ORE_PLATINUM_TARGET_LIST, 7)));
+        map.put(ORE_ALUMINUM_KEY, new OreFeature(OresWorldGenTargets.ORE_ALUMINUM_TARGET_LIST, 12));
+        map.put(ORE_NICKEL_KEY, new OreFeature(OresWorldGenTargets.ORE_NICKEL_TARGET_LIST, 9));
+        map.put(ORE_TIN_KEY, new OreFeature(OresWorldGenTargets.ORE_TIN_TARGET_LIST, 9));
+        map.put(ORE_LEAD_KEY, new OreFeature(OresWorldGenTargets.ORE_LEAD_TARGET_LIST, 8));
+        map.put(ORE_SILVER_KEY, new OreFeature(OresWorldGenTargets.ORE_SILVER_TARGET_LIST, 8));
+        map.put(ORE_PLATINUM_KEY, new OreFeature(OresWorldGenTargets.ORE_PLATINUM_TARGET_LIST, 7));
 
-        map.put(ORE_RUBY_KEY, new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(OresWorldGenTargets.ORE_RUBY_TARGET_LIST, 8)));
-        map.put(ORE_SAPPHIRE_KEY, new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(OresWorldGenTargets.ORE_SAPPHIRE_TARGET_LIST, 8)));
-        map.put(ORE_TOPAZ_KEY, new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(OresWorldGenTargets.ORE_TOPAZ_TARGET_LIST, 8)));
-        map.put(ORE_PERIDOT_KEY, new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(OresWorldGenTargets.ORE_PERIDOT_TARGET_LIST, 8)));
+        map.put(ORE_RUBY_KEY, new OreFeature(OresWorldGenTargets.ORE_RUBY_TARGET_LIST, 8));
+        map.put(ORE_SAPPHIRE_KEY, new OreFeature(OresWorldGenTargets.ORE_SAPPHIRE_TARGET_LIST, 8));
+        map.put(ORE_TOPAZ_KEY, new OreFeature(OresWorldGenTargets.ORE_TOPAZ_TARGET_LIST, 8));
+        map.put(ORE_PERIDOT_KEY, new OreFeature(OresWorldGenTargets.ORE_PERIDOT_TARGET_LIST, 8));
 
         return map;
     }
@@ -80,7 +79,7 @@ public class OresWorldGenData extends LibDatapackRegistryProvider {
     private static Map<Identifier, PlacedFeature> getPlacedFeatures(BootstrapContext<PlacedFeature> context) {
         Map<Identifier, PlacedFeature> map = new HashMap<>();
 
-        HolderGetter<ConfiguredFeature<?, ?>> holderGetter = context.lookup(Registries.CONFIGURED_FEATURE);
+        HolderGetter<Feature> holderGetter = context.lookup(Registries.FEATURE);
 
         map.put(ORE_ALUMINUM_KEY, new PlacedFeature(holderGetter.getOrThrow(configuredFeatureResourceKey(ORE_ALUMINUM_KEY)), commonOrePlacement(16, HeightRangePlacement.triangle(VerticalAnchor.absolute(16), VerticalAnchor.absolute(125)))));
         map.put(ORE_NICKEL_KEY, new PlacedFeature(holderGetter.getOrThrow(configuredFeatureResourceKey(ORE_NICKEL_KEY)), commonOrePlacement(14, HeightRangePlacement.triangle(VerticalAnchor.absolute(-40), VerticalAnchor.absolute(40)))));

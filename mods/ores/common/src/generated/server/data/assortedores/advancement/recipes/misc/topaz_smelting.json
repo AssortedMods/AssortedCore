@@ -19,7 +19,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "assortedores:topaz_smelting"
+        "recipes": "assortedores:topaz_smelting"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

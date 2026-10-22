@@ -19,7 +19,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "assortedores:sapphire_storage_block"
+        "recipes": "assortedores:sapphire_storage_block"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

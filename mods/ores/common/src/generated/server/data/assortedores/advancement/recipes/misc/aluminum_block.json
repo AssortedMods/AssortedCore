@@ -19,7 +19,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "assortedores:aluminum_block"
+        "recipes": "assortedores:aluminum_block"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

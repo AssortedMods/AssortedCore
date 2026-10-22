@@ -19,7 +19,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "assortedores:ruby_smelting"
+        "recipes": "assortedores:ruby_smelting"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

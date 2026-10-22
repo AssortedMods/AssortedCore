@@ -19,7 +19,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "assortedores:silver_ingot_nuggets"
+        "recipes": "assortedores:silver_ingot_nuggets"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

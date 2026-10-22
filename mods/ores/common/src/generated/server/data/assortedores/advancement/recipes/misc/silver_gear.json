@@ -23,7 +23,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "assortedores:silver_gear"
+        "recipes": "assortedores:silver_gear"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

@@ -19,7 +19,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "assortedmachines:copper_gear"
+        "recipes": "assortedmachines:copper_gear"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

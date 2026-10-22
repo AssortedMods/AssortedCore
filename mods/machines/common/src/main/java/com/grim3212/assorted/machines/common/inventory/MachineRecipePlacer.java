@@ -4,6 +4,7 @@ import com.grim3212.assorted.machines.api.crafting.MachineIngredient;
 import it.unimi.dsi.fastutil.objects.Object2IntMap;
 import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 import net.minecraft.core.Holder;
+import net.minecraft.util.Prediction;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.inventory.RecipeBookMenu;
 import net.minecraft.world.inventory.Slot;
@@ -134,7 +135,7 @@ final class MachineRecipePlacer {
                 continue;
             }
 
-            inventory.placeItemBackInInventory(leftover, false);
+            inventory.placeItemBackInInventory(leftover, false, Prediction.SERVER_ONLY);
             slot.set(leftover);
         }
     }

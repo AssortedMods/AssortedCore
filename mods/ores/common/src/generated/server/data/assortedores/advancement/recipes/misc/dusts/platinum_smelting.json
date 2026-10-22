@@ -19,7 +19,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "assortedores:dusts/platinum_smelting"
+        "recipes": "assortedores:dusts/platinum_smelting"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

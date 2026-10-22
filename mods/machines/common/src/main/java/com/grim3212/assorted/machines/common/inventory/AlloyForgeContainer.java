@@ -23,7 +23,7 @@ public class AlloyForgeContainer extends BaseMachineContainer {
 
         this.addSlot(new SlotStorageHandler(alloyForgeInventory, 0, 32, 27));
         this.addSlot(new SlotStorageHandler(alloyForgeInventory, 1, 56, 27));
-        this.addSlot(new MachineFuelSlot(this.world, alloyForgeInventory, 2, 80, 62));
+        this.addSlot(new MachineFuelSlot(alloyForgeInventory, 2, 80, 62));
         this.addSlot(new MachineResultSlot(playerInventory.player, alloyForgeInventory, 3, 115, 27));
 
         for (int i = 0; i < 3; ++i) {
@@ -53,7 +53,7 @@ public class AlloyForgeContainer extends BaseMachineContainer {
 
                 slot.onQuickCraft(itemstack1, itemstack);
             } else if (index != 2 && index != 1 && index != 0) {
-                if (Services.PLATFORM.getFuelTime(this.world, itemstack1) > 0) {
+                if (Services.PLATFORM.isFuel(itemstack1)) {
                     if (!this.moveItemStackTo(itemstack1, 2, 3, false)) {
                         return ItemStack.EMPTY;
                     }

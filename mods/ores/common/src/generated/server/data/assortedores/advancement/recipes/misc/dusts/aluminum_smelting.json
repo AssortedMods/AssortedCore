@@ -19,7 +19,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "assortedores:dusts/aluminum_smelting"
+        "recipes": "assortedores:dusts/aluminum_smelting"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

@@ -33,7 +33,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "assortedmachines:invar_ingot"
+        "recipes": "assortedmachines:invar_ingot"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

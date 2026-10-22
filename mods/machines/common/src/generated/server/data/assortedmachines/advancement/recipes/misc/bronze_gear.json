@@ -19,7 +19,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "assortedmachines:bronze_gear"
+        "recipes": "assortedmachines:bronze_gear"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

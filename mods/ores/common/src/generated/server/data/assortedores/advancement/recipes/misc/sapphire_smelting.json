@@ -19,7 +19,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "assortedores:sapphire_smelting"
+        "recipes": "assortedores:sapphire_smelting"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

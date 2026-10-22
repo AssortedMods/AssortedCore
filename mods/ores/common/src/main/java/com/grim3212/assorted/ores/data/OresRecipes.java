@@ -7,11 +7,10 @@ import com.grim3212.assorted.ores.common.items.OresItems;
 import com.grim3212.assorted.lib.core.conditions.ConditionalRecipeProvider;
 import com.grim3212.assorted.lib.platform.Services;
 import com.grim3212.assorted.lib.util.LibCommonTags;
-import net.minecraft.core.HolderGetter;
-import net.minecraft.core.HolderLookup;
+import net.minecraft.advancements.Advancement;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
+import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.TagKey;
@@ -20,15 +19,10 @@ import net.minecraft.world.item.crafting.CookingBookCategory;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.level.ItemLike;
 
-import java.util.concurrent.CompletableFuture;
-
 public class OresRecipes extends ConditionalRecipeProvider {
 
-    private final HolderGetter<Item> items;
-
-    public OresRecipes(HolderLookup.Provider registries, RecipeOutput output) {
-        super(registries, output, Constants.MOD_ID);
-        this.items = registries.lookupOrThrow(Registries.ITEM);
+    public OresRecipes(BootstrapContext<Recipe<?>> recipes, BootstrapContext<Advancement> advancements) {
+        super(recipes, advancements, Constants.MOD_ID);
     }
 
     @Override
@@ -156,28 +150,6 @@ public class OresRecipes extends ConditionalRecipeProvider {
 
     public String getKeyPath(Item i) {
         return Services.PLATFORM.getRegistry(Registries.ITEM).getRegistryName(i).getPath();
-    }
-
-    /**
-     * Recipe providers are not data providers any more - a {@link RecipeProvider.Runner} owns the
-     * file writing and builds a fresh provider around the {@link RecipeOutput} it hands out. This is
-     * what the loader datagen entry points register.
-     */
-    public static class Runner extends ConditionalRecipeProvider.Runner {
-
-        public Runner(PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {
-            super(output, registries, Constants.MOD_ID);
-        }
-
-        @Override
-        protected RecipeProvider createRecipeProvider(HolderLookup.Provider registries, RecipeOutput output) {
-            return new OresRecipes(registries, output);
-        }
-
-        @Override
-        public String getName() {
-            return "Recipes: " + Constants.MOD_ID;
-        }
     }
 
     /**

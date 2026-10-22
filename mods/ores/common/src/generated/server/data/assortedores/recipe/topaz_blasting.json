@@ -6,6 +6,7 @@
     }
   ],
   "type": "minecraft:blasting",
+  "cookingtime": 100,
   "experience": 1.0,
   "fabric:load_conditions": [
     {

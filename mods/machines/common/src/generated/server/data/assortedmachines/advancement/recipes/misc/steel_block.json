@@ -19,7 +19,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "assortedmachines:steel_block"
+        "recipes": "assortedmachines:steel_block"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

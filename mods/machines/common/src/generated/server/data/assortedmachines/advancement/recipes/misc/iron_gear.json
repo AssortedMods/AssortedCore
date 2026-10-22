@@ -19,7 +19,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "assortedmachines:iron_gear"
+        "recipes": "assortedmachines:iron_gear"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
