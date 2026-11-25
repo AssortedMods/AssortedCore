@@ -1,11 +1,9 @@
 package com.grim3212.assorted.machines;
 
 import com.grim3212.assorted.machines.common.blocks.blockentity.MachinesBlockEntityTypes;
-import com.grim3212.assorted.machines.common.crafting.MachineRecipeBackfill;
 import com.grim3212.assorted.lib.core.inventory.IInventoryBlockEntity;
 import com.grim3212.assorted.lib.inventory.FabricPlatformInventoryStorageHandlerSided;
 import net.fabricmc.api.ModInitializer;
-import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents;
 import net.fabricmc.fabric.api.transfer.v1.item.ItemStorage;
 
 public class AssortedMachinesFabric implements ModInitializer {
@@ -13,9 +11,6 @@ public class AssortedMachinesFabric implements ModInitializer {
     @Override
     public void onInitialize() {
         MachinesCommonMod.init();
-
-        // TODO(11.0.0): remove along with MachineRecipeBackfill.
-        ServerPlayConnectionEvents.JOIN.register((handler, sender, server) -> MachineRecipeBackfill.award(handler.player));
 
         ItemStorage.SIDED.registerForBlockEntities((be, direction) ->
                 {

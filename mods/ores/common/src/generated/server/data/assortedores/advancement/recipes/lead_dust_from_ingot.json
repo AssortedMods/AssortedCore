@@ -23,7 +23,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipes": "assortedores:lead_dust_from_ingot"
+        "recipe": "assortedores:lead_dust_from_ingot"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

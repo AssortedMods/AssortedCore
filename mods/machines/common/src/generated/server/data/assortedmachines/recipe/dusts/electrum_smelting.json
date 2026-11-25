@@ -6,6 +6,7 @@
     }
   ],
   "type": "minecraft:smelting",
+  "category": "misc",
   "cookingtime": 200,
   "experience": 0.1,
   "fabric:load_conditions": [
@@ -14,8 +15,11 @@
       "part": "assortedmachines"
     }
   ],
-  "ingredient": "#c:dusts/electrum",
+  "ingredient": {
+    "tag": "c:dusts/electrum"
+  },
   "result": {
+    "count": 1,
     "id": "assortedmachines:electrum_ingot"
   }
 }

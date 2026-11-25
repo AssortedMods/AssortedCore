@@ -7,22 +7,23 @@ import com.grim3212.assorted.ores.common.items.OresItems;
 import com.grim3212.assorted.lib.core.conditions.ConditionalRecipeProvider;
 import com.grim3212.assorted.lib.platform.Services;
 import com.grim3212.assorted.lib.util.LibCommonTags;
-import net.minecraft.advancements.Advancement;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
-import net.minecraft.data.worldgen.BootstrapContext;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.crafting.CookingBookCategory;
-import net.minecraft.world.item.crafting.Recipe;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
+
+import java.util.concurrent.CompletableFuture;
 
 public class OresRecipes extends ConditionalRecipeProvider {
 
-    public OresRecipes(BootstrapContext<Recipe<?>> recipes, BootstrapContext<Advancement> advancements) {
-        super(recipes, advancements, Constants.MOD_ID);
+    public OresRecipes(PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {
+        super(output, registries, Constants.MOD_ID);
     }
 
     @Override
@@ -45,6 +46,7 @@ public class OresRecipes extends ConditionalRecipeProvider {
         super.buildRecipes();
 
         storageIngotNugget(OresTags.Items.STORAGE_BLOCKS_TIN, OresTags.Items.INGOTS_TIN, OresTags.Items.NUGGETS_TIN, OresBlocks.TIN_BLOCK.get(), OresItems.TIN_INGOT.get(), OresItems.TIN_NUGGET.get());
+        ingotNugget(OresTags.Items.INGOTS_COPPER, OresTags.Items.NUGGETS_COPPER, Items.COPPER_INGOT, OresItems.COPPER_NUGGET.get());
         storageIngotNugget(OresTags.Items.STORAGE_BLOCKS_SILVER, OresTags.Items.INGOTS_SILVER, OresTags.Items.NUGGETS_SILVER, OresBlocks.SILVER_BLOCK.get(), OresItems.SILVER_INGOT.get(), OresItems.SILVER_NUGGET.get());
         storageIngotNugget(OresTags.Items.STORAGE_BLOCKS_ALUMINUM, OresTags.Items.INGOTS_ALUMINUM, OresTags.Items.NUGGETS_ALUMINUM, OresBlocks.ALUMINUM_BLOCK.get(), OresItems.ALUMINUM_INGOT.get(), OresItems.ALUMINUM_NUGGET.get());
         storageIngotNugget(OresTags.Items.STORAGE_BLOCKS_NICKEL, OresTags.Items.INGOTS_NICKEL, OresTags.Items.NUGGETS_NICKEL, OresBlocks.NICKEL_BLOCK.get(), OresItems.NICKEL_INGOT.get(), OresItems.NICKEL_NUGGET.get());
@@ -105,37 +107,37 @@ public class OresRecipes extends ConditionalRecipeProvider {
     }
 
     private void gear(TagKey<Item> material, ItemLike gear) {
-        ShapedRecipeBuilder.shaped(this.items, RecipeCategory.MISC, gear).define('M', material).define('S', LibCommonTags.Items.RODS_WOODEN).pattern(" M ").pattern("MSM").pattern(" M ").unlockedBy("has_material", has(material)).save(this.output);
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, gear).define('M', material).define('S', LibCommonTags.Items.RODS_WOODEN).pattern(" M ").pattern("MSM").pattern(" M ").unlockedBy("has_material", has(material)).save(this.output);
     }
 
     private void ingotDust(TagKey<Item> dust, ItemLike ingot) {
-        SimpleCookingRecipeBuilder.blasting(this.tag(dust), RecipeCategory.MISC, CookingBookCategory.MISC, ingot, 0.1F, 100).unlockedBy("has_dust", has(dust)).save(this.output, key(dust.location().getPath() + "_blasting"));
-        SimpleCookingRecipeBuilder.smelting(this.tag(dust), RecipeCategory.MISC, CookingBookCategory.MISC, ingot, 0.1F, 200).unlockedBy("has_dust", has(dust)).save(this.output, key(dust.location().getPath() + "_smelting"));
+        SimpleCookingRecipeBuilder.blasting(Ingredient.of(dust), RecipeCategory.MISC, ingot, 0.1F, 100).unlockedBy("has_dust", has(dust)).save(this.output, key(dust.location().getPath() + "_blasting"));
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(dust), RecipeCategory.MISC, ingot, 0.1F, 200).unlockedBy("has_dust", has(dust)).save(this.output, key(dust.location().getPath() + "_smelting"));
     }
 
     private void rawStorageBlastingSmelting(TagKey<Item> rawStorage, ItemLike result, float experience) {
-        SimpleCookingRecipeBuilder.blasting(this.tag(rawStorage), RecipeCategory.MISC, CookingBookCategory.MISC, result, experience, 100).unlockedBy("has_storage", has(rawStorage)).save(this.output, key(getKeyPath(result.asItem()) + "_blasting_raw_storage"));
-        SimpleCookingRecipeBuilder.smelting(this.tag(rawStorage), RecipeCategory.MISC, CookingBookCategory.MISC, result, experience, 200).unlockedBy("has_storage", has(rawStorage)).save(this.output, key(getKeyPath(result.asItem()) + "_smelting_raw_storage"));
+        SimpleCookingRecipeBuilder.blasting(Ingredient.of(rawStorage), RecipeCategory.MISC, result, experience, 100).unlockedBy("has_storage", has(rawStorage)).save(this.output, key(getKeyPath(result.asItem()) + "_blasting_raw_storage"));
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(rawStorage), RecipeCategory.MISC, result, experience, 200).unlockedBy("has_storage", has(rawStorage)).save(this.output, key(getKeyPath(result.asItem()) + "_smelting_raw_storage"));
     }
 
     private void rawOreBlastingSmelting(TagKey<Item> ore, ItemLike result, float experience) {
-        SimpleCookingRecipeBuilder.blasting(this.tag(ore), RecipeCategory.MISC, CookingBookCategory.MISC, result, experience, 100).unlockedBy("has_ore", has(ore)).save(this.output, key(getKeyPath(result.asItem()) + "_blasting_raw_ore"));
-        SimpleCookingRecipeBuilder.smelting(this.tag(ore), RecipeCategory.MISC, CookingBookCategory.MISC, result, experience, 200).unlockedBy("has_ore", has(ore)).save(this.output, key(getKeyPath(result.asItem()) + "_smelting_raw_ore"));
+        SimpleCookingRecipeBuilder.blasting(Ingredient.of(ore), RecipeCategory.MISC, result, experience, 100).unlockedBy("has_ore", has(ore)).save(this.output, key(getKeyPath(result.asItem()) + "_blasting_raw_ore"));
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ore), RecipeCategory.MISC, result, experience, 200).unlockedBy("has_ore", has(ore)).save(this.output, key(getKeyPath(result.asItem()) + "_smelting_raw_ore"));
     }
 
     private void blastingSmelting(TagKey<Item> ore, ItemLike result, float experience) {
-        SimpleCookingRecipeBuilder.blasting(this.tag(ore), RecipeCategory.MISC, CookingBookCategory.MISC, result, experience, 100).unlockedBy("has_ore", has(ore)).save(this.output, key(getKeyPath(result.asItem()) + "_blasting"));
-        SimpleCookingRecipeBuilder.smelting(this.tag(ore), RecipeCategory.MISC, CookingBookCategory.MISC, result, experience, 200).unlockedBy("has_ore", has(ore)).save(this.output, key(getKeyPath(result.asItem()) + "_smelting"));
+        SimpleCookingRecipeBuilder.blasting(Ingredient.of(ore), RecipeCategory.MISC, result, experience, 100).unlockedBy("has_ore", has(ore)).save(this.output, key(getKeyPath(result.asItem()) + "_blasting"));
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ore), RecipeCategory.MISC, result, experience, 200).unlockedBy("has_ore", has(ore)).save(this.output, key(getKeyPath(result.asItem()) + "_smelting"));
     }
 
     private void gemStorage(TagKey<Item> storageBlockTag, TagKey<Item> gemTag, ItemLike storageBlock, ItemLike gem) {
-        ShapelessRecipeBuilder.shapeless(this.items, RecipeCategory.MISC, gem, 9).requires(this.tag(storageBlockTag)).unlockedBy("has_gem", has(storageBlockTag)).save(this.output, key(getKeyPath(gem.asItem()) + "_storage_block"));
-        ShapelessRecipeBuilder.shapeless(this.items, RecipeCategory.MISC, storageBlock, 1).requires(this.tag(gemTag), 9).unlockedBy("has_gem", has(gemTag)).save(this.output);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, gem, 9).requires(Ingredient.of(storageBlockTag)).unlockedBy("has_gem", has(storageBlockTag)).save(this.output, key(getKeyPath(gem.asItem()) + "_storage_block"));
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, storageBlock, 1).requires(Ingredient.of(gemTag), 9).unlockedBy("has_gem", has(gemTag)).save(this.output);
     }
 
     private void storage(TagKey<Item> storageBlockTag, TagKey<Item> nonStoreTag, ItemLike storageBlock, ItemLike nonStore) {
-        ShapelessRecipeBuilder.shapeless(this.items, RecipeCategory.MISC, nonStore, 9).requires(this.tag(storageBlockTag)).unlockedBy("has_storage_item", has(nonStoreTag)).save(this.output, key(getKeyPath(nonStore.asItem()) + "_storage_block"));
-        ShapelessRecipeBuilder.shapeless(this.items, RecipeCategory.MISC, storageBlock, 1).requires(this.tag(nonStoreTag), 9).unlockedBy("has_storage_item", has(nonStoreTag)).save(this.output);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, nonStore, 9).requires(Ingredient.of(storageBlockTag)).unlockedBy("has_storage_item", has(nonStoreTag)).save(this.output, key(getKeyPath(nonStore.asItem()) + "_storage_block"));
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, storageBlock, 1).requires(Ingredient.of(nonStoreTag), 9).unlockedBy("has_storage_item", has(nonStoreTag)).save(this.output);
     }
 
     private void storageIngotNugget(TagKey<Item> storageBlockTag, TagKey<Item> ingotTag, TagKey<Item> nuggetTag, ItemLike storageBlock, ItemLike ingot, ItemLike nugget) {
@@ -144,18 +146,15 @@ public class OresRecipes extends ConditionalRecipeProvider {
     }
 
     private void ingotNugget(TagKey<Item> ingotTag, TagKey<Item> nuggetTag, ItemLike ingot, ItemLike nugget) {
-        ShapelessRecipeBuilder.shapeless(this.items, RecipeCategory.MISC, nugget, 9).requires(this.tag(ingotTag)).unlockedBy("has_ingot", has(ingotTag)).save(this.output);
-        ShapelessRecipeBuilder.shapeless(this.items, RecipeCategory.MISC, ingot, 1).requires(this.tag(nuggetTag), 9).unlockedBy("has_ingot", has(ingotTag)).save(this.output, key(getKeyPath(ingot.asItem()) + "_nuggets"));
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, nugget, 9).requires(Ingredient.of(ingotTag)).unlockedBy("has_ingot", has(ingotTag)).save(this.output);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ingot, 1).requires(Ingredient.of(nuggetTag), 9).unlockedBy("has_ingot", has(ingotTag)).save(this.output, key(getKeyPath(ingot.asItem()) + "_nuggets"));
     }
 
     public String getKeyPath(Item i) {
         return Services.PLATFORM.getRegistry(Registries.ITEM).getRegistryName(i).getPath();
     }
 
-    /**
-     * Recipes are addressed by {@code ResourceKey<Recipe<?>>} rather than a raw id now.
-     */
-    private static ResourceKey<Recipe<?>> key(String path) {
-        return ResourceKey.create(Registries.RECIPE, Identifier.fromNamespaceAndPath(Constants.MOD_ID, path));
+    private static ResourceLocation key(String path) {
+        return ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, path);
     }
 }

@@ -6,6 +6,7 @@
     }
   ],
   "type": "minecraft:smelting",
+  "category": "blocks",
   "cookingtime": 200,
   "experience": 1.4,
   "fabric:load_conditions": [
@@ -14,8 +15,11 @@
       "part": "assortedores"
     }
   ],
-  "ingredient": "#c:storage_blocks/raw_aluminum",
+  "ingredient": {
+    "tag": "c:storage_blocks/raw_aluminum"
+  },
   "result": {
+    "count": 1,
     "id": "assortedores:aluminum_block"
   }
 }

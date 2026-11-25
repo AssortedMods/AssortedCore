@@ -14,9 +14,12 @@
     }
   ],
   "ingredient": {
-    "ingredient": "#c:ingots/steel"
+    "ingredient": {
+      "tag": "c:ingots/steel"
+    }
   },
   "result": {
+    "count": 1,
     "id": "assortedmachines:steel_dust"
   }
 }

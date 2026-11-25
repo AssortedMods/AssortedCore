@@ -19,7 +19,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipes": "assortedores:silver_block_smelting_raw_storage"
+        "recipe": "assortedores:silver_block_smelting_raw_storage"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

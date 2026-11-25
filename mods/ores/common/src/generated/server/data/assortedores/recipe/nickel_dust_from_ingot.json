@@ -24,7 +24,9 @@
     }
   ],
   "ingredient": {
-    "ingredient": "#c:ingots/nickel"
+    "ingredient": {
+      "tag": "c:ingots/nickel"
+    }
   },
   "result": {
     "id": "assortedores:nickel_dust"

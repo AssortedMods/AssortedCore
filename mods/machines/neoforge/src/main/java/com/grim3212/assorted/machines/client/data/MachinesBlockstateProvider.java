@@ -4,33 +4,22 @@ import com.grim3212.assorted.machines.Constants;
 import com.grim3212.assorted.machines.api.machines.MachineTier;
 import com.grim3212.assorted.machines.common.blocks.BaseMachineBlock;
 import com.grim3212.assorted.machines.common.blocks.MachinesBlocks;
-import net.minecraft.client.data.models.BlockModelGenerators;
-import net.minecraft.client.data.models.ItemModelGenerators;
-import net.minecraft.client.data.models.ModelProvider;
-import net.minecraft.client.data.models.MultiVariant;
-import net.minecraft.client.data.models.blockstates.MultiVariantGenerator;
-import net.minecraft.client.data.models.model.ModelTemplates;
-import net.minecraft.client.data.models.model.TextureMapping;
-import net.minecraft.client.data.models.model.TextureSlot;
-import net.minecraft.client.resources.model.sprite.Material;
-import net.minecraft.core.Holder;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.Item;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
-
-import java.util.stream.Stream;
+import net.neoforged.neoforge.client.model.generators.BlockStateProvider;
+import net.neoforged.neoforge.client.model.generators.ModelFile;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
 
 /**
- * Block states and block models. This owns every block and block item; {@link
- * MachinesItemModelProvider} owns the rest, so the two never write the same file.
+ * Block states, block models and the block items' models. {@link MachinesItemModelProvider} models
+ * the other items.
  */
-public class MachinesBlockstateProvider extends ModelProvider {
+public class MachinesBlockstateProvider extends BlockStateProvider {
 
-    public MachinesBlockstateProvider(PackOutput output) {
-        super(output, Constants.MOD_ID);
+    public MachinesBlockstateProvider(PackOutput output, ExistingFileHelper exFileHelper) {
+        super(output, Constants.MOD_ID, exFileHelper);
     }
 
     private static String name(Block b) {
@@ -42,55 +31,44 @@ public class MachinesBlockstateProvider extends ModelProvider {
         return "Assorted Machines block states";
     }
 
-    /**
-     * Only the block items belong here; every other item is {@link MachinesItemModelProvider}'s, so the
-     * two providers never write the same file.
-     */
     @Override
-    protected Stream<? extends Holder<Item>> getKnownItems() {
-        return super.getKnownItems().filter(holder -> holder.value() instanceof BlockItem);
+    protected void registerStatesAndModels() {
+        cube(MachinesBlocks.BRONZE_BLOCK.get());
+        cube(MachinesBlocks.ELECTRUM_BLOCK.get());
+        cube(MachinesBlocks.INVAR_BLOCK.get());
+        cube(MachinesBlocks.STEEL_BLOCK.get());
+        cube(MachinesBlocks.MACHINE_CORE.get());
+
+        machine(MachinesBlocks.BASIC_ALLOY_FORGE.get(), MachineTier.BASIC);
+        machine(MachinesBlocks.INTERMEDIATE_ALLOY_FORGE.get(), MachineTier.INTERMEDIATE);
+        machine(MachinesBlocks.ADVANCED_ALLOY_FORGE.get(), MachineTier.ADVANCED);
+        machine(MachinesBlocks.EXPERT_ALLOY_FORGE.get(), MachineTier.EXPERT);
+
+        machine(MachinesBlocks.BASIC_GRINDING_MILL.get(), MachineTier.BASIC);
+        machine(MachinesBlocks.INTERMEDIATE_GRINDING_MILL.get(), MachineTier.INTERMEDIATE);
+        machine(MachinesBlocks.ADVANCED_GRINDING_MILL.get(), MachineTier.ADVANCED);
+        machine(MachinesBlocks.EXPERT_GRINDING_MILL.get(), MachineTier.EXPERT);
     }
 
-    @Override
-    protected void registerModels(BlockModelGenerators blockModels, ItemModelGenerators itemModels) {
-        blockModels.createTrivialCube(MachinesBlocks.BRONZE_BLOCK.get());
-        blockModels.createTrivialCube(MachinesBlocks.ELECTRUM_BLOCK.get());
-        blockModels.createTrivialCube(MachinesBlocks.INVAR_BLOCK.get());
-        blockModels.createTrivialCube(MachinesBlocks.STEEL_BLOCK.get());
-        blockModels.createTrivialCube(MachinesBlocks.MACHINE_CORE.get());
-
-        machine(blockModels, MachinesBlocks.BASIC_ALLOY_FORGE.get(), MachineTier.BASIC);
-        machine(blockModels, MachinesBlocks.INTERMEDIATE_ALLOY_FORGE.get(), MachineTier.INTERMEDIATE);
-        machine(blockModels, MachinesBlocks.ADVANCED_ALLOY_FORGE.get(), MachineTier.ADVANCED);
-        machine(blockModels, MachinesBlocks.EXPERT_ALLOY_FORGE.get(), MachineTier.EXPERT);
-
-        machine(blockModels, MachinesBlocks.BASIC_GRINDING_MILL.get(), MachineTier.BASIC);
-        machine(blockModels, MachinesBlocks.INTERMEDIATE_GRINDING_MILL.get(), MachineTier.INTERMEDIATE);
-        machine(blockModels, MachinesBlocks.ADVANCED_GRINDING_MILL.get(), MachineTier.ADVANCED);
-        machine(blockModels, MachinesBlocks.EXPERT_GRINDING_MILL.get(), MachineTier.EXPERT);
+    private void cube(Block b) {
+        this.simpleBlockWithItem(b, this.cubeAll(b));
     }
 
-    /**
-     * A machine, rotated to its {@code FACING} with {@link
-     * BlockModelGenerators#ROTATION_HORIZONTAL_FACING}.
-     */
-    private void machine(BlockModelGenerators blockModels, Block b, MachineTier tier) {
+    /** A machine, lit or not by {@code ON}, and turned to its {@code FACING} as vanilla's furnace is. */
+    private void machine(Block b, MachineTier tier) {
         String name = name(b);
-        TextureMapping textures = new TextureMapping()
-                .put(TextureSlot.SIDE, texture("block/" + tier.getName() + "_machine_side"))
-                .put(TextureSlot.TOP, texture("block/" + tier.getName() + "_machine_top"))
-                .put(TextureSlot.FRONT, texture("block/" + name + "_front"));
+        ResourceLocation side = texture("block/" + tier.getName() + "_machine_side");
+        ResourceLocation top = texture("block/" + tier.getName() + "_machine_top");
 
-        MultiVariant machineOff = BlockModelGenerators.plainVariant(ModelTemplates.CUBE_ORIENTABLE.create(b, textures, blockModels.modelOutput));
-        MultiVariant machineOn = BlockModelGenerators.plainVariant(ModelTemplates.CUBE_ORIENTABLE.createWithSuffix(b, "_on", textures.copyAndUpdate(TextureSlot.FRONT, texture("block/" + name + "_front_on")), blockModels.modelOutput));
+        ModelFile machineOff = this.models().orientable(name, side, texture("block/" + name + "_front"), top);
+        ModelFile machineOn = this.models().orientable(name + "_on", side, texture("block/" + name + "_front_on"), top);
 
-        blockModels.blockStateOutput.accept(MultiVariantGenerator.dispatch(b)
-                .with(BlockModelGenerators.createBooleanModelDispatch(BaseMachineBlock.ON, machineOn, machineOff))
-                .with(BlockModelGenerators.ROTATION_HORIZONTAL_FACING));
+        this.horizontalBlock(b, state -> state.getValue(BaseMachineBlock.ON) ? machineOn : machineOff);
+        this.simpleBlockItem(b, machineOff);
     }
 
-    private Material texture(String name) {
-        return new Material(Identifier.fromNamespaceAndPath(Constants.MOD_ID, name));
+    private ResourceLocation texture(String name) {
+        return ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, name);
     }
 
 }

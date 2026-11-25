@@ -19,7 +19,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipes": "assortedores:raw_silver_block"
+        "recipe": "assortedores:raw_silver_block"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

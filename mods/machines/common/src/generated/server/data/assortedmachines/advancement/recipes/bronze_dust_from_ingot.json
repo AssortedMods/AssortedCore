@@ -19,7 +19,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipes": "assortedmachines:bronze_dust_from_ingot"
+        "recipe": "assortedmachines:bronze_dust_from_ingot"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

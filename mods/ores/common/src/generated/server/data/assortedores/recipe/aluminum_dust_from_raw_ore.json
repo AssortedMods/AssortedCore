@@ -24,7 +24,9 @@
     }
   ],
   "ingredient": {
-    "ingredient": "#c:raw_materials/aluminum"
+    "ingredient": {
+      "tag": "c:raw_materials/aluminum"
+    }
   },
   "result": {
     "count": 2,

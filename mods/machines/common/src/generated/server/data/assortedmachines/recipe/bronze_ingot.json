@@ -26,10 +26,14 @@
   ],
   "ingredient1": {
     "count": 3,
-    "ingredient": "#c:dusts/copper"
+    "ingredient": {
+      "tag": "c:dusts/copper"
+    }
   },
   "ingredient2": {
-    "ingredient": "#c:dusts/tin"
+    "ingredient": {
+      "tag": "c:dusts/tin"
+    }
   },
   "result": {
     "count": 4,

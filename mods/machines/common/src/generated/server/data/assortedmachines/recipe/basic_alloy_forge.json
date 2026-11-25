@@ -6,6 +6,7 @@
     }
   ],
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
   "fabric:load_conditions": [
     {
       "condition": "assortedlib:part_enabled",
@@ -13,9 +14,15 @@
     }
   ],
   "key": {
-    "B": "minecraft:blast_furnace",
-    "I": "#c:ingots/iron",
-    "X": "assortedmachines:machine_core"
+    "B": {
+      "item": "minecraft:blast_furnace"
+    },
+    "I": {
+      "tag": "c:ingots/iron"
+    },
+    "X": {
+      "item": "assortedmachines:machine_core"
+    }
   },
   "pattern": [
     "III",
@@ -23,6 +30,7 @@
     "III"
   ],
   "result": {
+    "count": 1,
     "id": "assortedmachines:basic_alloy_forge"
   }
 }

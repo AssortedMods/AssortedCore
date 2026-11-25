@@ -15,7 +15,9 @@
     }
   ],
   "ingredient": {
-    "ingredient": "#c:ores/diamond"
+    "ingredient": {
+      "tag": "c:ores/diamond"
+    }
   },
   "result": {
     "count": 2,

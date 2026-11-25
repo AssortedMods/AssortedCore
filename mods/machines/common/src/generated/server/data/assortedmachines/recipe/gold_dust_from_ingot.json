@@ -14,9 +14,12 @@
     }
   ],
   "ingredient": {
-    "ingredient": "#c:ingots/gold"
+    "ingredient": {
+      "tag": "c:ingots/gold"
+    }
   },
   "result": {
+    "count": 1,
     "id": "assortedmachines:gold_dust"
   }
 }

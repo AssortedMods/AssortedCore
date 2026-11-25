@@ -8,7 +8,7 @@ import com.grim3212.assorted.machines.common.blocks.blockentity.BaseMachineBlock
 import com.grim3212.assorted.machines.common.inventory.BaseMachineInventory;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.gametest.framework.GameTestHelper;
-import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.RecipeHolder;
@@ -20,6 +20,7 @@ import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 
 import static com.grim3212.assorted.machines.gametest.MachinesTestSupport.MACHINE;
+import static com.grim3212.assorted.machines.gametest.MachinesTestSupport.blockEntity;
 
 /** Every loaded machine recipe cooked by a real machine, so a recipe that loads but never runs fails here rather than in a player's world. */
 final class MachineRecipeRunTests {
@@ -39,17 +40,17 @@ final class MachineRecipeRunTests {
         List<String> problems = new ArrayList<>();
         int ran = 0;
 
-        for (RecipeHolder<?> holder : helper.getLevel().recipeAccess().getRecipes()) {
+        for (RecipeHolder<?> holder : helper.getLevel().getRecipeManager().getRecipes()) {
             if (!(holder.value() instanceof BaseMachineRecipe recipe)) {
                 continue;
             }
             ran++;
-            String id = holder.id().identifier().toString();
+            String id = holder.id().toString();
             boolean mill = recipe instanceof GrindingMillRecipe;
 
             helper.setBlock(MACHINE, Blocks.AIR);
             helper.setBlock(MACHINE, mill ? MachinesBlocks.EXPERT_GRINDING_MILL.get() : MachinesBlocks.EXPERT_ALLOY_FORGE.get());
-            BaseMachineBlockEntity machine = helper.getBlockEntity(MACHINE, BaseMachineBlockEntity.class);
+            BaseMachineBlockEntity machine = blockEntity(helper, MACHINE, BaseMachineBlockEntity.class);
             BaseMachineInventory inventory = machine.getInventory(null);
 
             if (mill) {
@@ -61,8 +62,7 @@ final class MachineRecipeRunTests {
             ItemStack firstInput = ItemStack.EMPTY;
             for (int i = 0; i < ingredients.size(); i++) {
                 MachineIngredient ingredient = ingredients.get(i);
-                ItemStack input = ingredient.getBaseIngredient().items().findFirst()
-                        .map(item -> new ItemStack(item, ingredient.getCount()))
+                ItemStack input = ingredient.getMatchingStacks().stream().findFirst()
                         .orElse(ItemStack.EMPTY);
                 if (input.isEmpty()) {
                     problems.add(id + " has an ingredient that matches nothing");
@@ -93,7 +93,7 @@ final class MachineRecipeRunTests {
     }
 
     private static boolean isOresOre(ItemStack stack) {
-        Identifier id = BuiltInRegistries.ITEM.getKey(stack.getItem());
+        ResourceLocation id = BuiltInRegistries.ITEM.getKey(stack.getItem());
         return id.getNamespace().equals("assortedores") && id.getPath().endsWith("_ore");
     }
 }

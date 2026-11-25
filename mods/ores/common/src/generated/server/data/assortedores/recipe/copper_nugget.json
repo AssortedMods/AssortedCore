@@ -1,0 +1,25 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "assortedlib:part_enabled",
+      "part": "assortedores"
+    }
+  ],
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "fabric:load_conditions": [
+    {
+      "condition": "assortedlib:part_enabled",
+      "part": "assortedores"
+    }
+  ],
+  "ingredients": [
+    {
+      "tag": "c:ingots/copper"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "id": "assortedores:copper_nugget"
+  }
+}

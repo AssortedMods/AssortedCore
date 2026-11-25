@@ -2,23 +2,15 @@ package com.grim3212.assorted.ores.client.data;
 
 import com.grim3212.assorted.ores.Constants;
 import com.grim3212.assorted.ores.common.items.OresItems;
-import net.minecraft.client.data.models.BlockModelGenerators;
-import net.minecraft.client.data.models.ItemModelGenerators;
-import net.minecraft.client.data.models.ModelProvider;
-import net.minecraft.client.data.models.model.ModelTemplates;
-import net.minecraft.core.Holder;
 import net.minecraft.data.PackOutput;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.Block;
-
-import java.util.stream.Stream;
+import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
 
 /** Item models for everything but block items, which {@link OresBlockstateProvider} models. */
-public class OresItemModelProvider extends ModelProvider {
+public class OresItemModelProvider extends ItemModelProvider {
 
-    public OresItemModelProvider(PackOutput output) {
-        super(output, Constants.MOD_ID);
+    public OresItemModelProvider(PackOutput output, ExistingFileHelper existingFileHelper) {
+        super(output, Constants.MOD_ID, existingFileHelper);
     }
 
     @Override
@@ -27,59 +19,46 @@ public class OresItemModelProvider extends ModelProvider {
     }
 
     @Override
-    protected Stream<? extends Holder<Block>> getKnownBlocks() {
-        return Stream.empty();
-    }
+    protected void registerModels() {
+        this.basicItem(OresItems.TIN_INGOT.get());
+        this.basicItem(OresItems.SILVER_INGOT.get());
+        this.basicItem(OresItems.ALUMINUM_INGOT.get());
+        this.basicItem(OresItems.NICKEL_INGOT.get());
+        this.basicItem(OresItems.PLATINUM_INGOT.get());
+        this.basicItem(OresItems.LEAD_INGOT.get());
 
-    @Override
-    protected Stream<? extends Holder<Item>> getKnownItems() {
-        return super.getKnownItems().filter(holder -> !(holder.value() instanceof BlockItem));
-    }
+        this.basicItem(OresItems.RAW_TIN.get());
+        this.basicItem(OresItems.RAW_SILVER.get());
+        this.basicItem(OresItems.RAW_ALUMINUM.get());
+        this.basicItem(OresItems.RAW_NICKEL.get());
+        this.basicItem(OresItems.RAW_PLATINUM.get());
+        this.basicItem(OresItems.RAW_LEAD.get());
 
-    @Override
-    protected void registerModels(BlockModelGenerators blockModels, ItemModelGenerators itemModels) {
-        generatedItem(itemModels, OresItems.TIN_INGOT.get());
-        generatedItem(itemModels, OresItems.SILVER_INGOT.get());
-        generatedItem(itemModels, OresItems.ALUMINUM_INGOT.get());
-        generatedItem(itemModels, OresItems.NICKEL_INGOT.get());
-        generatedItem(itemModels, OresItems.PLATINUM_INGOT.get());
-        generatedItem(itemModels, OresItems.LEAD_INGOT.get());
+        this.basicItem(OresItems.TIN_NUGGET.get());
+        this.basicItem(OresItems.COPPER_NUGGET.get());
+        this.basicItem(OresItems.SILVER_NUGGET.get());
+        this.basicItem(OresItems.ALUMINUM_NUGGET.get());
+        this.basicItem(OresItems.NICKEL_NUGGET.get());
+        this.basicItem(OresItems.PLATINUM_NUGGET.get());
+        this.basicItem(OresItems.LEAD_NUGGET.get());
 
-        generatedItem(itemModels, OresItems.RAW_TIN.get());
-        generatedItem(itemModels, OresItems.RAW_SILVER.get());
-        generatedItem(itemModels, OresItems.RAW_ALUMINUM.get());
-        generatedItem(itemModels, OresItems.RAW_NICKEL.get());
-        generatedItem(itemModels, OresItems.RAW_PLATINUM.get());
-        generatedItem(itemModels, OresItems.RAW_LEAD.get());
+        this.basicItem(OresItems.RUBY.get());
+        this.basicItem(OresItems.PERIDOT.get());
+        this.basicItem(OresItems.SAPPHIRE.get());
+        this.basicItem(OresItems.TOPAZ.get());
 
-        generatedItem(itemModels, OresItems.TIN_NUGGET.get());
-        generatedItem(itemModels, OresItems.SILVER_NUGGET.get());
-        generatedItem(itemModels, OresItems.ALUMINUM_NUGGET.get());
-        generatedItem(itemModels, OresItems.NICKEL_NUGGET.get());
-        generatedItem(itemModels, OresItems.PLATINUM_NUGGET.get());
-        generatedItem(itemModels, OresItems.LEAD_NUGGET.get());
+        this.basicItem(OresItems.TIN_DUST.get());
+        this.basicItem(OresItems.SILVER_DUST.get());
+        this.basicItem(OresItems.ALUMINUM_DUST.get());
+        this.basicItem(OresItems.NICKEL_DUST.get());
+        this.basicItem(OresItems.PLATINUM_DUST.get());
+        this.basicItem(OresItems.LEAD_DUST.get());
 
-        generatedItem(itemModels, OresItems.RUBY.get());
-        generatedItem(itemModels, OresItems.PERIDOT.get());
-        generatedItem(itemModels, OresItems.SAPPHIRE.get());
-        generatedItem(itemModels, OresItems.TOPAZ.get());
-
-        generatedItem(itemModels, OresItems.TIN_DUST.get());
-        generatedItem(itemModels, OresItems.SILVER_DUST.get());
-        generatedItem(itemModels, OresItems.ALUMINUM_DUST.get());
-        generatedItem(itemModels, OresItems.NICKEL_DUST.get());
-        generatedItem(itemModels, OresItems.PLATINUM_DUST.get());
-        generatedItem(itemModels, OresItems.LEAD_DUST.get());
-
-        generatedItem(itemModels, OresItems.TIN_GEAR.get());
-        generatedItem(itemModels, OresItems.SILVER_GEAR.get());
-        generatedItem(itemModels, OresItems.ALUMINUM_GEAR.get());
-        generatedItem(itemModels, OresItems.NICKEL_GEAR.get());
-        generatedItem(itemModels, OresItems.PLATINUM_GEAR.get());
-        generatedItem(itemModels, OresItems.LEAD_GEAR.get());
-    }
-
-    private void generatedItem(ItemModelGenerators itemModels, Item i) {
-        itemModels.generateFlatItem(i, ModelTemplates.FLAT_ITEM);
+        this.basicItem(OresItems.TIN_GEAR.get());
+        this.basicItem(OresItems.SILVER_GEAR.get());
+        this.basicItem(OresItems.ALUMINUM_GEAR.get());
+        this.basicItem(OresItems.NICKEL_GEAR.get());
+        this.basicItem(OresItems.PLATINUM_GEAR.get());
+        this.basicItem(OresItems.LEAD_GEAR.get());
     }
 }

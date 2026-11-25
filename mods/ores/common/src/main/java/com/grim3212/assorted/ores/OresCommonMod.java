@@ -6,14 +6,14 @@ import com.grim3212.assorted.ores.common.blocks.OresBlocks;
 import com.grim3212.assorted.ores.common.handlers.OresCreativeItems;
 import com.grim3212.assorted.ores.common.items.OresItems;
 import com.grim3212.assorted.ores.common.worldgen.OresBiomeModifiers;
-import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceLocation;
 
 public class OresCommonMod {
 
     public static void init() {
         Constants.LOG.info(Constants.MOD_NAME + " starting up...");
         Families.join(Constants.MOD_ID, Constants.FAMILY_ID)
-                .icon(Identifier.fromNamespaceAndPath(Constants.MOD_ID, "platinum_ore"), 20)
+                .icon(ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "platinum_ore"), 20)
                 .manualOrder(20);
 
         OresBlocks.init();

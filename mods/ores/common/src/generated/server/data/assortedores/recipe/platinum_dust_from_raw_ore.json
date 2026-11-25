@@ -24,7 +24,9 @@
     }
   ],
   "ingredient": {
-    "ingredient": "#c:raw_materials/platinum"
+    "ingredient": {
+      "tag": "c:raw_materials/platinum"
+    }
   },
   "result": {
     "count": 2,

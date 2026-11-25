@@ -6,6 +6,7 @@
     }
   ],
   "type": "minecraft:smelting",
+  "category": "misc",
   "cookingtime": 200,
   "experience": 0.1,
   "fabric:load_conditions": [
@@ -14,8 +15,11 @@
       "part": "assortedores"
     }
   ],
-  "ingredient": "#c:dusts/platinum",
+  "ingredient": {
+    "tag": "c:dusts/platinum"
+  },
   "result": {
+    "count": 1,
     "id": "assortedores:platinum_ingot"
   }
 }

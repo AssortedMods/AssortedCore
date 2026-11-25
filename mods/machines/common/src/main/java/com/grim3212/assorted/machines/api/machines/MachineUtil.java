@@ -1,18 +1,18 @@
 package com.grim3212.assorted.machines.api.machines;
 
-import com.grim3212.assorted.machines.api.MachinesTags;
-import com.grim3212.assorted.machines.common.crafting.MachinesRecipeTypes;
 import com.grim3212.assorted.lib.crafting.SyncedRecipes;
 import com.grim3212.assorted.lib.platform.Services;
 import com.grim3212.assorted.lib.platform.services.IPlatformHelper;
-import net.minecraft.server.level.ServerLevel;
+import com.grim3212.assorted.machines.api.MachinesTags;
+import com.grim3212.assorted.machines.api.crafting.BaseMachineRecipe;
+import com.grim3212.assorted.machines.common.crafting.MachinesRecipeTypes;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.Collection;
 import java.util.stream.Stream;
 
 public class MachineUtil {
@@ -25,18 +25,16 @@ public class MachineUtil {
     }
 
     /**
-     * Every loaded recipe of one type. The recipe manager only exists on the server, so the client
-     * reads what the server sent it; the machine types are asked for in {@code MachinesCommonMod}.
-     *
-     * @see SyncedRecipes
+     * Every loaded recipe of one type. Each side of a level has its own recipe manager, the client's
+     * filled from what the server sent; without a level, as for JEI, that same set is read from
+     * {@link SyncedRecipes}.
      */
-    @SuppressWarnings("unchecked")
-    public static <T extends Recipe<?>> Stream<T> recipesOfType(@Nullable Level level, RecipeType<T> recipeType) {
-        Stream<RecipeHolder<?>> recipes = level instanceof ServerLevel serverLevel
-                ? serverLevel.recipeAccess().getRecipes().stream()
-                : SyncedRecipes.recipes().values().stream();
+    public static <T extends BaseMachineRecipe> Stream<T> recipesOfType(@Nullable Level level, RecipeType<T> recipeType) {
+        Collection<RecipeHolder<T>> recipes = level != null
+                ? level.getRecipeManager().getAllRecipesFor(recipeType)
+                : SyncedRecipes.byType(recipeType);
 
-        return recipes.map(RecipeHolder::value).filter((recipe) -> recipe.getType() == recipeType).map((recipe) -> (T) recipe);
+        return recipes.stream().map(RecipeHolder::value);
     }
 
     public static boolean isValidAlloyForgeInput(@Nullable Level level, ItemStack stack) {

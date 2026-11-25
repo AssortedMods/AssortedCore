@@ -25,7 +25,9 @@
     }
   ],
   "ingredient": {
-    "ingredient": "#c:ores/sapphire"
+    "ingredient": {
+      "tag": "c:ores/sapphire"
+    }
   },
   "result": {
     "count": 2,

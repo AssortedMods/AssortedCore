@@ -14,7 +14,9 @@
     }
   ],
   "ingredient": {
-    "ingredient": "#c:raw_materials/copper"
+    "ingredient": {
+      "tag": "c:raw_materials/copper"
+    }
   },
   "result": {
     "count": 2,

@@ -16,12 +16,17 @@
   ],
   "ingredient1": {
     "count": 4,
-    "ingredient": "#minecraft:coals"
+    "ingredient": {
+      "tag": "minecraft:coals"
+    }
   },
   "ingredient2": {
-    "ingredient": "#c:dusts/iron"
+    "ingredient": {
+      "tag": "c:dusts/iron"
+    }
   },
   "result": {
+    "count": 1,
     "id": "assortedmachines:steel_ingot"
   }
 }

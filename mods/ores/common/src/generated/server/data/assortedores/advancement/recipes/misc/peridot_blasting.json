@@ -19,7 +19,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipes": "assortedores:peridot_blasting"
+        "recipe": "assortedores:peridot_blasting"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

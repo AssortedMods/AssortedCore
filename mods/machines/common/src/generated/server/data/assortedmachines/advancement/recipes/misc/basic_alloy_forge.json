@@ -29,7 +29,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipes": "assortedmachines:basic_alloy_forge"
+        "recipe": "assortedmachines:basic_alloy_forge"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

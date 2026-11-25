@@ -15,7 +15,9 @@
     }
   ],
   "ingredient": {
-    "ingredient": "#c:ores/emerald"
+    "ingredient": {
+      "tag": "c:ores/emerald"
+    }
   },
   "result": {
     "count": 2,

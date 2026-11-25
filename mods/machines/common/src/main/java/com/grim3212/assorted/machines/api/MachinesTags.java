@@ -3,7 +3,7 @@ package com.grim3212.assorted.machines.api;
 import com.grim3212.assorted.machines.Constants;
 import com.grim3212.assorted.lib.util.LibCommonTags;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
@@ -19,7 +19,7 @@ public class MachinesTags {
         public static final TagKey<Block> STORAGE_BLOCKS_STEEL = commonTag("storage_blocks/steel");
 
         private static TagKey<Block> commonTag(String name) {
-            return TagKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(LibCommonTags.COMMON_NAMESPACE, name));
+            return TagKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(LibCommonTags.COMMON_NAMESPACE, name));
         }
     }
 
@@ -100,11 +100,11 @@ public class MachinesTags {
         public static final TagKey<Item> RAW_MATERIALS_COPPER = commonTag("raw_materials/copper");
 
         private static TagKey<Item> commonTag(String name) {
-            return TagKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(LibCommonTags.COMMON_NAMESPACE, name));
+            return TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(LibCommonTags.COMMON_NAMESPACE, name));
         }
 
         private static TagKey<Item> modTag(String name) {
-            return TagKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(Constants.MOD_ID, name));
+            return TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, name));
         }
     }
 }

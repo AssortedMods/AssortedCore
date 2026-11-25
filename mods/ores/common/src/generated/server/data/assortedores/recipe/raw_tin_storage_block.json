@@ -6,6 +6,7 @@
     }
   ],
   "type": "minecraft:crafting_shapeless",
+  "category": "misc",
   "fabric:load_conditions": [
     {
       "condition": "assortedlib:part_enabled",
@@ -13,7 +14,9 @@
     }
   ],
   "ingredients": [
-    "#c:storage_blocks/raw_tin"
+    {
+      "tag": "c:storage_blocks/raw_tin"
+    }
   ],
   "result": {
     "count": 9,

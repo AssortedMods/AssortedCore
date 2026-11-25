@@ -23,7 +23,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipes": "assortedores:tin_dust"
+        "recipe": "assortedores:tin_dust"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

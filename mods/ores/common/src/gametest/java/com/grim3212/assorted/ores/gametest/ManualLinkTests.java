@@ -7,8 +7,9 @@ import com.grim3212.assorted.lib.manual.ManualLinks;
 import com.grim3212.assorted.lib.manual.ManualPageRef;
 import com.mojang.serialization.JsonOps;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.gametest.framework.GameTestAssertException;
 import net.minecraft.gametest.framework.GameTestHelper;
-import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
@@ -45,14 +46,14 @@ final class ManualLinkTests {
         List<String> missing = new ArrayList<>();
 
         for (Map.Entry<ResourceKey<Block>, Block> entry : BuiltInRegistries.BLOCK.entrySet()) {
-            Identifier id = entry.getKey().identifier();
+            ResourceLocation id = entry.getKey().location();
             if (Constants.MOD_ID.equals(id.getNamespace()) && !links.blocks().containsKey(id)) {
                 missing.add("block " + id);
             }
         }
 
         for (Map.Entry<ResourceKey<Item>, Item> entry : BuiltInRegistries.ITEM.entrySet()) {
-            Identifier id = entry.getKey().identifier();
+            ResourceLocation id = entry.getKey().location();
             if (Constants.MOD_ID.equals(id.getNamespace()) && !links.items().containsKey(id)) {
                 missing.add("item " + id);
             }
@@ -87,7 +88,7 @@ final class ManualLinkTests {
     private static List<ManualLinks.Group> groups(GameTestHelper helper) {
         JsonObject json = readJson(helper, LINKS);
         return ManualLinks.Group.FILE_CODEC.parse(JsonOps.INSTANCE, json)
-                .getOrThrow(message -> helper.assertionException("could not read " + LINKS + ": " + message));
+                .getOrThrow(message -> new GameTestAssertException("could not read " + LINKS + ": " + message));
     }
 
     /** The page ids of one chapter this mod ships into the family's section; empty when there is no such chapter. */

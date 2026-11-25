@@ -6,6 +6,7 @@
     }
   ],
   "type": "minecraft:blasting",
+  "category": "blocks",
   "cookingtime": 100,
   "experience": 2.0,
   "fabric:load_conditions": [
@@ -14,8 +15,11 @@
       "part": "assortedores"
     }
   ],
-  "ingredient": "#c:storage_blocks/raw_silver",
+  "ingredient": {
+    "tag": "c:storage_blocks/raw_silver"
+  },
   "result": {
+    "count": 1,
     "id": "assortedores:silver_block"
   }
 }

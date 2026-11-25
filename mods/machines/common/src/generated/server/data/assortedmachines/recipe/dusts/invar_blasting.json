@@ -6,6 +6,7 @@
     }
   ],
   "type": "minecraft:blasting",
+  "category": "misc",
   "cookingtime": 100,
   "experience": 0.1,
   "fabric:load_conditions": [
@@ -14,8 +15,11 @@
       "part": "assortedmachines"
     }
   ],
-  "ingredient": "#c:dusts/invar",
+  "ingredient": {
+    "tag": "c:dusts/invar"
+  },
   "result": {
+    "count": 1,
     "id": "assortedmachines:invar_ingot"
   }
 }

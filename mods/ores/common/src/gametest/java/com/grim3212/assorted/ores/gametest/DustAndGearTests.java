@@ -5,7 +5,7 @@ import com.grim3212.assorted.ores.Constants;
 import com.mojang.serialization.JsonOps;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.gametest.framework.GameTestHelper;
-import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -34,10 +34,10 @@ final class DustAndGearTests {
         for (String metal : ORE_METALS) {
             for (String name : List.of(metal + "_dust", metal + "_gear")) {
                 Item item = item(helper, name);
-                helper.assertFalse(BuiltInRegistries.ITEM.containsKey(Identifier.fromNamespaceAndPath("assortedmachines", name)),
+                helper.assertFalse(BuiltInRegistries.ITEM.containsKey(ResourceLocation.fromNamespaceAndPath("assortedmachines", name)),
                         "assortedmachines:" + name + " is still registered");
 
-                Identifier old = Identifier.fromNamespaceAndPath(Constants.FAMILY_ID, name);
+                ResourceLocation old = ResourceLocation.fromNamespaceAndPath(Constants.FAMILY_ID, name);
                 ItemStack stack = ItemStack.CODEC.parse(helper.getLevel().registryAccess().createSerializationContext(JsonOps.INSTANCE),
                         JsonParser.parseString("{\"id\": \"" + old + "\", \"count\": 1}")).getOrThrow();
                 helper.assertTrue(stack.is(item), "a stack saved as " + old + " reads back as " + stack);

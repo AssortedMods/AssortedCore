@@ -6,6 +6,7 @@
     }
   ],
   "type": "minecraft:blasting",
+  "category": "misc",
   "cookingtime": 100,
   "experience": 0.7,
   "fabric:load_conditions": [
@@ -14,8 +15,11 @@
       "part": "assortedores"
     }
   ],
-  "ingredient": "#c:raw_materials/aluminum",
+  "ingredient": {
+    "tag": "c:raw_materials/aluminum"
+  },
   "result": {
+    "count": 1,
     "id": "assortedores:aluminum_ingot"
   }
 }

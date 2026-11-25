@@ -2,23 +2,16 @@ package com.grim3212.assorted.machines.client.data;
 
 import com.grim3212.assorted.machines.Constants;
 import com.grim3212.assorted.machines.common.items.MachinesItems;
-import net.minecraft.client.data.models.BlockModelGenerators;
-import net.minecraft.client.data.models.ItemModelGenerators;
-import net.minecraft.client.data.models.ModelProvider;
-import net.minecraft.client.data.models.model.ModelTemplates;
-import net.minecraft.core.Holder;
 import net.minecraft.data.PackOutput;
-import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.Block;
-
-import java.util.stream.Stream;
+import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
 
 /** Item models for everything but block items, which {@link MachinesBlockstateProvider} models. */
-public class MachinesItemModelProvider extends ModelProvider {
+public class MachinesItemModelProvider extends ItemModelProvider {
 
-    public MachinesItemModelProvider(PackOutput output) {
-        super(output, Constants.MOD_ID);
+    public MachinesItemModelProvider(PackOutput output, ExistingFileHelper existingFileHelper) {
+        super(output, Constants.MOD_ID, existingFileHelper);
     }
 
     @Override
@@ -27,46 +20,35 @@ public class MachinesItemModelProvider extends ModelProvider {
     }
 
     @Override
-    protected Stream<? extends Holder<Block>> getKnownBlocks() {
-        return Stream.empty();
+    protected void registerModels() {
+        generatedItem(MachinesItems.BRONZE_INGOT.get());
+        generatedItem(MachinesItems.ELECTRUM_INGOT.get());
+        generatedItem(MachinesItems.INVAR_INGOT.get());
+        generatedItem(MachinesItems.STEEL_INGOT.get());
+
+        generatedItem(MachinesItems.BRONZE_NUGGET.get());
+        generatedItem(MachinesItems.ELECTRUM_NUGGET.get());
+        generatedItem(MachinesItems.INVAR_NUGGET.get());
+        generatedItem(MachinesItems.STEEL_NUGGET.get());
+
+        generatedItem(MachinesItems.COPPER_DUST.get());
+        generatedItem(MachinesItems.BRONZE_DUST.get());
+        generatedItem(MachinesItems.ELECTRUM_DUST.get());
+        generatedItem(MachinesItems.INVAR_DUST.get());
+        generatedItem(MachinesItems.STEEL_DUST.get());
+        generatedItem(MachinesItems.IRON_DUST.get());
+        generatedItem(MachinesItems.GOLD_DUST.get());
+
+        generatedItem(MachinesItems.COPPER_GEAR.get());
+        generatedItem(MachinesItems.BRONZE_GEAR.get());
+        generatedItem(MachinesItems.ELECTRUM_GEAR.get());
+        generatedItem(MachinesItems.INVAR_GEAR.get());
+        generatedItem(MachinesItems.STEEL_GEAR.get());
+        generatedItem(MachinesItems.IRON_GEAR.get());
+        generatedItem(MachinesItems.GOLD_GEAR.get());
     }
 
-    @Override
-    protected Stream<? extends Holder<Item>> getKnownItems() {
-        return super.getKnownItems().filter(holder -> !(holder.value() instanceof BlockItem));
-    }
-
-    @Override
-    protected void registerModels(BlockModelGenerators blockModels, ItemModelGenerators itemModels) {
-        generatedItem(itemModels, MachinesItems.BRONZE_INGOT.get());
-        generatedItem(itemModels, MachinesItems.ELECTRUM_INGOT.get());
-        generatedItem(itemModels, MachinesItems.INVAR_INGOT.get());
-        generatedItem(itemModels, MachinesItems.STEEL_INGOT.get());
-
-        generatedItem(itemModels, MachinesItems.BRONZE_NUGGET.get());
-        generatedItem(itemModels, MachinesItems.ELECTRUM_NUGGET.get());
-        generatedItem(itemModels, MachinesItems.INVAR_NUGGET.get());
-        generatedItem(itemModels, MachinesItems.STEEL_NUGGET.get());
-
-        generatedItem(itemModels, MachinesItems.COPPER_DUST.get());
-        generatedItem(itemModels, MachinesItems.BRONZE_DUST.get());
-        generatedItem(itemModels, MachinesItems.ELECTRUM_DUST.get());
-        generatedItem(itemModels, MachinesItems.INVAR_DUST.get());
-        generatedItem(itemModels, MachinesItems.STEEL_DUST.get());
-        generatedItem(itemModels, MachinesItems.IRON_DUST.get());
-        generatedItem(itemModels, MachinesItems.GOLD_DUST.get());
-
-        generatedItem(itemModels, MachinesItems.COPPER_GEAR.get());
-        generatedItem(itemModels, MachinesItems.BRONZE_GEAR.get());
-        generatedItem(itemModels, MachinesItems.ELECTRUM_GEAR.get());
-        generatedItem(itemModels, MachinesItems.INVAR_GEAR.get());
-        generatedItem(itemModels, MachinesItems.STEEL_GEAR.get());
-        generatedItem(itemModels, MachinesItems.IRON_GEAR.get());
-        generatedItem(itemModels, MachinesItems.GOLD_GEAR.get());
-
-    }
-
-    private void generatedItem(ItemModelGenerators itemModels, Item i) {
-        itemModels.generateFlatItem(i, ModelTemplates.FLAT_ITEM);
+    private void generatedItem(Item i) {
+        this.basicItem(i);
     }
 }

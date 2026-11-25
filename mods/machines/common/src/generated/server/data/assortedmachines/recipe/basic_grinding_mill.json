@@ -6,6 +6,7 @@
     }
   ],
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
   "fabric:load_conditions": [
     {
       "condition": "assortedlib:part_enabled",
@@ -13,11 +14,21 @@
     }
   ],
   "key": {
-    "F": "minecraft:furnace",
-    "G": "#c:gear/iron",
-    "I": "#c:ingots/iron",
-    "P": "minecraft:iron_pickaxe",
-    "X": "assortedmachines:machine_core"
+    "F": {
+      "item": "minecraft:furnace"
+    },
+    "G": {
+      "tag": "c:gear/iron"
+    },
+    "I": {
+      "tag": "c:ingots/iron"
+    },
+    "P": {
+      "item": "minecraft:iron_pickaxe"
+    },
+    "X": {
+      "item": "assortedmachines:machine_core"
+    }
   },
   "pattern": [
     "IPI",
@@ -25,6 +36,7 @@
     "IFI"
   ],
   "result": {
+    "count": 1,
     "id": "assortedmachines:basic_grinding_mill"
   }
 }

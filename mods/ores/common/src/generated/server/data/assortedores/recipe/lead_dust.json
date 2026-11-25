@@ -25,7 +25,9 @@
     }
   ],
   "ingredient": {
-    "ingredient": "#c:ores/lead"
+    "ingredient": {
+      "tag": "c:ores/lead"
+    }
   },
   "result": {
     "count": 2,

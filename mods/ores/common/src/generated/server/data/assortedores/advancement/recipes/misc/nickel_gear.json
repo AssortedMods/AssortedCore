@@ -23,7 +23,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipes": "assortedores:nickel_gear"
+        "recipe": "assortedores:nickel_gear"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

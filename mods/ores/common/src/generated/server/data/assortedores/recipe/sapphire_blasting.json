@@ -6,6 +6,7 @@
     }
   ],
   "type": "minecraft:blasting",
+  "category": "misc",
   "cookingtime": 100,
   "experience": 1.0,
   "fabric:load_conditions": [
@@ -14,8 +15,11 @@
       "part": "assortedores"
     }
   ],
-  "ingredient": "#c:ores/sapphire",
+  "ingredient": {
+    "tag": "c:ores/sapphire"
+  },
   "result": {
+    "count": 1,
     "id": "assortedores:sapphire"
   }
 }

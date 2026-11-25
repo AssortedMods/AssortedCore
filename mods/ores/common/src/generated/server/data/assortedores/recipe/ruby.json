@@ -25,7 +25,9 @@
     }
   ],
   "ingredient": {
-    "ingredient": "#c:ores/ruby"
+    "ingredient": {
+      "tag": "c:ores/ruby"
+    }
   },
   "result": {
     "count": 2,

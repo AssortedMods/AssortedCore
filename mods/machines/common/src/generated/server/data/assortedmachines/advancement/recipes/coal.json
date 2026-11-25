@@ -19,7 +19,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipes": "assortedmachines:coal"
+        "recipe": "assortedmachines:coal"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

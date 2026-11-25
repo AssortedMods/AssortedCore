@@ -10,6 +10,7 @@
     }
   ],
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
   "fabric:load_conditions": [
     {
       "condition": "fabric:tags_populated",
@@ -24,8 +25,12 @@
     }
   ],
   "key": {
-    "M": "#c:ingots/lead",
-    "S": "#c:rods/wooden"
+    "M": {
+      "tag": "c:ingots/lead"
+    },
+    "S": {
+      "tag": "c:rods/wooden"
+    }
   },
   "pattern": [
     " M ",
@@ -33,6 +38,7 @@
     " M "
   ],
   "result": {
+    "count": 1,
     "id": "assortedores:lead_gear"
   }
 }

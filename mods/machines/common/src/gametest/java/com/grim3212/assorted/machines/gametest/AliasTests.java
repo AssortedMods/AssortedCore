@@ -10,7 +10,7 @@ import com.grim3212.assorted.machines.common.crafting.MachinesRecipeTypes;
 import com.mojang.serialization.JsonOps;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.gametest.framework.GameTestHelper;
-import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeSerializer;
@@ -43,24 +43,24 @@ final class AliasTests {
         }
 
         for (IRegistryObject<Block> block : MachinesBlocks.BLOCKS.getEntries()) {
-            helper.assertValueEqual(BuiltInRegistries.BLOCK.getValue(old(block.getId())), block.get(), "the block saved as " + old(block.getId()));
+            helper.assertValueEqual(BuiltInRegistries.BLOCK.get(old(block.getId())), block.get(), "the block saved as " + old(block.getId()));
         }
 
         for (IRegistryObject<BlockEntityType<?>> type : MachinesBlockEntityTypes.BLOCK_ENTITIES.getEntries()) {
-            helper.assertValueEqual(BuiltInRegistries.BLOCK_ENTITY_TYPE.getValue(old(type.getId())), type.get(), "the block entity saved as " + old(type.getId()));
+            helper.assertValueEqual(BuiltInRegistries.BLOCK_ENTITY_TYPE.get(old(type.getId())), type.get(), "the block entity saved as " + old(type.getId()));
         }
 
         for (IRegistryObject<RecipeSerializer<?>> serializer : MachinesRecipeSerializers.RECIPE_SERIALIZERS.getEntries()) {
-            helper.assertValueEqual(BuiltInRegistries.RECIPE_SERIALIZER.getValue(old(serializer.getId())), serializer.get(), "the recipe serializer named " + old(serializer.getId()));
+            helper.assertValueEqual(BuiltInRegistries.RECIPE_SERIALIZER.get(old(serializer.getId())), serializer.get(), "the recipe serializer named " + old(serializer.getId()));
         }
 
         for (IRegistryObject<RecipeType<?>> type : MachinesRecipeTypes.RECIPE_TYPES.getEntries()) {
-            helper.assertValueEqual(BuiltInRegistries.RECIPE_TYPE.getValue(old(type.getId())), type.get(), "the recipe type named " + old(type.getId()));
+            helper.assertValueEqual(BuiltInRegistries.RECIPE_TYPE.get(old(type.getId())), type.get(), "the recipe type named " + old(type.getId()));
         }
         helper.succeed();
     }
 
-    private static Identifier old(Identifier id) {
-        return Identifier.fromNamespaceAndPath(Constants.FAMILY_ID, id.getPath());
+    private static ResourceLocation old(ResourceLocation id) {
+        return ResourceLocation.fromNamespaceAndPath(Constants.FAMILY_ID, id.getPath());
     }
 }

@@ -22,10 +22,6 @@ public class MachinesLanguageProvider extends LibLanguageProvider {
         this.add(Constants.MOD_ID + ".container.alloy_forge", "Alloy Forge");
         this.add(Constants.MOD_ID + ".container.grinding_mill", "Grinding Mill");
 
-        // The recipe book's "only what I can make" toggle, one name per machine.
-        this.add("gui." + Constants.MOD_ID + ".recipebook.toggleRecipes.alloyable", "Showing Alloyable");
-        this.add("gui." + Constants.MOD_ID + ".recipebook.toggleRecipes.grindable", "Showing Grindable");
-
         this.add("tag.item." + Constants.MOD_ID + ".grinding_mill_allowed_tools", "Grinding Mill Tools");
         this.add("tag.item.c.gear", "Gears");
 

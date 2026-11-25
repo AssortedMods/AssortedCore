@@ -4,7 +4,7 @@ import com.grim3212.assorted.machines.Constants;
 import com.grim3212.assorted.machines.common.items.MachinesItems;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.gametest.framework.GameTestHelper;
-import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -58,9 +58,9 @@ final class MetalTests {
         }
 
         for (String metal : ORE_METALS) {
-            helper.assertFalse(BuiltInRegistries.ITEM.containsKey(Identifier.fromNamespaceAndPath(Constants.MOD_ID, metal + "_dust")),
+            helper.assertFalse(BuiltInRegistries.ITEM.containsKey(ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, metal + "_dust")),
                     metal + " dust is Assorted Ores' now but is still registered here");
-            helper.assertFalse(BuiltInRegistries.ITEM.containsKey(Identifier.fromNamespaceAndPath(Constants.MOD_ID, metal + "_gear")),
+            helper.assertFalse(BuiltInRegistries.ITEM.containsKey(ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, metal + "_gear")),
                     metal + " gear is Assorted Ores' now but is still registered here");
         }
 

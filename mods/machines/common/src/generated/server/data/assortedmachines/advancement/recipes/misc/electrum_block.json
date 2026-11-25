@@ -19,7 +19,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipes": "assortedmachines:electrum_block"
+        "recipe": "assortedmachines:electrum_block"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

@@ -1,83 +1,62 @@
 package com.grim3212.assorted.machines;
 
-import com.grim3212.assorted.machines.client.data.MachinesLanguageProvider;
-import com.grim3212.assorted.machines.client.data.MachinesManualProvider;
-import com.grim3212.assorted.machines.client.data.MachinesBlockstateProvider;
-import com.grim3212.assorted.machines.client.data.MachinesItemModelProvider;
-import com.grim3212.assorted.machines.common.blocks.blockentity.BaseMachineBlockEntity;
-import com.grim3212.assorted.machines.common.blocks.blockentity.MachinesBlockEntityTypes;
-import com.grim3212.assorted.machines.common.crafting.MachineRecipeBackfill;
-import com.grim3212.assorted.machines.data.*;
 import com.grim3212.assorted.lib.data.ForgeBlockTagProvider;
 import com.grim3212.assorted.lib.data.ForgeItemTagProvider;
 import com.grim3212.assorted.lib.data.ForgeRegistryEntries;
 import com.grim3212.assorted.lib.inventory.ForgePlatformInventoryStorageHandlerSided;
 import com.grim3212.assorted.lib.registry.IRegistryObject;
+import com.grim3212.assorted.machines.client.data.MachinesBlockstateProvider;
+import com.grim3212.assorted.machines.client.data.MachinesItemModelProvider;
+import com.grim3212.assorted.machines.client.data.MachinesLanguageProvider;
+import com.grim3212.assorted.machines.client.data.MachinesManualProvider;
+import com.grim3212.assorted.machines.common.blocks.blockentity.BaseMachineBlockEntity;
+import com.grim3212.assorted.machines.common.blocks.blockentity.MachinesBlockEntityTypes;
+import com.grim3212.assorted.machines.data.MachinesBlockLoot;
+import com.grim3212.assorted.machines.data.MachinesBlockTagProvider;
+import com.grim3212.assorted.machines.data.MachinesItemTagProvider;
+import com.grim3212.assorted.machines.data.MachinesRecipes;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraft.server.level.ServerPlayer;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
-import net.neoforged.neoforge.common.NeoForge;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
-import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 
 import java.util.concurrent.CompletableFuture;
 
 @Mod(Constants.MOD_ID)
 public class AssortedMachinesForge {
 
-    /**
-     * {@code FMLJavaModLoadingContext} is gone; the mod event bus and the mod container are injected
-     * into the {@code @Mod} constructor instead.
-     */
     public AssortedMachinesForge(IEventBus modBus, ModContainer modContainer) {
-        modBus.addListener(this::gatherServerData);
-        modBus.addListener(this::gatherClientData);
+        modBus.addListener(this::gatherData);
         modBus.addListener(this::registerCapabilities);
-        NeoForge.EVENT_BUS.addListener(this::onPlayerLoggedIn);
 
         MachinesCommonMod.init();
     }
 
-    /** TODO(11.0.0): remove along with {@link MachineRecipeBackfill}. */
-    private void onPlayerLoggedIn(final PlayerEvent.PlayerLoggedInEvent event) {
-        if (event.getEntity() instanceof ServerPlayer player) {
-            MachineRecipeBackfill.award(player);
-        }
-    }
-
-    /**
-     * {@code ExistingFileHelper} was removed from datagen, the event owns the provider list now
-     * ({@code addProvider}), and the include flags are gone because the server and client halves are
-     * separate events.
-     */
-    private void gatherServerData(final GatherDataEvent.Server event) {
-        PackOutput packOutput = event.getGenerator().getPackOutput();
-        CompletableFuture<HolderLookup.Provider> lookupProvider = event.getWorldLookupProvider();
+    /** One event for both halves; each provider is added for the half its output belongs to. */
+    private void gatherData(final GatherDataEvent event) {
+        DataGenerator generator = event.getGenerator();
+        PackOutput packOutput = generator.getPackOutput();
+        CompletableFuture<HolderLookup.Provider> lookupProvider = event.getLookupProvider();
+        ExistingFileHelper fileHelper = event.getExistingFileHelper();
 
         ForgeRegistryEntries.of(Constants.MOD_ID).recipes(MachinesRecipes::new).blockLoot(MachinesBlockLoot::new).addTo(event);
-        ForgeBlockTagProvider blockTagProvider = event.addProvider(new ForgeBlockTagProvider(packOutput, lookupProvider, Constants.MOD_ID, new MachinesBlockTagProvider(packOutput, lookupProvider)));
-        event.addProvider(new ForgeItemTagProvider(packOutput, lookupProvider, blockTagProvider.contentsGetter(), Constants.MOD_ID, new MachinesItemTagProvider(packOutput, lookupProvider, blockTagProvider.contentsGetter())));
+        ForgeBlockTagProvider blockTagProvider = generator.addProvider(event.includeServer(), new ForgeBlockTagProvider(packOutput, lookupProvider, Constants.MOD_ID, fileHelper, new MachinesBlockTagProvider(packOutput, lookupProvider)));
+        generator.addProvider(event.includeServer(), new ForgeItemTagProvider(packOutput, lookupProvider, blockTagProvider.contentsGetter(), Constants.MOD_ID, fileHelper, new MachinesItemTagProvider(packOutput, lookupProvider, blockTagProvider.contentsGetter())));
+
+        generator.addProvider(event.includeClient(), new MachinesBlockstateProvider(packOutput, fileHelper));
+        generator.addProvider(event.includeClient(), new MachinesItemModelProvider(packOutput, fileHelper));
+        generator.addProvider(event.includeClient(), new MachinesLanguageProvider(packOutput));
+        generator.addProvider(event.includeClient(), new MachinesManualProvider(packOutput));
     }
 
-    private void gatherClientData(final GatherDataEvent.Client event) {
-        PackOutput packOutput = event.getGenerator().getPackOutput();
-
-        event.addProvider(new MachinesBlockstateProvider(packOutput));
-        event.addProvider(new MachinesItemModelProvider(packOutput));
-        event.addProvider(new MachinesLanguageProvider(packOutput));
-        event.addProvider(new MachinesManualProvider(packOutput));
-    }
-
-    /**
-     * Exposes the machines' sided inventory to NeoForge, as Fabric does with {@code
-     * ItemStorage.SIDED}.
-     */
+    /** Exposes the machines' sided inventory to NeoForge, as Fabric does with {@code ItemStorage.SIDED}. */
     private void registerCapabilities(final RegisterCapabilitiesEvent event) {
         registerMachineItemHandler(event, MachinesBlockEntityTypes.BASIC_ALLOY_FORGE);
         registerMachineItemHandler(event, MachinesBlockEntityTypes.INTERMEDIATE_ALLOY_FORGE);
@@ -90,13 +69,9 @@ public class AssortedMachinesForge {
         registerMachineItemHandler(event, MachinesBlockEntityTypes.EXPERT_GRINDING_MILL);
     }
 
-    /**
-     * {@code ForgeCapabilities.ITEM_HANDLER} and the deprecated {@code IItemHandler} it was typed
-     * with are replaced by {@code Capabilities.Item.BLOCK}, a transactional
-     * {@code ResourceHandler<ItemResource>}; the library's sided handler already exposes one.
-     */
+    /** NeoForge 21.1's item capability is {@code IItemHandler}; the library's sided handler already exposes one. */
     private static <BE extends BaseMachineBlockEntity> void registerMachineItemHandler(RegisterCapabilitiesEvent event, IRegistryObject<BlockEntityType<BE>> type) {
-        event.registerBlockEntity(Capabilities.Item.BLOCK, type.get(), (blockEntity, side) -> {
+        event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, type.get(), (blockEntity, side) -> {
             if (blockEntity.isRemoved()) {
                 return null;
             }

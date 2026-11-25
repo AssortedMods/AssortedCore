@@ -42,7 +42,7 @@ public class MachineResultSlot extends SlotStorageHandler {
 
     @Override
     protected void checkTakeAchievements(ItemStack stack) {
-        stack.onCraftedBy(this.player, this.removeCount);
+        stack.onCraftedBy(this.player.level(), this.player, this.removeCount);
         // The slot's container is a wrapper around the handler, never the machine itself.
         if (!this.player.level().isClientSide() && this.getItemHandler() instanceof BaseMachineInventory inventory) {
             inventory.machine().unlockRecipes(this.player);

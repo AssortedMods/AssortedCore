@@ -19,7 +19,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipes": "assortedores:dusts/silver_smelting"
+        "recipe": "assortedores:dusts/silver_smelting"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

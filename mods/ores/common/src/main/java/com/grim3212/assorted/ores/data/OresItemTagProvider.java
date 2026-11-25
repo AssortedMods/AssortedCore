@@ -3,7 +3,6 @@ package com.grim3212.assorted.ores.data;
 import com.grim3212.assorted.ores.api.OresTags;
 import com.grim3212.assorted.ores.common.items.OresItems;
 import com.grim3212.assorted.lib.data.LibItemTagProvider;
-import net.minecraft.data.tags.TagAppender;
 import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
@@ -105,12 +104,14 @@ public class OresItemTagProvider extends LibItemTagProvider {
         tagger.apply(OresTags.Items.INGOTS_LEAD).add(OresItems.LEAD_INGOT.get());
 
         tagger.apply(OresTags.Items.NUGGETS).add(OresItems.TIN_NUGGET.get());
+        tagger.apply(OresTags.Items.NUGGETS).add(OresItems.COPPER_NUGGET.get());
         tagger.apply(OresTags.Items.NUGGETS).add(OresItems.SILVER_NUGGET.get());
         tagger.apply(OresTags.Items.NUGGETS).add(OresItems.ALUMINUM_NUGGET.get());
         tagger.apply(OresTags.Items.NUGGETS).add(OresItems.NICKEL_NUGGET.get());
         tagger.apply(OresTags.Items.NUGGETS).add(OresItems.PLATINUM_NUGGET.get());
         tagger.apply(OresTags.Items.NUGGETS).add(OresItems.LEAD_NUGGET.get());
         tagger.apply(OresTags.Items.NUGGETS_TIN).add(OresItems.TIN_NUGGET.get());
+        tagger.apply(OresTags.Items.NUGGETS_COPPER).add(OresItems.COPPER_NUGGET.get());
         tagger.apply(OresTags.Items.NUGGETS_SILVER).add(OresItems.SILVER_NUGGET.get());
         tagger.apply(OresTags.Items.NUGGETS_ALUMINUM).add(OresItems.ALUMINUM_NUGGET.get());
         tagger.apply(OresTags.Items.NUGGETS_NICKEL).add(OresItems.NICKEL_NUGGET.get());

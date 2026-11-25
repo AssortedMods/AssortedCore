@@ -24,7 +24,9 @@
     }
   ],
   "ingredient": {
-    "ingredient": "#c:raw_materials/nickel"
+    "ingredient": {
+      "tag": "c:raw_materials/nickel"
+    }
   },
   "result": {
     "count": 2,

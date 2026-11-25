@@ -1,32 +1,9 @@
 # Changelog
 
-## 12.0.0
+## 21.1.0.0
 
-Updated to Minecraft 26.3, for NeoForge and Fabric.
+First release for Minecraft 1.21.1, for NeoForge and Fabric. Releases for 1.21.1 are numbered 21.1.x.y, where 21.1 is the Minecraft version.
 
-- Requires Assorted Lib 5.0.0
-- Taking what a machine made out of it now gives you the experience it earned. Before you only got it by breaking the machine
-- The manual's machine core page shows the copper recipe, so it no longer says the recipe is missing without Assorted Ores
-
-## 11.0.0
-
-- Split into two mods that can also be installed on their own. Assorted Machines and Assorted Ores
-- Assorted Core still includes both of them
-- Each part can be turned off in config/assortedcore-parts.toml
-- Worlds from 10.x keep all your blocks, items and recipes
-- The other Assorted mods now look for Assorted Machines or Assorted Ores rather than Assorted Core
-- Each mod has its own config file now, so settings from assortedcore-common.toml need setting again
-- Requires Assorted Lib 4.3.0
-
-## 10.1.0
-
-- The alloy forge and the grinding mill now support the Minecraft recipe book
-- The basic alloy forge's front texture had a transparent row across it, which showed as a gap.
-- Added instruction manual support
-- Requires Assorted Lib 4.1.0.
-
-## 10.0.0
-
-Updated to Minecraft 26.2, for NeoForge and Fabric.
-
-- Requires Assorted Lib 4.0.0.
+- Matches Assorted Core 12.0.0 for Minecraft 26.3
+- Includes Assorted Machines and Assorted Ores, each at 21.1.0.0
+- Requires Assorted Lib 21.1.0.0

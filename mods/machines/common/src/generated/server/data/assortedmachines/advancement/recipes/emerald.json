@@ -19,7 +19,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipes": "assortedmachines:emerald"
+        "recipe": "assortedmachines:emerald"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

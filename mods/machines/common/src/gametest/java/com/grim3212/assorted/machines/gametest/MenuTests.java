@@ -23,6 +23,7 @@ import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 
 import static com.grim3212.assorted.machines.gametest.MachinesTestSupport.MACHINE;
+import static com.grim3212.assorted.machines.gametest.MachinesTestSupport.blockEntity;
 
 /**
  * Machine menus built on the client, and how they sort a shift click.
@@ -76,7 +77,7 @@ final class MenuTests {
         Player player = helper.makeMockPlayer(GameType.SURVIVAL);
 
         helper.setBlock(MACHINE, MachinesBlocks.BASIC_GRINDING_MILL.get());
-        AbstractContainerMenu mill = helper.getBlockEntity(MACHINE, GrindingMillBlockEntity.class).createMenu(1, player.getInventory(), player);
+        AbstractContainerMenu mill = blockEntity(helper, MACHINE, GrindingMillBlockEntity.class).createMenu(1, player.getInventory(), player);
         assertShiftClick(helper, player, mill, new ItemStack(Items.COPPER_INGOT), 0, "a copper ingot into the grinding mill");
         assertShiftClick(helper, player, mill, new ItemStack(Items.IRON_PICKAXE), 1, "an iron pickaxe into the grinding mill");
         // A fuel no mill recipe takes, as the mill sorts recipe inputs before fuel.
@@ -84,7 +85,7 @@ final class MenuTests {
 
         BlockPos forgePos = MACHINE.east(2);
         helper.setBlock(forgePos, MachinesBlocks.BASIC_ALLOY_FORGE.get());
-        AlloyForgeBlockEntity forgeEntity = helper.getBlockEntity(forgePos, AlloyForgeBlockEntity.class);
+        AlloyForgeBlockEntity forgeEntity = blockEntity(helper, forgePos, AlloyForgeBlockEntity.class);
         AbstractContainerMenu forge = forgeEntity.createMenu(2, player.getInventory(), player);
         assertShiftClick(helper, player, forge, new ItemStack(MachinesItems.IRON_DUST.get()), 0, "iron dust into the alloy forge");
         assertShiftClick(helper, player, forge, new ItemStack(Items.COAL), 2, "coal into the alloy forge");

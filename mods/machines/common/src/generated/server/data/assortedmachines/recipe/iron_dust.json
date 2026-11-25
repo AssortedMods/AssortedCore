@@ -15,7 +15,9 @@
     }
   ],
   "ingredient": {
-    "ingredient": "#c:ores/iron"
+    "ingredient": {
+      "tag": "c:ores/iron"
+    }
   },
   "result": {
     "count": 2,

@@ -24,7 +24,9 @@
     }
   ],
   "ingredient": {
-    "ingredient": "#c:ingots/tin"
+    "ingredient": {
+      "tag": "c:ingots/tin"
+    }
   },
   "result": {
     "id": "assortedores:tin_dust"

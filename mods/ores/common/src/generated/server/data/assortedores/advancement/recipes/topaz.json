@@ -23,7 +23,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipes": "assortedores:topaz"
+        "recipe": "assortedores:topaz"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

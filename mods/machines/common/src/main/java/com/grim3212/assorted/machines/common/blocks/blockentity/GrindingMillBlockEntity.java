@@ -94,8 +94,7 @@ public class GrindingMillBlockEntity extends BaseMachineBlockEntity {
 
             ingredient.shrink(millRecipe.getIngredient().getCount());
 
-            // ItemStack#hurt is gone; damage now runs through hurtAndBreak, which needs a
-            // ServerLevel and clears the stack itself when it breaks.
+            // hurtAndBreak needs a ServerLevel, and clears the stack itself when it breaks.
             if (this.getLevel() instanceof ServerLevel serverLevel) {
                 toolSlot.hurtAndBreak(1, serverLevel, (ServerPlayer) null, (item) -> {
                 });

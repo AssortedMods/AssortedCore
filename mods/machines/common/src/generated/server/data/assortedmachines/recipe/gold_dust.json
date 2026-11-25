@@ -15,7 +15,9 @@
     }
   ],
   "ingredient": {
-    "ingredient": "#c:ores/gold"
+    "ingredient": {
+      "tag": "c:ores/gold"
+    }
   },
   "result": {
     "count": 2,

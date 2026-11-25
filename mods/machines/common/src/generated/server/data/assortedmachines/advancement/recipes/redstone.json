@@ -19,7 +19,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipes": "assortedmachines:redstone"
+        "recipe": "assortedmachines:redstone"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

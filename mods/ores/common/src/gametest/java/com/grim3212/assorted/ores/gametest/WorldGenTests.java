@@ -8,7 +8,7 @@ import net.minecraft.core.HolderSet;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.gametest.framework.GameTestHelper;
-import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.BiomeTags;
@@ -17,7 +17,7 @@ import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.GenerationStep;
-import net.minecraft.world.level.levelgen.feature.Feature;
+import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 
 import java.util.ArrayList;
@@ -28,7 +28,7 @@ import java.util.function.Consumer;
 /** That the ores are found in a new world: added to every overworld biome on each loader, and able to place in stone and deepslate. */
 final class WorldGenTests {
 
-    private static final List<Identifier> ORES = List.of(OresWorldGenData.ORE_ALUMINUM_KEY, OresWorldGenData.ORE_NICKEL_KEY,
+    private static final List<ResourceLocation> ORES = List.of(OresWorldGenData.ORE_ALUMINUM_KEY, OresWorldGenData.ORE_NICKEL_KEY,
             OresWorldGenData.ORE_TIN_KEY, OresWorldGenData.ORE_LEAD_KEY, OresWorldGenData.ORE_SILVER_KEY, OresWorldGenData.ORE_PLATINUM_KEY,
             OresWorldGenData.ORE_RUBY_KEY, OresWorldGenData.ORE_SAPPHIRE_KEY, OresWorldGenData.ORE_TOPAZ_KEY, OresWorldGenData.ORE_PERIDOT_KEY);
 
@@ -47,7 +47,7 @@ final class WorldGenTests {
 
         for (Holder<Biome> biome : helper.getLevel().registryAccess().lookupOrThrow(Registries.BIOME).getOrThrow(BiomeTags.IS_OVERWORLD)) {
             List<HolderSet<PlacedFeature>> steps = biome.value().getGenerationSettings().features();
-            for (Identifier ore : ORES) {
+            for (ResourceLocation ore : ORES) {
                 ResourceKey<PlacedFeature> key = ResourceKey.create(Registries.PLACED_FEATURE, ore);
                 boolean added = steps.size() > step && steps.get(step).stream().anyMatch(feature -> feature.is(key));
                 if (!added) {
@@ -65,9 +65,9 @@ final class WorldGenTests {
         ServerLevel level = helper.getLevel();
         List<String> problems = new ArrayList<>();
 
-        for (Identifier ore : ORES) {
+        for (ResourceLocation ore : ORES) {
             String metal = ore.getPath().substring("ore_".length());
-            Feature feature = level.registryAccess().lookupOrThrow(Registries.FEATURE).getValueOrThrow(ResourceKey.create(Registries.FEATURE, ore));
+            ConfiguredFeature<?, ?> feature = level.registryAccess().registryOrThrow(Registries.CONFIGURED_FEATURE).getOrThrow(ResourceKey.create(Registries.CONFIGURED_FEATURE, ore));
             check(helper, feature, Blocks.STONE, block(metal + "_ore"), problems);
             check(helper, feature, Blocks.DEEPSLATE, block("deepslate_" + metal + "_ore"), problems);
         }
@@ -77,7 +77,7 @@ final class WorldGenTests {
     }
 
     /** A solid block of host rock so no ore is dropped for touching air; a few seeds, as one vein can roll small. */
-    private static void check(GameTestHelper helper, Feature feature, Block host, Block expected, List<String> problems) {
+    private static void check(GameTestHelper helper, ConfiguredFeature<?, ?> feature, Block host, Block expected, List<String> problems) {
         ServerLevel level = helper.getLevel();
         BlockPos from = helper.absolutePos(new BlockPos(1, 1, 1));
         BlockPos to = helper.absolutePos(new BlockPos(7, 6, 7));
@@ -93,6 +93,6 @@ final class WorldGenTests {
     }
 
     private static Block block(String name) {
-        return BuiltInRegistries.BLOCK.getValue(Identifier.fromNamespaceAndPath(Constants.MOD_ID, name));
+        return BuiltInRegistries.BLOCK.get(ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, name));
     }
 }

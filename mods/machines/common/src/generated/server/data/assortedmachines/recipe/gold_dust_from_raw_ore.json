@@ -14,7 +14,9 @@
     }
   ],
   "ingredient": {
-    "ingredient": "#c:raw_materials/gold"
+    "ingredient": {
+      "tag": "c:raw_materials/gold"
+    }
   },
   "result": {
     "count": 2,

@@ -9,8 +9,9 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.gametest.framework.GameTestAssertException;
 import net.minecraft.gametest.framework.GameTestHelper;
-import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.Item;
@@ -90,11 +91,11 @@ final class OresTestSupport {
      * is what Silk Touch and Fortune read.
      */
     static List<ItemStack> rollDrops(GameTestHelper helper, Block block, ItemStack tool, long seed) {
-        ResourceKey<LootTable> key = block.getLootTable().orElse(null);
+        ResourceKey<LootTable> key = block.getLootTable();
         helper.assertTrue(key != null, BuiltInRegistries.BLOCK.getKey(block) + " has no loot table");
 
         LootTable table = helper.getLevel().getServer().reloadableRegistries().getLootTable(key);
-        helper.assertFalse(table == LootTable.EMPTY, "loot table " + key.identifier() + " does not exist");
+        helper.assertFalse(table == LootTable.EMPTY, "loot table " + key.location() + " does not exist");
 
         LootParams params = new LootParams.Builder(helper.getLevel())
                 .withParameter(LootContextParams.BLOCK_STATE, block.defaultBlockState())
@@ -114,15 +115,15 @@ final class OresTestSupport {
 
     static <T extends AbstractCookingRecipe> void assertCooks(GameTestHelper helper, RecipeType<T> type, Item input, Item expected, String what) {
         SingleRecipeInput recipeInput = new SingleRecipeInput(new ItemStack(input));
-        var found = helper.getLevel().recipeAccess().getRecipeFor(type, recipeInput, helper.getLevel());
+        var found = helper.getLevel().getRecipeManager().getRecipeFor(type, recipeInput, helper.getLevel());
         helper.assertTrue(found.isPresent(), "no " + what + " recipe for " + BuiltInRegistries.ITEM.getKey(input));
 
-        ItemStack result = found.get().value().assemble(recipeInput);
+        ItemStack result = found.get().value().assemble(recipeInput, helper.getLevel().registryAccess());
         helper.assertTrue(result.is(expected), what + " " + BuiltInRegistries.ITEM.getKey(input) + " gave " + result + " instead of " + expected);
     }
 
     static Item item(GameTestHelper helper, String name) {
-        Item found = BuiltInRegistries.ITEM.getOptional(Identifier.fromNamespaceAndPath(Constants.MOD_ID, name)).orElse(null);
+        Item found = BuiltInRegistries.ITEM.getOptional(ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, name)).orElse(null);
         helper.assertTrue(found != null, "nothing registered as " + Constants.MOD_ID + ":" + name);
         return found;
     }
@@ -146,7 +147,7 @@ final class OresTestSupport {
             helper.assertTrue(in != null, path + " is not on the classpath");
             return JsonParser.parseReader(new InputStreamReader(in, StandardCharsets.UTF_8)).getAsJsonObject();
         } catch (IOException e) {
-            throw helper.assertionException("could not read " + path + ": " + e);
+            throw new GameTestAssertException("could not read " + path + ": " + e);
         }
     }
 }

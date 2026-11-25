@@ -24,7 +24,9 @@
     }
   ],
   "ingredient": {
-    "ingredient": "#c:ingots/platinum"
+    "ingredient": {
+      "tag": "c:ingots/platinum"
+    }
   },
   "result": {
     "id": "assortedores:platinum_dust"

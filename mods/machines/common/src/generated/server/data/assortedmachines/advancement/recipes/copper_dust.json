@@ -19,7 +19,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipes": "assortedmachines:copper_dust"
+        "recipe": "assortedmachines:copper_dust"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

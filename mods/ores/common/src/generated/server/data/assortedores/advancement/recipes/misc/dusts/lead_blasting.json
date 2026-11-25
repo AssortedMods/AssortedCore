@@ -19,7 +19,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipes": "assortedores:dusts/lead_blasting"
+        "recipe": "assortedores:dusts/lead_blasting"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

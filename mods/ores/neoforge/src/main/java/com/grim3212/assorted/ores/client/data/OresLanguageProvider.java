@@ -26,7 +26,7 @@ public class OresLanguageProvider extends LibLanguageProvider {
         this.tagFamily("gear", "%s Gears", "aluminum", "lead", "nickel", "platinum", "silver", "tin");
         this.tagFamily("gems", "%s Gems", "peridot", "ruby", "sapphire", "topaz");
         this.tagFamily("ingots", "%s Ingots", "aluminum", "lead", "nickel", "platinum", "silver", "tin");
-        this.tagFamily("nuggets", "%s Nuggets", "aluminum", "lead", "nickel", "platinum", "silver", "tin");
+        this.tagFamily("nuggets", "%s Nuggets", "aluminum", "copper", "lead", "nickel", "platinum", "silver", "tin");
         this.tagFamily("ores", "%s Ores", "aluminum", "lead", "nickel", "peridot", "platinum", "ruby", "sapphire", "silver", "tin", "topaz");
         this.tagFamily("raw_materials", "Raw %s Materials", "aluminum", "lead", "nickel", "platinum", "silver", "tin");
         this.tagFamily("storage_blocks", "%s Storage Blocks", "aluminum", "lead", "nickel", "peridot", "platinum", "raw_aluminum", "raw_lead", "raw_nickel", "raw_platinum", "raw_silver", "raw_tin", "ruby", "sapphire", "silver", "tin", "topaz");

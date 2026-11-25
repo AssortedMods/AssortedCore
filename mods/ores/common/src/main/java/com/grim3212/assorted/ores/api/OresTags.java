@@ -2,7 +2,7 @@ package com.grim3212.assorted.ores.api;
 
 import com.grim3212.assorted.lib.util.LibCommonTags;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
@@ -46,7 +46,7 @@ public class OresTags {
         public static final TagKey<Block> RAW_STORAGE_BLOCKS_LEAD = commonTag("storage_blocks/raw_lead");
 
         private static TagKey<Block> commonTag(String name) {
-            return TagKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(LibCommonTags.COMMON_NAMESPACE, name));
+            return TagKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(LibCommonTags.COMMON_NAMESPACE, name));
         }
     }
 
@@ -97,6 +97,7 @@ public class OresTags {
 
         public static final TagKey<Item> NUGGETS = commonTag("nuggets");
         public static final TagKey<Item> NUGGETS_TIN = commonTag("nuggets/tin");
+        public static final TagKey<Item> NUGGETS_COPPER = commonTag("nuggets/copper");
         public static final TagKey<Item> NUGGETS_SILVER = commonTag("nuggets/silver");
         public static final TagKey<Item> NUGGETS_ALUMINUM = commonTag("nuggets/aluminum");
         public static final TagKey<Item> NUGGETS_NICKEL = commonTag("nuggets/nickel");
@@ -138,7 +139,7 @@ public class OresTags {
         public static final TagKey<Item> RAW_MATERIALS_COPPER = commonTag("raw_materials/copper");
 
         private static TagKey<Item> commonTag(String name) {
-            return TagKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(LibCommonTags.COMMON_NAMESPACE, name));
+            return TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(LibCommonTags.COMMON_NAMESPACE, name));
         }
     }
 }

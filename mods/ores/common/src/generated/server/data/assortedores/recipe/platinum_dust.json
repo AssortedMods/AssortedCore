@@ -25,7 +25,9 @@
     }
   ],
   "ingredient": {
-    "ingredient": "#c:ores/platinum"
+    "ingredient": {
+      "tag": "c:ores/platinum"
+    }
   },
   "result": {
     "count": 2,

@@ -1,29 +1,32 @@
 package com.grim3212.assorted.machines.common.inventory;
 
+import com.grim3212.assorted.lib.core.inventory.IItemStorageHandler;
 import com.grim3212.assorted.machines.api.crafting.BaseMachineRecipe;
 import com.grim3212.assorted.machines.api.machines.MachineUtil;
-import com.grim3212.assorted.lib.core.inventory.IItemStorageHandler;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.player.StackedItemContents;
+import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.inventory.MenuType;
-import net.minecraft.world.inventory.RecipeBookMenu;
-import net.minecraft.world.inventory.RecipeBookType;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class BaseMachineContainer extends RecipeBookMenu {
+/**
+ * What the two machine menus share. Without a recipe book in 1.21.1, JEI's transfer button is what
+ * fills a machine from a recipe, so the slot ranges it is given are kept here beside the slots.
+ */
+public abstract class BaseMachineContainer extends AbstractContainerMenu {
 
-    /** Slot 3 in both machines. */
-    private static final int RESULT_SLOT = 3;
+    /** The slots JEI's transfer button fills, from slot 0 in the order its categories lay them out. */
+    public static final int TRANSFER_SLOTS = 2;
+    /** The player's main inventory and hotbar follow the four machine slots. */
+    public static final int INVENTORY_START = 4;
+    public static final int INVENTORY_SIZE = 36;
 
     protected final ContainerData machineData;
     protected final Level world;
@@ -53,40 +56,9 @@ public abstract class BaseMachineContainer extends RecipeBookMenu {
         this.inputSlots = List.copyOf(slots);
     }
 
-    public List<Slot> recipeBookInputSlots() {
+    /** The slots a recipe's ingredients go in, in the recipe's order. */
+    public List<Slot> inputSlots() {
         return this.inputSlots;
-    }
-
-    public Slot recipeBookResultSlot() {
-        return this.getSlot(RESULT_SLOT);
-    }
-
-    /**
-     * Borrowed: {@code RecipeBookSettings} switches over {@link RecipeBookType} and throws on an
-     * added value, which only NeoForge patches. Picks only the remembered open/filter pair.
-     */
-    @Override
-    public RecipeBookType getRecipeBookType() {
-        return RecipeBookType.BLAST_FURNACE;
-    }
-
-    @Override
-    public void fillCraftSlotsStackedContents(StackedItemContents contents) {
-        for (Slot slot : this.inputSlots) {
-            contents.accountStack(slot.getItem());
-        }
-    }
-
-    @Override
-    public RecipeBookMenu.PostPlaceAction handlePlacement(boolean useMaxItems, boolean allowDroppingItemsToClear, RecipeHolder<?> recipe, ServerLevel level, Inventory inventory) {
-        if (!(recipe.value() instanceof BaseMachineRecipe machineRecipe)) {
-            return RecipeBookMenu.PostPlaceAction.NOTHING;
-        }
-
-        List<Slot> slotsToClear = new ArrayList<>(this.inputSlots);
-        slotsToClear.add(this.recipeBookResultSlot());
-
-        return MachineRecipePlacer.place(this.inputSlots, slotsToClear, machineRecipe.machineIngredients(), inventory, useMaxItems, allowDroppingItemsToClear);
     }
 
     @Override
@@ -98,7 +70,7 @@ public abstract class BaseMachineContainer extends RecipeBookMenu {
     }
 
     protected boolean hasRecipe(ItemStack stack) {
-        return MachineUtil.recipesOfType(this.world, (RecipeType<BaseMachineRecipe>) this.recipeType).anyMatch((recipe) -> {
+        return MachineUtil.recipesOfType(this.world, this.recipeType).anyMatch((recipe) -> {
             return recipe.validInput(stack);
         });
     }

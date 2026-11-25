@@ -6,6 +6,7 @@
     }
   ],
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
   "fabric:load_conditions": [
     {
       "condition": "assortedlib:part_enabled",
@@ -13,8 +14,12 @@
     }
   ],
   "key": {
-    "M": "#c:ingots/electrum",
-    "S": "#c:rods/wooden"
+    "M": {
+      "tag": "c:ingots/electrum"
+    },
+    "S": {
+      "tag": "c:rods/wooden"
+    }
   },
   "pattern": [
     " M ",
@@ -22,6 +27,7 @@
     " M "
   ],
   "result": {
+    "count": 1,
     "id": "assortedmachines:electrum_gear"
   }
 }

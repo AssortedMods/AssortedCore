@@ -19,7 +19,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipes": "assortedores:platinum_block_blasting_raw_storage"
+        "recipe": "assortedores:platinum_block_blasting_raw_storage"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

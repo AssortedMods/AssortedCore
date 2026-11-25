@@ -3,7 +3,6 @@ package com.grim3212.assorted.machines.data;
 import com.grim3212.assorted.machines.api.MachinesTags;
 import com.grim3212.assorted.machines.common.blocks.MachinesBlocks;
 import com.grim3212.assorted.lib.data.LibBlockTagProvider;
-import net.minecraft.data.tags.TagAppender;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
@@ -22,8 +21,7 @@ public class MachinesBlockTagProvider extends LibBlockTagProvider {
 
     @Override
     public void addCommonTags(Function<TagKey<Block>, TagAppender<Block>> appender) {
-        // The intrinsic tag appender is gone; TagAppender only accepts ResourceKeys. Wrap it back
-        // into something that takes blocks so the tag lists below stay readable.
+        // The appender takes ResourceKeys; this takes blocks, so the tag lists below stay readable.
         Function<TagKey<Block>, BlockTagger> tagger = (tag) -> new BlockTagger(appender.apply(tag));
 
         tagger.apply(BlockTags.MINEABLE_WITH_PICKAXE).add(MachinesBlocks.BRONZE_BLOCK.get(), MachinesBlocks.ELECTRUM_BLOCK.get(), MachinesBlocks.INVAR_BLOCK.get(), MachinesBlocks.STEEL_BLOCK.get(), MachinesBlocks.MACHINE_CORE.get(), MachinesBlocks.BASIC_ALLOY_FORGE.get(), MachinesBlocks.INTERMEDIATE_ALLOY_FORGE.get(), MachinesBlocks.ADVANCED_ALLOY_FORGE.get(), MachinesBlocks.EXPERT_ALLOY_FORGE.get(), MachinesBlocks.BASIC_GRINDING_MILL.get(), MachinesBlocks.INTERMEDIATE_GRINDING_MILL.get(), MachinesBlocks.ADVANCED_GRINDING_MILL.get(),

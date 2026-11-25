@@ -6,6 +6,7 @@
     }
   ],
   "type": "minecraft:blasting",
+  "category": "misc",
   "cookingtime": 100,
   "experience": 1.5,
   "fabric:load_conditions": [
@@ -14,8 +15,11 @@
       "part": "assortedores"
     }
   ],
-  "ingredient": "#c:ores/platinum",
+  "ingredient": {
+    "tag": "c:ores/platinum"
+  },
   "result": {
+    "count": 1,
     "id": "assortedores:platinum_ingot"
   }
 }

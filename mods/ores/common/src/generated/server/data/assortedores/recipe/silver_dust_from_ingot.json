@@ -24,7 +24,9 @@
     }
   ],
   "ingredient": {
-    "ingredient": "#c:ingots/silver"
+    "ingredient": {
+      "tag": "c:ingots/silver"
+    }
   },
   "result": {
     "id": "assortedores:silver_dust"

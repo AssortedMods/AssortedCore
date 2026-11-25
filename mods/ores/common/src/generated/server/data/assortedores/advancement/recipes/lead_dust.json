@@ -23,7 +23,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipes": "assortedores:lead_dust"
+        "recipe": "assortedores:lead_dust"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

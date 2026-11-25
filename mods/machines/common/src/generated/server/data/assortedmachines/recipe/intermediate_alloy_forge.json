@@ -6,6 +6,7 @@
     }
   ],
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
   "fabric:load_conditions": [
     {
       "condition": "assortedlib:part_enabled",
@@ -13,8 +14,12 @@
     }
   ],
   "key": {
-    "S": "#c:ingots/steel",
-    "X": "assortedmachines:basic_alloy_forge"
+    "S": {
+      "tag": "c:ingots/steel"
+    },
+    "X": {
+      "item": "assortedmachines:basic_alloy_forge"
+    }
   },
   "pattern": [
     "SSS",
@@ -22,6 +27,7 @@
     "SSS"
   ],
   "result": {
+    "count": 1,
     "id": "assortedmachines:intermediate_alloy_forge"
   }
 }

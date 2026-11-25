@@ -5,7 +5,7 @@ import com.grim3212.assorted.machines.Constants;
 import com.grim3212.assorted.machines.common.blocks.MachinesBlocks;
 import com.grim3212.assorted.machines.common.items.MachinesItems;
 import net.minecraft.data.PackOutput;
-import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceLocation;
 
 import java.util.List;
 import java.util.function.Predicate;
@@ -28,8 +28,8 @@ public class MachinesManualProvider extends LibManualProvider {
         ChapterBuilder machines = this.chapter("machines", 0);
 
         // The copper recipe first: the aluminum one needs Assorted Ores, and the page skips it when absent.
-        machines.recipesById("core", Identifier.fromNamespaceAndPath(Constants.MOD_ID, "machine_core_from_copper"),
-                Identifier.fromNamespaceAndPath(Constants.MOD_ID, "machine_core")).opens(MachinesBlocks.MACHINE_CORE.get());
+        machines.recipesById("core", ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "machine_core_from_copper"),
+                ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "machine_core")).opens(MachinesBlocks.MACHINE_CORE.get());
         machines.recipes("tiers", MachinesBlocks.BASIC_ALLOY_FORGE.get().asItem(),
                 MachinesBlocks.INTERMEDIATE_ALLOY_FORGE.get().asItem(),
                 MachinesBlocks.ADVANCED_ALLOY_FORGE.get().asItem(),
@@ -54,12 +54,12 @@ public class MachinesManualProvider extends LibManualProvider {
                 .opensEveryItem(suffix("_gear"));
     }
 
-    private static Predicate<Identifier> suffix(String suffix) {
+    private static Predicate<ResourceLocation> suffix(String suffix) {
         return id -> id.getPath().endsWith(suffix);
     }
 
     /** {@code <material><suffix>} for any of the materials and any of the suffixes. */
-    private static Predicate<Identifier> family(List<String> materials, String... suffixes) {
+    private static Predicate<ResourceLocation> family(List<String> materials, String... suffixes) {
         return id -> {
             for (String material : materials) {
                 for (String suffix : suffixes) {

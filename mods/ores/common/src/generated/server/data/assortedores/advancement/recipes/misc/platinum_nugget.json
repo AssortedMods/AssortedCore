@@ -19,7 +19,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipes": "assortedores:platinum_nugget"
+        "recipe": "assortedores:platinum_nugget"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

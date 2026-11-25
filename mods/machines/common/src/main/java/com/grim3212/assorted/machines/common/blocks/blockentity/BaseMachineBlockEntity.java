@@ -1,15 +1,14 @@
 package com.grim3212.assorted.machines.common.blocks.blockentity;
 
 import com.google.common.collect.Lists;
+import com.grim3212.assorted.lib.core.inventory.IInventoryBlockEntity;
+import com.grim3212.assorted.lib.core.inventory.IPlatformInventoryStorageHandler;
+import com.grim3212.assorted.lib.platform.Services;
 import com.grim3212.assorted.machines.api.crafting.BaseMachineRecipe;
 import com.grim3212.assorted.machines.api.crafting.MachineRecipeInput;
 import com.grim3212.assorted.machines.api.machines.MachineTier;
 import com.grim3212.assorted.machines.common.blocks.BaseMachineBlock;
 import com.grim3212.assorted.machines.common.inventory.BaseMachineInventory;
-import com.grim3212.assorted.lib.core.inventory.IInventoryBlockEntity;
-import com.grim3212.assorted.lib.core.inventory.IPlatformInventoryStorageHandler;
-import com.grim3212.assorted.lib.platform.Services;
-import com.mojang.serialization.Codec;
 import it.unimi.dsi.fastutil.objects.Object2IntMap.Entry;
 import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 import net.minecraft.core.BlockPos;
@@ -17,10 +16,10 @@ import net.minecraft.core.Direction;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.Tag;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.ComponentSerialization;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
-import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.Mth;
 import net.minecraft.world.ContainerHelper;
@@ -30,21 +29,19 @@ import net.minecraft.world.Nameable;
 import net.minecraft.world.entity.ExperienceOrb;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.player.StackedItemContents;
+import net.minecraft.world.entity.player.StackedContents;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.inventory.RecipeCraftingHolder;
 import net.minecraft.world.inventory.StackedContentsCompatible;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.ItemStackTemplate;
-import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.item.crafting.RecipeType;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
 
@@ -55,13 +52,8 @@ import java.util.Optional;
 
 public abstract class BaseMachineBlockEntity extends BlockEntity implements IInventoryBlockEntity, MenuProvider, Nameable, RecipeCraftingHolder, StackedContentsCompatible {
 
-    /**
-     * Recipes no longer carry their own id, so the crafted-recipe tally is keyed by
-     * {@code ResourceKey<Recipe<?>>} and written with the same codec vanilla's furnace uses.
-     */
-    private static final Codec<Map<ResourceKey<Recipe<?>>, Integer>> RECIPES_USED_CODEC = Codec.unboundedMap(Recipe.KEY_CODEC, Codec.INT);
-
-    protected final Object2IntOpenHashMap<ResourceKey<Recipe<?>>> recipes = new Object2IntOpenHashMap<>();
+    /** The crafted-recipe tally, keyed by recipe id and saved the way vanilla's furnace saves its own. */
+    protected final Object2IntOpenHashMap<ResourceLocation> recipes = new Object2IntOpenHashMap<>();
     protected final RecipeType<? extends BaseMachineRecipe> recipeType;
     protected final MachineTier tier;
     protected int burnTime;
@@ -185,8 +177,8 @@ public abstract class BaseMachineBlockEntity extends BlockEntity implements IInv
     }
 
     /**
-     * The recipe the input slots currently satisfy. Always empty on the client, which has no recipe
-     * manager.
+     * The recipe the input slots currently satisfy. Always empty on the client, which never runs a
+     * machine.
      */
     @SuppressWarnings("unchecked")
     public Optional<RecipeHolder<BaseMachineRecipe>> checkRecipe() {
@@ -195,7 +187,7 @@ public abstract class BaseMachineBlockEntity extends BlockEntity implements IInv
         }
 
         MachineRecipeInput input = new MachineRecipeInput(this.inputSlots().stream().map(this.items::get).toList());
-        return serverLevel.recipeAccess().getRecipeFor((RecipeType<BaseMachineRecipe>) this.recipeType, input, serverLevel);
+        return serverLevel.getRecipeManager().getRecipeFor((RecipeType<BaseMachineRecipe>) this.recipeType, input, serverLevel);
     }
 
     public void tick() {
@@ -215,13 +207,12 @@ public abstract class BaseMachineBlockEntity extends BlockEntity implements IInv
                 this.recipesUsed = this.burnTime;
                 if (this.isBurning()) {
                     flag1 = true;
-                    // The crafting remainder is a nullable ItemStackTemplate now rather than an
-                    // Item plus a hasCraftingRemainingItem() flag.
-                    // NeoForge-only deprecation; its replacement is not on the vanilla jar.
+                    // NeoForge deprecates the item's remainder for its stack-aware one, which the
+                    // vanilla jar this is compiled against does not have; a bucket is all it covers here.
                     @SuppressWarnings("deprecation")
-                    ItemStackTemplate remainder = fuelSlot.getItem().getCraftingRemainder();
+                    Item remainder = fuelSlot.getItem().getCraftingRemainingItem();
                     if (remainder != null)
-                        this.items.set(this.fuelSlot(), remainder.create());
+                        this.items.set(this.fuelSlot(), new ItemStack(remainder));
                     else if (!fuelSlot.isEmpty()) {
                         fuelSlot.shrink(1);
                         if (fuelSlot.isEmpty()) {
@@ -269,10 +260,10 @@ public abstract class BaseMachineBlockEntity extends BlockEntity implements IInv
     }
 
     public int getBurnTime(ItemStack fuel) {
-        if (fuel.isEmpty() || !(this.level instanceof ServerLevel serverLevel)) {
+        if (fuel.isEmpty()) {
             return 0;
         } else {
-            return Services.PLATFORM.getFuelTime(fuel, Services.PLATFORM.containerProcessContext(serverLevel, this, this.items));
+            return Services.PLATFORM.getFuelTime(fuel, RecipeType.SMELTING);
         }
     }
 
@@ -341,8 +332,8 @@ public abstract class BaseMachineBlockEntity extends BlockEntity implements IInv
     public List<RecipeHolder<?>> grantStoredRecipeExperience(ServerLevel world, Vec3 pos) {
         List<RecipeHolder<?>> list = Lists.newArrayList();
 
-        for (Entry<ResourceKey<Recipe<?>>> entry : this.recipes.object2IntEntrySet()) {
-            world.recipeAccess().byKey(entry.getKey()).ifPresent((recipe) -> {
+        for (Entry<ResourceLocation> entry : this.recipes.object2IntEntrySet()) {
+            world.getRecipeManager().byKey(entry.getKey()).ifPresent((recipe) -> {
                 list.add(recipe);
                 splitAndSpawnExperience(world, pos, entry.getIntValue(), ((BaseMachineRecipe) recipe.value()).getExperience());
             });
@@ -352,53 +343,57 @@ public abstract class BaseMachineBlockEntity extends BlockEntity implements IInv
     }
 
     @Override
-    public void fillStackedContents(StackedItemContents helper) {
+    public void fillStackedContents(StackedContents helper) {
         for (ItemStack itemstack : this.items) {
             helper.accountStack(itemstack);
         }
     }
 
     @Override
-    protected void loadAdditional(ValueInput input) {
-        super.loadAdditional(input);
+    protected void loadAdditional(CompoundTag tag, HolderLookup.Provider registries) {
+        super.loadAdditional(tag, registries);
         this.items = NonNullList.withSize(this.items.size(), ItemStack.EMPTY);
-        ContainerHelper.loadAllItems(input, this.items);
-        this.burnTime = input.getIntOr("BurnTime", 0);
-        this.cookTime = input.getIntOr("CookTime", 0);
-        this.cookTimeTotal = input.getIntOr("CookTimeTotal", 0);
-        this.recipesUsed = this.getBurnTime(this.items.get(1));
+        ContainerHelper.loadAllItems(tag, this.items, registries);
+        this.burnTime = tag.getInt("BurnTime");
+        this.cookTime = tag.getInt("CookTime");
+        this.cookTimeTotal = tag.getInt("CookTimeTotal");
+        this.recipesUsed = this.getBurnTime(this.items.get(this.fuelSlot()));
         this.recipes.clear();
-        this.recipes.putAll(input.read("RecipesUsed", RECIPES_USED_CODEC).orElse(Map.of()));
-        this.customName = parseCustomNameSafe(input, "CustomName");
+        CompoundTag used = tag.getCompound("RecipesUsed");
+        for (String id : used.getAllKeys()) {
+            ResourceLocation recipe = ResourceLocation.tryParse(id);
+            if (recipe != null) {
+                this.recipes.put(recipe, used.getInt(id));
+            }
+        }
+        this.customName = tag.contains("CustomName", Tag.TAG_STRING) ? parseCustomNameSafe(tag.getString("CustomName"), registries) : null;
     }
 
     @Override
-    protected void saveAdditional(ValueOutput output) {
-        super.saveAdditional(output);
+    protected void saveAdditional(CompoundTag tag, HolderLookup.Provider registries) {
+        super.saveAdditional(tag, registries);
 
-        output.putInt("BurnTime", this.burnTime);
-        output.putInt("CookTime", this.cookTime);
-        output.putInt("CookTimeTotal", this.cookTimeTotal);
-        ContainerHelper.saveAllItems(output, this.items);
-        output.store("RecipesUsed", RECIPES_USED_CODEC, this.recipes);
-        output.storeNullable("CustomName", ComponentSerialization.CODEC, this.customName);
+        tag.putInt("BurnTime", this.burnTime);
+        tag.putInt("CookTime", this.cookTime);
+        tag.putInt("CookTimeTotal", this.cookTimeTotal);
+        ContainerHelper.saveAllItems(tag, this.items, registries);
+        CompoundTag used = new CompoundTag();
+        this.recipes.forEach((recipe, count) -> used.putInt(recipe.toString(), count));
+        tag.put("RecipesUsed", used);
+        if (this.customName != null) {
+            tag.putString("CustomName", Component.Serializer.toJson(this.customName, registries));
+        }
     }
 
     /**
-     * Drops the inventory and banked experience when the block goes away. It has to happen here:
-     * the block entity is already gone by {@code affectNeighborsAfterRemoval}.
+     * Drops the inventory and banked experience. Block entities have no removal hook in 1.21.1, so
+     * {@link BaseMachineBlock#onRemove} calls this while this still exists, and only when the
+     * block itself goes.
      */
-    @Override
-    public void preRemoveSideEffects(BlockPos pos, BlockState state) {
-        super.preRemoveSideEffects(pos, state);
+    public void onBlockRemoved(Level level, BlockPos pos) {
+        Containers.dropContents(level, pos, this.items);
 
-        if (this.level == null) {
-            return;
-        }
-
-        Containers.dropContents(this.level, pos, this.items);
-
-        if (this.level instanceof ServerLevel serverLevel) {
+        if (level instanceof ServerLevel serverLevel) {
             this.grantStoredRecipeExperience(serverLevel, Vec3.atCenterOf(pos));
         }
     }

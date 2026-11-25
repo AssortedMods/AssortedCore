@@ -19,7 +19,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipes": "assortedores:nickel_nugget"
+        "recipe": "assortedores:nickel_nugget"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

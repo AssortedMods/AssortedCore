@@ -19,7 +19,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipes": "assortedores:platinum_ingot_smelting_raw_ore"
+        "recipe": "assortedores:platinum_ingot_smelting_raw_ore"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

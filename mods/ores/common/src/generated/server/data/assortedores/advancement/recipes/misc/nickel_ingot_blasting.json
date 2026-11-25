@@ -19,7 +19,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipes": "assortedores:nickel_ingot_blasting"
+        "recipe": "assortedores:nickel_ingot_blasting"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

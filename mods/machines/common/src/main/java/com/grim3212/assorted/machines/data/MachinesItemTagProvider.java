@@ -3,7 +3,6 @@ package com.grim3212.assorted.machines.data;
 import com.grim3212.assorted.machines.api.MachinesTags;
 import com.grim3212.assorted.machines.common.items.MachinesItems;
 import com.grim3212.assorted.lib.data.LibItemTagProvider;
-import net.minecraft.data.tags.TagAppender;
 import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
@@ -25,7 +24,7 @@ public class MachinesItemTagProvider extends LibItemTagProvider {
 
     @Override
     public void addCommonTags(Function<TagKey<Item>, TagAppender<Item>> appender, BiConsumer<TagKey<Block>, TagKey<Item>> copier) {
-        // See MachinesBlockTagProvider: TagAppender only accepts ResourceKeys now.
+        // See MachinesBlockTagProvider: the appender takes ResourceKeys.
         Function<TagKey<Item>, ItemTagger> tagger = (tag) -> new ItemTagger(appender.apply(tag));
 
         tagger.apply(MachinesTags.Items.GRINDING_MILL_ALLOWED_TOOLS).add(Items.IRON_PICKAXE, Items.DIAMOND_PICKAXE, Items.NETHERITE_PICKAXE);

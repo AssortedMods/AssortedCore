@@ -19,7 +19,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipes": "assortedmachines:iron_dust"
+        "recipe": "assortedmachines:iron_dust"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

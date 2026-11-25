@@ -15,7 +15,9 @@
     }
   ],
   "ingredient": {
-    "ingredient": "#c:ores/copper"
+    "ingredient": {
+      "tag": "c:ores/copper"
+    }
   },
   "result": {
     "count": 2,

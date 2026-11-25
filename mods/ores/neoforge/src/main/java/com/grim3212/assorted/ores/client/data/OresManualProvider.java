@@ -5,7 +5,7 @@ import com.grim3212.assorted.ores.Constants;
 import com.grim3212.assorted.ores.common.blocks.OresBlocks;
 import com.grim3212.assorted.ores.common.items.OresItems;
 import net.minecraft.data.PackOutput;
-import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceLocation;
 
 import java.util.List;
 import java.util.function.Predicate;
@@ -42,7 +42,8 @@ public class OresManualProvider extends LibManualProvider {
                 .opensEveryBlock(deepslate(ORE_METALS))
                 .opensEveryBlock(rawBlocks(ORE_METALS))
                 .opensEveryItem(family(ORE_METALS, "_ingot", "_nugget"))
-                .opensEveryItem(raw(ORE_METALS));
+                .opensEveryItem(raw(ORE_METALS))
+                .opensEveryItem(id -> id.getPath().equals("copper_nugget"));
         metals.recipesById("dusts", recipeId("dusts/tin_smelting"), recipeId("dusts/silver_smelting"), recipeId("dusts/aluminum_smelting"),
                         recipeId("dusts/nickel_smelting"), recipeId("dusts/platinum_smelting"), recipeId("dusts/lead_smelting")).every(60)
                 .opensEveryItem(family(ORE_METALS, "_dust"));
@@ -67,7 +68,7 @@ public class OresManualProvider extends LibManualProvider {
     }
 
     /** {@code <material><suffix>} for any of the materials and any of the suffixes. */
-    private static Predicate<Identifier> family(List<String> materials, String... suffixes) {
+    private static Predicate<ResourceLocation> family(List<String> materials, String... suffixes) {
         return id -> {
             for (String material : materials) {
                 for (String suffix : suffixes) {
@@ -80,15 +81,15 @@ public class OresManualProvider extends LibManualProvider {
         };
     }
 
-    private static Predicate<Identifier> deepslate(List<String> materials) {
+    private static Predicate<ResourceLocation> deepslate(List<String> materials) {
         return id -> materials.stream().anyMatch(m -> id.getPath().equals("deepslate_" + m + "_ore"));
     }
 
-    private static Predicate<Identifier> rawBlocks(List<String> materials) {
+    private static Predicate<ResourceLocation> rawBlocks(List<String> materials) {
         return id -> materials.stream().anyMatch(m -> id.getPath().equals("raw_" + m + "_block"));
     }
 
-    private static Predicate<Identifier> raw(List<String> materials) {
+    private static Predicate<ResourceLocation> raw(List<String> materials) {
         return id -> materials.stream().anyMatch(m -> id.getPath().equals("raw_" + m));
     }
 }

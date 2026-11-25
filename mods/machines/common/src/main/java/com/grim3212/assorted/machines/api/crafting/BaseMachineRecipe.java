@@ -1,15 +1,11 @@
 package com.grim3212.assorted.machines.api.crafting;
 
+import net.minecraft.core.HolderLookup;
+import net.minecraft.core.NonNullList;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.ItemStackTemplate;
 import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.item.crafting.PlacementInfo;
 import net.minecraft.world.item.crafting.Recipe;
-import net.minecraft.world.item.crafting.display.RecipeDisplay;
-import net.minecraft.world.item.crafting.display.SlotDisplay;
-import org.jetbrains.annotations.Nullable;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -19,13 +15,11 @@ import java.util.List;
 public abstract class BaseMachineRecipe implements Recipe<MachineRecipeInput> {
 
     protected final String group;
-    protected final ItemStackTemplate result;
+    protected final ItemStack result;
     protected final float experience;
     protected final int cookTime;
 
-    private @Nullable PlacementInfo placementInfo;
-
-    public BaseMachineRecipe(String groupIn, ItemStackTemplate resultIn, float experienceIn, int cookTimeIn) {
+    public BaseMachineRecipe(String groupIn, ItemStack resultIn, float experienceIn, int cookTimeIn) {
         this.group = groupIn;
         this.result = resultIn;
         this.experience = experienceIn;
@@ -33,28 +27,31 @@ public abstract class BaseMachineRecipe implements Recipe<MachineRecipeInput> {
     }
 
     @Override
-    public ItemStack assemble(MachineRecipeInput input) {
-        return this.result.create();
+    public ItemStack assemble(MachineRecipeInput input, HolderLookup.Provider registries) {
+        return this.result.copy();
+    }
+
+    @Override
+    public boolean canCraftInDimensions(int width, int height) {
+        return true;
+    }
+
+    @Override
+    public ItemStack getResultItem(HolderLookup.Provider registries) {
+        return this.result;
     }
 
     public float getExperience() {
         return this.experience;
     }
 
-    /**
-     * The recipe's result. Stored as an {@link ItemStackTemplate} because a stack cannot be built
-     * before item components are bound.
-     */
+    /** A copy of the recipe's result, which needs no registries to read. */
     public ItemStack getResultItem() {
-        return this.result.create();
-    }
-
-    public ItemStackTemplate getResultTemplate() {
-        return this.result;
+        return this.result.copy();
     }
 
     @Override
-    public String group() {
+    public String getGroup() {
         return this.group;
     }
 
@@ -62,41 +59,25 @@ public abstract class BaseMachineRecipe implements Recipe<MachineRecipeInput> {
         return cookTime;
     }
 
-    /** In the recipe book now, so it toasts like a smelting recipe. */
+    /**
+     * Kept out of the recipe book. 1.21.1's book sorts every recipe it is sent into a tab from a fixed
+     * enum of categories, and a machine has none, so the client would only log each one as an unknown
+     * recipe category. JEI lists them instead.
+     */
     @Override
-    public boolean showNotification() {
+    public boolean isSpecial() {
         return true;
     }
 
-    /** Counted out one item per entry: the book's craftable check does not understand a count. */
     @Override
-    public PlacementInfo placementInfo() {
-        if (this.placementInfo == null) {
-            List<Ingredient> expanded = new ArrayList<>();
-
-            for (MachineIngredient ingredient : this.machineIngredients()) {
-                for (int i = 0; i < ingredient.getCount(); i++) {
-                    expanded.add(ingredient.getBaseIngredient());
-                }
-            }
-
-            this.placementInfo = expanded.isEmpty() ? PlacementInfo.NOT_PLACEABLE : PlacementInfo.create(expanded);
-        }
-
-        return this.placementInfo;
+    public NonNullList<Ingredient> getIngredients() {
+        NonNullList<Ingredient> ingredients = NonNullList.create();
+        this.machineIngredients().forEach(ingredient -> ingredients.add(ingredient.getBaseIngredient()));
+        return ingredients;
     }
 
     /** One per input slot, in the menu's slot order. */
     public abstract List<MachineIngredient> machineIngredients();
-
-    @Override
-    public List<RecipeDisplay> display() {
-        List<MachineRecipeDisplay.Input> inputs = this.machineIngredients().stream().map(MachineRecipeDisplay.Input::new).toList();
-        return List.of(new MachineRecipeDisplay(inputs, new SlotDisplay.ItemStackSlotDisplay(this.result), this.craftingStationDisplay(), this.cookTime, this.experience));
-    }
-
-    /** Every tier of the machine this is made in. */
-    protected abstract SlotDisplay craftingStationDisplay();
 
     public abstract boolean validInput(ItemStack stack);
 }

@@ -6,6 +6,7 @@
     }
   ],
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
   "fabric:load_conditions": [
     {
       "condition": "assortedlib:part_enabled",
@@ -13,9 +14,15 @@
     }
   ],
   "key": {
-    "E": "#c:ingots/electrum",
-    "V": "#c:ingots/invar",
-    "X": "assortedmachines:intermediate_grinding_mill"
+    "E": {
+      "tag": "c:ingots/electrum"
+    },
+    "V": {
+      "tag": "c:ingots/invar"
+    },
+    "X": {
+      "item": "assortedmachines:intermediate_grinding_mill"
+    }
   },
   "pattern": [
     "VEV",
@@ -23,6 +30,7 @@
     "VEV"
   ],
   "result": {
+    "count": 1,
     "id": "assortedmachines:advanced_grinding_mill"
   }
 }

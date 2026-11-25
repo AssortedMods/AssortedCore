@@ -19,7 +19,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipes": "assortedores:sapphire_blasting"
+        "recipe": "assortedores:sapphire_blasting"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

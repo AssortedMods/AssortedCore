@@ -19,7 +19,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipes": "assortedmachines:diamond"
+        "recipe": "assortedmachines:diamond"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

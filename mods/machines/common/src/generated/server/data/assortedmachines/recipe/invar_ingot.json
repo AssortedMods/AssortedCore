@@ -27,10 +27,14 @@
   ],
   "ingredient1": {
     "count": 2,
-    "ingredient": "#c:dusts/iron"
+    "ingredient": {
+      "tag": "c:dusts/iron"
+    }
   },
   "ingredient2": {
-    "ingredient": "#c:dusts/nickel"
+    "ingredient": {
+      "tag": "c:dusts/nickel"
+    }
   },
   "result": {
     "count": 3,

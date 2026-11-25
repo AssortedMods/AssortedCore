@@ -12,6 +12,7 @@ import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 
 import static com.grim3212.assorted.machines.gametest.MachinesTestSupport.MACHINE;
+import static com.grim3212.assorted.machines.gametest.MachinesTestSupport.blockEntity;
 
 /** The mill's pickaxe as a cost: each grind wears it, and a broken one stops the mill. */
 final class GrindingMillToolTests {
@@ -26,7 +27,7 @@ final class GrindingMillToolTests {
     /** One use left, two ingots: the first grinds and breaks the pickaxe, the second waits for a new one. */
     private static void grindingMillWearsOutItsTool(GameTestHelper helper) {
         helper.setBlock(MACHINE, MachinesBlocks.EXPERT_GRINDING_MILL.get());
-        GrindingMillBlockEntity mill = helper.getBlockEntity(MACHINE, GrindingMillBlockEntity.class);
+        GrindingMillBlockEntity mill = blockEntity(helper, MACHINE, GrindingMillBlockEntity.class);
         BaseMachineInventory inventory = mill.getInventory(null);
 
         ItemStack pickaxe = new ItemStack(Items.IRON_PICKAXE);

@@ -25,10 +25,14 @@
     }
   ],
   "ingredient1": {
-    "ingredient": "#c:dusts/silver"
+    "ingredient": {
+      "tag": "c:dusts/silver"
+    }
   },
   "ingredient2": {
-    "ingredient": "#c:dusts/gold"
+    "ingredient": {
+      "tag": "c:dusts/gold"
+    }
   },
   "result": {
     "count": 2,

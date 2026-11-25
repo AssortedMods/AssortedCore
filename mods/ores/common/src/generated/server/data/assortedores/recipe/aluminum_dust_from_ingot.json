@@ -24,7 +24,9 @@
     }
   ],
   "ingredient": {
-    "ingredient": "#c:ingots/aluminum"
+    "ingredient": {
+      "tag": "c:ingots/aluminum"
+    }
   },
   "result": {
     "id": "assortedores:aluminum_dust"

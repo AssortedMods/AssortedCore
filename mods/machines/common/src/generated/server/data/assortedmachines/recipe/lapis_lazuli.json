@@ -15,7 +15,9 @@
     }
   ],
   "ingredient": {
-    "ingredient": "#c:ores/lapis"
+    "ingredient": {
+      "tag": "c:ores/lapis"
+    }
   },
   "result": {
     "count": 5,

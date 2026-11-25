@@ -25,7 +25,9 @@
     }
   ],
   "ingredient": {
-    "ingredient": "#c:ores/silver"
+    "ingredient": {
+      "tag": "c:ores/silver"
+    }
   },
   "result": {
     "count": 2,

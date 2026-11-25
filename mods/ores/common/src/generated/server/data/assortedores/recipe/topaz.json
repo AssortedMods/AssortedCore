@@ -25,7 +25,9 @@
     }
   ],
   "ingredient": {
-    "ingredient": "#c:ores/topaz"
+    "ingredient": {
+      "tag": "c:ores/topaz"
+    }
   },
   "result": {
     "count": 2,

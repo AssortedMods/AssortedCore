@@ -24,7 +24,9 @@
     }
   ],
   "ingredient": {
-    "ingredient": "#c:ingots/lead"
+    "ingredient": {
+      "tag": "c:ingots/lead"
+    }
   },
   "result": {
     "id": "assortedores:lead_dust"

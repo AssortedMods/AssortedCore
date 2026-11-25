@@ -6,6 +6,7 @@
     }
   ],
   "type": "minecraft:crafting_shapeless",
+  "category": "misc",
   "fabric:load_conditions": [
     {
       "condition": "assortedlib:part_enabled",
@@ -13,17 +14,36 @@
     }
   ],
   "ingredients": [
-    "#c:nuggets/lead",
-    "#c:nuggets/lead",
-    "#c:nuggets/lead",
-    "#c:nuggets/lead",
-    "#c:nuggets/lead",
-    "#c:nuggets/lead",
-    "#c:nuggets/lead",
-    "#c:nuggets/lead",
-    "#c:nuggets/lead"
+    {
+      "tag": "c:nuggets/lead"
+    },
+    {
+      "tag": "c:nuggets/lead"
+    },
+    {
+      "tag": "c:nuggets/lead"
+    },
+    {
+      "tag": "c:nuggets/lead"
+    },
+    {
+      "tag": "c:nuggets/lead"
+    },
+    {
+      "tag": "c:nuggets/lead"
+    },
+    {
+      "tag": "c:nuggets/lead"
+    },
+    {
+      "tag": "c:nuggets/lead"
+    },
+    {
+      "tag": "c:nuggets/lead"
+    }
   ],
   "result": {
+    "count": 1,
     "id": "assortedores:lead_ingot"
   }
 }

@@ -6,6 +6,7 @@
     }
   ],
   "type": "minecraft:blasting",
+  "category": "misc",
   "cookingtime": 100,
   "experience": 0.1,
   "fabric:load_conditions": [
@@ -14,8 +15,11 @@
       "part": "assortedores"
     }
   ],
-  "ingredient": "#c:dusts/nickel",
+  "ingredient": {
+    "tag": "c:dusts/nickel"
+  },
   "result": {
+    "count": 1,
     "id": "assortedores:nickel_ingot"
   }
 }

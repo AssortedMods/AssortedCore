@@ -19,7 +19,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipes": "assortedmachines:invar_ingot_nuggets"
+        "recipe": "assortedmachines:invar_ingot_nuggets"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

@@ -1,17 +1,16 @@
 package com.grim3212.assorted.machines.api.crafting;
 
-import com.mojang.serialization.Codec;
 import com.grim3212.assorted.lib.manual.ManualSlot;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.util.context.ContextMap;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.item.crafting.display.SlotDisplay;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.function.Predicate;
 
@@ -22,7 +21,7 @@ import java.util.function.Predicate;
 public class MachineIngredient implements Predicate<ItemStack> {
 
     public static final MapCodec<MachineIngredient> MAP_CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(
-            Ingredient.CODEC.fieldOf("ingredient").forGetter(MachineIngredient::getBaseIngredient),
+            Ingredient.CODEC_NONEMPTY.fieldOf("ingredient").forGetter(MachineIngredient::getBaseIngredient),
             Codec.INT.optionalFieldOf("count", 1).forGetter(MachineIngredient::getCount)
     ).apply(instance, MachineIngredient::new));
 
@@ -40,7 +39,7 @@ public class MachineIngredient implements Predicate<ItemStack> {
         this(ingredient, 1);
     }
 
-    /** A count below one would ask for nothing, and divide by zero in the recipe book placer. */
+    /** A count below one would ask for nothing. */
     public MachineIngredient(Ingredient ingredient, int count) {
         this.ingredient = ingredient;
         this.count = Math.max(1, count);
@@ -62,15 +61,15 @@ public class MachineIngredient implements Predicate<ItemStack> {
     }
 
     /**
-     * The stacks this ingredient accepts at its count, resolved from its {@link SlotDisplay}. For
-     * display.
+     * The stacks this ingredient accepts, each at its count. JEI draws these and its transfer button
+     * moves them into the machine, so the count has to be on them.
      */
-    public List<ItemStack> getMatchingStacks(ContextMap context) {
-        return this.ingredient.display().resolveForStacks(context).stream().map((stack) -> stack.copyWithCount(this.count)).toList();
+    public List<ItemStack> getMatchingStacks() {
+        return Arrays.stream(this.ingredient.getItems()).map((stack) -> stack.copyWithCount(this.count)).toList();
     }
 
     /** Unresolved, so the manual keeps the tag behind the slot for its tooltip. */
     public ManualSlot manualSlot() {
-        return ManualSlot.of(this.ingredient.display(), this.count);
+        return ManualSlot.of(this.ingredient, this.count);
     }
 }

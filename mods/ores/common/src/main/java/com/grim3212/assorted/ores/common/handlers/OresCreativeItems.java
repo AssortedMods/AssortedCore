@@ -100,6 +100,8 @@ public class OresCreativeItems {
         items.add(OresBlocks.TOPAZ_BLOCK.get());
         items.add(OresItems.TOPAZ.get());
 
+        items.add(OresItems.COPPER_NUGGET.get());
+
         return items.getItems();
     }
 

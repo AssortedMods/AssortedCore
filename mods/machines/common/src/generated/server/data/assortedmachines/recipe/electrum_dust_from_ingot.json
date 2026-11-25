@@ -14,9 +14,12 @@
     }
   ],
   "ingredient": {
-    "ingredient": "#c:ingots/electrum"
+    "ingredient": {
+      "tag": "c:ingots/electrum"
+    }
   },
   "result": {
+    "count": 1,
     "id": "assortedmachines:electrum_dust"
   }
 }

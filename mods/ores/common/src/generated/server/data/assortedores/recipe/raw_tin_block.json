@@ -6,6 +6,7 @@
     }
   ],
   "type": "minecraft:crafting_shapeless",
+  "category": "misc",
   "fabric:load_conditions": [
     {
       "condition": "assortedlib:part_enabled",
@@ -13,17 +14,36 @@
     }
   ],
   "ingredients": [
-    "#c:raw_materials/tin",
-    "#c:raw_materials/tin",
-    "#c:raw_materials/tin",
-    "#c:raw_materials/tin",
-    "#c:raw_materials/tin",
-    "#c:raw_materials/tin",
-    "#c:raw_materials/tin",
-    "#c:raw_materials/tin",
-    "#c:raw_materials/tin"
+    {
+      "tag": "c:raw_materials/tin"
+    },
+    {
+      "tag": "c:raw_materials/tin"
+    },
+    {
+      "tag": "c:raw_materials/tin"
+    },
+    {
+      "tag": "c:raw_materials/tin"
+    },
+    {
+      "tag": "c:raw_materials/tin"
+    },
+    {
+      "tag": "c:raw_materials/tin"
+    },
+    {
+      "tag": "c:raw_materials/tin"
+    },
+    {
+      "tag": "c:raw_materials/tin"
+    },
+    {
+      "tag": "c:raw_materials/tin"
+    }
   ],
   "result": {
+    "count": 1,
     "id": "assortedores:raw_tin_block"
   }
 }

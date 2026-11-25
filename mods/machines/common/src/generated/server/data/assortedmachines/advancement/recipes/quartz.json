@@ -19,7 +19,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipes": "assortedmachines:quartz"
+        "recipe": "assortedmachines:quartz"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

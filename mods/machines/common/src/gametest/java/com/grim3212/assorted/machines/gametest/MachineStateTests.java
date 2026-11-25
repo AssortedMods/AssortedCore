@@ -20,6 +20,7 @@ import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 
 import static com.grim3212.assorted.machines.gametest.MachinesTestSupport.MACHINE;
+import static com.grim3212.assorted.machines.gametest.MachinesTestSupport.blockEntity;
 
 /** What a machine shows the world outside its menu: the lit face, a comparator's signal, and how it was placed. */
 final class MachineStateTests {
@@ -36,7 +37,7 @@ final class MachineStateTests {
     /** A stick burns out after one steel smelt, so the forge has to go dark again on its own. */
     private static void machineLightsOnlyWhileBurning(GameTestHelper helper) {
         helper.setBlock(MACHINE, MachinesBlocks.EXPERT_ALLOY_FORGE.get());
-        BaseMachineInventory inventory = helper.getBlockEntity(MACHINE, AlloyForgeBlockEntity.class).getInventory(null);
+        BaseMachineInventory inventory = blockEntity(helper, MACHINE, AlloyForgeBlockEntity.class).getInventory(null);
         inventory.setStackInSlot(2, new ItemStack(Items.STICK));
         inventory.setStackInSlot(0, new ItemStack(Items.COAL, 4));
         inventory.setStackInSlot(1, new ItemStack(MachinesItems.IRON_DUST.get()));
@@ -52,7 +53,7 @@ final class MachineStateTests {
         BlockPos absolute = helper.absolutePos(MACHINE);
         helper.assertValueEqual(signal(helper, absolute), 0, "an empty forge's comparator signal");
 
-        helper.getBlockEntity(MACHINE, BaseMachineBlockEntity.class).getInventory(null).setStackInSlot(3, new ItemStack(MachinesItems.STEEL_INGOT.get(), 64));
+        blockEntity(helper, MACHINE, BaseMachineBlockEntity.class).getInventory(null).setStackInSlot(3, new ItemStack(MachinesItems.STEEL_INGOT.get(), 64));
         helper.assertTrue(signal(helper, absolute) > 0, "a forge holding steel gives a comparator no signal");
         helper.succeed();
     }
@@ -63,18 +64,19 @@ final class MachineStateTests {
         named.set(DataComponents.CUSTOM_NAME, Component.literal("Ore Crusher"));
         ServerPlayer player = TestSupport.survivalPlayer(helper, named);
         // Yaw 0 looks south, so the machine's face turns north toward the player.
+        BlockPos placed = MACHINE;
         TestSupport.stand(helper, player, MACHINE.south(2).below());
         TestSupport.useOnTopOf(helper, player, MACHINE.below());
 
-        helper.assertBlockPresent(MachinesBlocks.BASIC_GRINDING_MILL.get(), MACHINE);
-        Direction facing = helper.getBlockState(MACHINE).getValue(BaseMachineBlock.FACING);
+        helper.assertBlockPresent(MachinesBlocks.BASIC_GRINDING_MILL.get(), placed);
+        Direction facing = helper.getBlockState(placed).getValue(BaseMachineBlock.FACING);
         helper.assertValueEqual(facing, Direction.NORTH, "the placed mill's facing");
-        Component name = helper.getBlockEntity(MACHINE, BaseMachineBlockEntity.class).getCustomName();
+        Component name = blockEntity(helper, placed, BaseMachineBlockEntity.class).getCustomName();
         helper.assertTrue(name != null && name.getString().equals("Ore Crusher"), "the placed mill is named " + name);
         helper.succeed();
     }
 
     private static int signal(GameTestHelper helper, BlockPos absolute) {
-        return helper.getLevel().getBlockState(absolute).getAnalogOutputSignal(helper.getLevel(), absolute, Direction.NORTH);
+        return helper.getLevel().getBlockState(absolute).getAnalogOutputSignal(helper.getLevel(), absolute);
     }
 }

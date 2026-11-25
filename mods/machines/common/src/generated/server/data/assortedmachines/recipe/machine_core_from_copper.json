@@ -6,6 +6,7 @@
     }
   ],
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
   "fabric:load_conditions": [
     {
       "condition": "assortedlib:part_enabled",
@@ -13,9 +14,15 @@
     }
   ],
   "key": {
-    "A": "#c:ingots/copper",
-    "C": "#c:gear/copper",
-    "I": "#c:ingots/iron"
+    "A": {
+      "tag": "c:ingots/copper"
+    },
+    "C": {
+      "tag": "c:gear/copper"
+    },
+    "I": {
+      "tag": "c:ingots/iron"
+    }
   },
   "pattern": [
     "IAI",
@@ -23,6 +30,7 @@
     "IAI"
   ],
   "result": {
+    "count": 1,
     "id": "assortedmachines:machine_core"
   }
 }

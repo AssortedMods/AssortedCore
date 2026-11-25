@@ -19,7 +19,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipes": "assortedores:peridot_block"
+        "recipe": "assortedores:peridot_block"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

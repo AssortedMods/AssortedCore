@@ -23,7 +23,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipes": "assortedmachines:machine_core"
+        "recipe": "assortedmachines:machine_core"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

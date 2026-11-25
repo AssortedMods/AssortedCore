@@ -25,7 +25,9 @@
     }
   ],
   "ingredient": {
-    "ingredient": "#c:ores/nickel"
+    "ingredient": {
+      "tag": "c:ores/nickel"
+    }
   },
   "result": {
     "count": 2,

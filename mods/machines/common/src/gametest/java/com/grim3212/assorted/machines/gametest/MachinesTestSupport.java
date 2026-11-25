@@ -6,8 +6,9 @@ import com.grim3212.assorted.machines.Constants;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.gametest.framework.GameTestAssertException;
 import net.minecraft.gametest.framework.GameTestHelper;
-import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -15,6 +16,7 @@ import net.minecraft.world.item.crafting.AbstractCookingRecipe;
 import net.minecraft.world.item.crafting.CraftingInput;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.item.crafting.SingleRecipeInput;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -70,15 +72,24 @@ final class MachinesTestSupport {
 
     static <T extends AbstractCookingRecipe> void assertCooks(GameTestHelper helper, RecipeType<T> type, Item input, Item expected, String what) {
         SingleRecipeInput recipeInput = new SingleRecipeInput(new ItemStack(input));
-        var found = helper.getLevel().recipeAccess().getRecipeFor(type, recipeInput, helper.getLevel());
+        var found = helper.getLevel().getRecipeManager().getRecipeFor(type, recipeInput, helper.getLevel());
         helper.assertTrue(found.isPresent(), "no " + what + " recipe for " + BuiltInRegistries.ITEM.getKey(input));
 
-        ItemStack result = found.get().value().assemble(recipeInput);
+        ItemStack result = found.get().value().assemble(recipeInput, helper.getLevel().registryAccess());
         helper.assertTrue(result.is(expected), what + " " + BuiltInRegistries.ITEM.getKey(input) + " gave " + result + " instead of " + expected);
     }
 
+    /** The block entity at a test position, failing the test if it is missing or of another type. */
+    static <T extends BlockEntity> T blockEntity(GameTestHelper helper, BlockPos pos, Class<T> type) {
+        BlockEntity found = helper.getBlockEntity(pos);
+        if (!type.isInstance(found)) {
+            throw new GameTestAssertException("expected a " + type.getSimpleName() + " at " + pos + " but found " + found);
+        }
+        return type.cast(found);
+    }
+
     static Item item(GameTestHelper helper, String name) {
-        Item found = BuiltInRegistries.ITEM.getOptional(Identifier.fromNamespaceAndPath(Constants.MOD_ID, name)).orElse(null);
+        Item found = BuiltInRegistries.ITEM.getOptional(ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, name)).orElse(null);
         helper.assertTrue(found != null, "nothing registered as " + Constants.MOD_ID + ":" + name);
         return found;
     }
@@ -102,7 +113,7 @@ final class MachinesTestSupport {
             helper.assertTrue(in != null, path + " is not on the classpath");
             return JsonParser.parseReader(new InputStreamReader(in, StandardCharsets.UTF_8)).getAsJsonObject();
         } catch (IOException e) {
-            throw helper.assertionException("could not read " + path + ": " + e);
+            throw new GameTestAssertException("could not read " + path + ": " + e);
         }
     }
 }

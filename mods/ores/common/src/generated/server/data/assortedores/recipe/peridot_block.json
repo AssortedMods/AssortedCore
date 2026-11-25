@@ -6,6 +6,7 @@
     }
   ],
   "type": "minecraft:crafting_shapeless",
+  "category": "misc",
   "fabric:load_conditions": [
     {
       "condition": "assortedlib:part_enabled",
@@ -13,17 +14,36 @@
     }
   ],
   "ingredients": [
-    "#c:gems/peridot",
-    "#c:gems/peridot",
-    "#c:gems/peridot",
-    "#c:gems/peridot",
-    "#c:gems/peridot",
-    "#c:gems/peridot",
-    "#c:gems/peridot",
-    "#c:gems/peridot",
-    "#c:gems/peridot"
+    {
+      "tag": "c:gems/peridot"
+    },
+    {
+      "tag": "c:gems/peridot"
+    },
+    {
+      "tag": "c:gems/peridot"
+    },
+    {
+      "tag": "c:gems/peridot"
+    },
+    {
+      "tag": "c:gems/peridot"
+    },
+    {
+      "tag": "c:gems/peridot"
+    },
+    {
+      "tag": "c:gems/peridot"
+    },
+    {
+      "tag": "c:gems/peridot"
+    },
+    {
+      "tag": "c:gems/peridot"
+    }
   ],
   "result": {
+    "count": 1,
     "id": "assortedores:peridot_block"
   }
 }

@@ -25,7 +25,7 @@ public final class MachinesGameTests {
         MachineExperienceTests.register(out);
         GrindingMillToolTests.register(out);
         MenuTests.register(out);
-        RecipeBookTests.register(out);
+        RecipeViewTests.register(out);
         MetalTests.register(out);
         AssetTests.register(out);
         ManualLinkTests.register(out);

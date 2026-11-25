@@ -12,7 +12,7 @@ import com.grim3212.assorted.machines.common.handlers.MachinesCreativeItems;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.gametest.framework.GameTestHelper;
-import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
@@ -49,7 +49,7 @@ final class AssetTests {
         List<String> problems = new ArrayList<>();
 
         for (Map.Entry<ResourceKey<Block>, Block> entry : BuiltInRegistries.BLOCK.entrySet()) {
-            Identifier id = entry.getKey().identifier();
+            ResourceLocation id = entry.getKey().location();
             if (!Constants.MOD_ID.equals(id.getNamespace())) {
                 continue;
             }
@@ -62,12 +62,12 @@ final class AssetTests {
         }
 
         for (Map.Entry<ResourceKey<Item>, Item> entry : BuiltInRegistries.ITEM.entrySet()) {
-            Identifier id = entry.getKey().identifier();
+            ResourceLocation id = entry.getKey().location();
             if (!Constants.MOD_ID.equals(id.getNamespace())) {
                 continue;
             }
-            // Item models moved out of models/item into items/ in 1.21.4.
-            if (!resourceExists("/assets/" + Constants.MOD_ID + "/items/" + id.getPath() + ".json")) {
+            // 1.21.1 reads an item's model straight from models/item; the items/ definitions came with 1.21.4.
+            if (!resourceExists("/assets/" + Constants.MOD_ID + "/models/item/" + id.getPath() + ".json")) {
                 problems.add("no item model for " + id);
             }
             if (!lang.has(entry.getValue().getDescriptionId())) {
@@ -76,7 +76,7 @@ final class AssetTests {
         }
 
         if (!BuiltInRegistries.CREATIVE_MODE_TAB.containsKey(MachinesCreativeItems.TAB)) {
-            problems.add("the creative tab " + MachinesCreativeItems.TAB.identifier() + " is not registered");
+            problems.add("the creative tab " + MachinesCreativeItems.TAB.location() + " is not registered");
         }
         if (!lang.has("itemGroup." + Constants.FAMILY_ID)) {
             problems.add("no lang key itemGroup." + Constants.FAMILY_ID);
@@ -97,8 +97,8 @@ final class AssetTests {
         List<String> failed = new ArrayList<>();
 
         recipes.listMatchingResources(server.getResourceManager()).forEach((file, resource) -> {
-            Identifier id = recipes.fileToId(file);
-            if (!id.getNamespace().equals(Constants.MOD_ID) || server.getRecipeManager().byKey(ResourceKey.create(Registries.RECIPE, id)).isPresent()) {
+            ResourceLocation id = recipes.fileToId(file);
+            if (!id.getNamespace().equals(Constants.MOD_ID) || server.getRecipeManager().byKey(id).isPresent()) {
                 return;
             }
 
@@ -123,7 +123,7 @@ final class AssetTests {
      */
     private static void everyItemTagHasAName(GameTestHelper helper) {
         Language language = Language.getInstance();
-        List<String> missing = helper.getLevel().registryAccess().lookupOrThrow(Registries.ITEM).getTags()
+        List<String> missing = helper.getLevel().registryAccess().lookupOrThrow(Registries.ITEM).listTags()
                 .map(tag -> tag.key().location())
                 .filter(id -> !"minecraft".equals(id.getNamespace()))
                 .map(id -> "tag.item." + id.getNamespace() + "." + id.getPath().replace('/', '.'))

@@ -12,7 +12,7 @@ import com.grim3212.assorted.ores.common.items.OresItems;
 import net.minecraft.data.CachedOutput;
 import net.minecraft.data.DataProvider;
 import net.minecraft.data.PackOutput;
-import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 
@@ -58,26 +58,29 @@ public class OresMachineRecipes implements DataProvider {
         return CompletableFuture.allOf(writes.toArray(CompletableFuture[]::new));
     }
 
-    private void grind(CachedOutput output, List<CompletableFuture<?>> writes, TagKey<Item> ore, Identifier gem) {
+    private void grind(CachedOutput output, List<CompletableFuture<?>> writes, TagKey<Item> ore, ResourceLocation gem) {
         grind(output, writes, gem, ore, gem, 2, 0.3F, 600);
     }
 
-    private void dusts(CachedOutput output, List<CompletableFuture<?>> writes, TagKey<Item> ore, TagKey<Item> raw, TagKey<Item> ingot, Identifier dust, float experience) {
+    private void dusts(CachedOutput output, List<CompletableFuture<?>> writes, TagKey<Item> ore, TagKey<Item> raw, TagKey<Item> ingot, ResourceLocation dust, float experience) {
         grind(output, writes, dust, ore, dust, 2, experience, 600);
         grind(output, writes, dust.withSuffix("_from_raw_ore"), raw, dust, 2, 0.0F, 300);
         grind(output, writes, dust.withSuffix("_from_ingot"), ingot, dust, 1, 0.0F, 300);
     }
 
-    private void grind(CachedOutput output, List<CompletableFuture<?>> writes, Identifier id, TagKey<Item> input, Identifier result, int count, float experience, int cookTime) {
+    private void grind(CachedOutput output, List<CompletableFuture<?>> writes, ResourceLocation id, TagKey<Item> input, ResourceLocation result, int count, float experience, int cookTime) {
         String inputTag = "#" + input.location();
         writes.add(DataProvider.saveStable(output, grindingMill(inputTag, result, count, experience, cookTime), this.recipes.json(id)));
         writes.add(DataProvider.saveStable(output, HandWrittenData.advancement(unlockAdvancement(id, inputTag)), this.advancements.json(id.withPrefix("recipes/"))));
     }
 
     /** Leaves out a count of one and no experience, as the Machines recipe codec does. */
-    private static JsonObject grindingMill(String inputTag, Identifier result, int count, float experience, int cookTime) {
+    private static JsonObject grindingMill(String inputTag, ResourceLocation result, int count, float experience, int cookTime) {
+        // 1.21.1 writes a tag ingredient as an object; the "#tag" string form came with 1.21.2.
+        JsonObject tag = new JsonObject();
+        tag.addProperty("tag", inputTag.substring(1));
         JsonObject ingredient = new JsonObject();
-        ingredient.addProperty("ingredient", inputTag);
+        ingredient.add("ingredient", tag);
 
         JsonObject output = new JsonObject();
         if (count != 1) {
@@ -98,14 +101,14 @@ public class OresMachineRecipes implements DataProvider {
     }
 
     /** What the Machines recipe builders give a machine recipe: unlocked by holding the ingredient. */
-    private static JsonObject unlockAdvancement(Identifier recipe, String ingredient) {
+    private static JsonObject unlockAdvancement(ResourceLocation recipe, String ingredient) {
         JsonObject item = new JsonObject();
         item.addProperty("items", ingredient);
         JsonArray items = new JsonArray();
         items.add(item);
         JsonObject hasIngredient = criterion("minecraft:inventory_changed", "items", items);
 
-        JsonObject hasRecipe = criterion("minecraft:recipe_unlocked", "recipes", new JsonPrimitive(recipe.toString()));
+        JsonObject hasRecipe = criterion("minecraft:recipe_unlocked", "recipe", new JsonPrimitive(recipe.toString()));
 
         JsonObject criteria = new JsonObject();
         criteria.add("has_ingredient", hasIngredient);

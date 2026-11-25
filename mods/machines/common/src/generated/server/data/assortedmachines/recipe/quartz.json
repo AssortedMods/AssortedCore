@@ -15,7 +15,9 @@
     }
   ],
   "ingredient": {
-    "ingredient": "#c:ores/quartz"
+    "ingredient": {
+      "tag": "c:ores/quartz"
+    }
   },
   "result": {
     "count": 2,

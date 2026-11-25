@@ -33,7 +33,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipes": "assortedmachines:electrum_ingot"
+        "recipe": "assortedmachines:electrum_ingot"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

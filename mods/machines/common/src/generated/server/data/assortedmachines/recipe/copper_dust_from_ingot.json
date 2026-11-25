@@ -14,9 +14,12 @@
     }
   ],
   "ingredient": {
-    "ingredient": "#c:ingots/copper"
+    "ingredient": {
+      "tag": "c:ingots/copper"
+    }
   },
   "result": {
+    "count": 1,
     "id": "assortedmachines:copper_dust"
   }
 }

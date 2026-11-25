@@ -14,9 +14,12 @@
     }
   ],
   "ingredient": {
-    "ingredient": "#c:ingots/bronze"
+    "ingredient": {
+      "tag": "c:ingots/bronze"
+    }
   },
   "result": {
+    "count": 1,
     "id": "assortedmachines:bronze_dust"
   }
 }

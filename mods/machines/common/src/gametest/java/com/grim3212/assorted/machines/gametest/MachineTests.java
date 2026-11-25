@@ -13,7 +13,7 @@ import net.minecraft.core.RegistryAccess;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.gametest.framework.GameTestHelper;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -54,7 +54,7 @@ final class MachineTests {
     /** 4 coal + 1 iron dust -> 1 steel ingot, the one alloy that needs nothing from Assorted Ores. */
     private static void alloyForgeMakesSteel(GameTestHelper helper) {
         helper.setBlock(MACHINE, MachinesBlocks.EXPERT_ALLOY_FORGE.get());
-        AlloyForgeBlockEntity forge = helper.getBlockEntity(MACHINE, AlloyForgeBlockEntity.class);
+        AlloyForgeBlockEntity forge = blockEntity(helper, MACHINE, AlloyForgeBlockEntity.class);
 
         // Through the inventory handler, not getItems(): only the handler sets cookTimeTotal.
         loadSteel(forge);
@@ -75,7 +75,7 @@ final class MachineTests {
         }
 
         helper.setBlock(MACHINE, MachinesBlocks.EXPERT_ALLOY_FORGE.get());
-        AlloyForgeBlockEntity forge = helper.getBlockEntity(MACHINE, AlloyForgeBlockEntity.class);
+        AlloyForgeBlockEntity forge = blockEntity(helper, MACHINE, AlloyForgeBlockEntity.class);
 
         forge.getInventory(null).setStackInSlot(0, new ItemStack(MachinesItems.COPPER_DUST.get(), 3));
         forge.getInventory(null).setStackInSlot(1, tinDust.get());
@@ -91,7 +91,7 @@ final class MachineTests {
     /** A copper ingot plus a pickaxe in the tool slot grinds to copper dust. */
     private static void grindingMillMakesDust(GameTestHelper helper) {
         helper.setBlock(MACHINE, MachinesBlocks.EXPERT_GRINDING_MILL.get());
-        GrindingMillBlockEntity mill = helper.getBlockEntity(MACHINE, GrindingMillBlockEntity.class);
+        GrindingMillBlockEntity mill = blockEntity(helper, MACHINE, GrindingMillBlockEntity.class);
 
         mill.getInventory(null).setStackInSlot(0, new ItemStack(Items.COPPER_INGOT, 1));
         mill.getInventory(null).setStackInSlot(1, new ItemStack(Items.IRON_PICKAXE));
@@ -104,15 +104,15 @@ final class MachineTests {
 
     /** With Assorted Ores installed too, its tin ore grinds into two of its tin dust through its own recipe. */
     private static void grindingMillGrindsTinOre(GameTestHelper helper) {
-        Optional<Item> ore = BuiltInRegistries.ITEM.getOptional(Identifier.fromNamespaceAndPath("assortedores", "tin_ore"));
-        Optional<Item> dust = BuiltInRegistries.ITEM.getOptional(Identifier.fromNamespaceAndPath("assortedores", "tin_dust"));
+        Optional<Item> ore = BuiltInRegistries.ITEM.getOptional(ResourceLocation.fromNamespaceAndPath("assortedores", "tin_ore"));
+        Optional<Item> dust = BuiltInRegistries.ITEM.getOptional(ResourceLocation.fromNamespaceAndPath("assortedores", "tin_dust"));
         if (ore.isEmpty() || dust.isEmpty()) {
             helper.succeed();
             return;
         }
 
         helper.setBlock(MACHINE, MachinesBlocks.EXPERT_GRINDING_MILL.get());
-        GrindingMillBlockEntity mill = helper.getBlockEntity(MACHINE, GrindingMillBlockEntity.class);
+        GrindingMillBlockEntity mill = blockEntity(helper, MACHINE, GrindingMillBlockEntity.class);
 
         mill.getInventory(null).setStackInSlot(0, new ItemStack(ore.get(), 1));
         mill.getInventory(null).setStackInSlot(1, new ItemStack(Items.IRON_PICKAXE));
@@ -141,7 +141,7 @@ final class MachineTests {
     /** Breaking a machine spills what was inside it - this regressed once already. */
     private static void machineDropsContents(GameTestHelper helper) {
         helper.setBlock(MACHINE, MachinesBlocks.BASIC_ALLOY_FORGE.get());
-        BaseMachineBlockEntity forge = helper.getBlockEntity(MACHINE, AlloyForgeBlockEntity.class);
+        BaseMachineBlockEntity forge = blockEntity(helper, MACHINE, AlloyForgeBlockEntity.class);
         forge.getInventory(null).setStackInSlot(0, new ItemStack(MachinesItems.COPPER_DUST.get(), 2));
 
         helper.destroyBlock(MACHINE);
@@ -160,10 +160,10 @@ final class MachineTests {
         helper.setBlock(above, Blocks.HOPPER.defaultBlockState().setValue(HopperBlock.FACING, Direction.DOWN));
         helper.setBlock(below, Blocks.HOPPER.defaultBlockState().setValue(HopperBlock.FACING, Direction.DOWN));
 
-        helper.getBlockEntity(above, HopperBlockEntity.class)
+        blockEntity(helper, above, HopperBlockEntity.class)
                 .setItem(0, new ItemStack(MachinesItems.IRON_DUST.get(), 1));
 
-        BaseMachineBlockEntity forge = helper.getBlockEntity(MACHINE, AlloyForgeBlockEntity.class);
+        BaseMachineBlockEntity forge = blockEntity(helper, MACHINE, AlloyForgeBlockEntity.class);
         forge.getInventory(null).setStackInSlot(3, new ItemStack(MachinesItems.BRONZE_INGOT.get(), 1));
 
         helper.succeedWhen(() -> {
@@ -236,14 +236,14 @@ final class MachineTests {
         for (int tier = 0; tier < 4; tier++) {
             BlockPos millPos = new BlockPos(1 + tier * 2, 1, 1);
             helper.setBlock(millPos, mills[tier]);
-            GrindingMillBlockEntity mill = helper.getBlockEntity(millPos, GrindingMillBlockEntity.class);
+            GrindingMillBlockEntity mill = blockEntity(helper, millPos, GrindingMillBlockEntity.class);
             mill.getInventory(null).setStackInSlot(1, new ItemStack(Items.IRON_PICKAXE));
             mill.getInventory(null).setStackInSlot(0, new ItemStack(Items.COPPER_INGOT));
             millTimes[tier] = mill.getCookTime();
 
             BlockPos forgePos = new BlockPos(1 + tier * 2, 1, 3);
             helper.setBlock(forgePos, forges[tier]);
-            AlloyForgeBlockEntity forge = helper.getBlockEntity(forgePos, AlloyForgeBlockEntity.class);
+            AlloyForgeBlockEntity forge = blockEntity(helper, forgePos, AlloyForgeBlockEntity.class);
             loadSteel(forge);
             forgeTimes[tier] = forge.getCookTime();
         }
@@ -268,18 +268,18 @@ final class MachineTests {
      */
     private static void machineKeepsContentsAcrossReload(GameTestHelper helper) {
         helper.setBlock(MACHINE, MachinesBlocks.EXPERT_ALLOY_FORGE.get());
-        AlloyForgeBlockEntity forge = helper.getBlockEntity(MACHINE, AlloyForgeBlockEntity.class);
+        AlloyForgeBlockEntity forge = blockEntity(helper, MACHINE, AlloyForgeBlockEntity.class);
         loadSteel(forge);
 
         helper.runAfterDelay(20L, () -> {
-            AlloyForgeBlockEntity running = helper.getBlockEntity(MACHINE, AlloyForgeBlockEntity.class);
+            AlloyForgeBlockEntity running = blockEntity(helper, MACHINE, AlloyForgeBlockEntity.class);
             RegistryAccess registries = helper.getLevel().registryAccess();
             BlockPos absolute = helper.absolutePos(MACHINE);
             BlockState state = helper.getLevel().getBlockState(absolute);
 
             CompoundTag saved = running.saveWithFullMetadata(registries);
-            helper.assertTrue(saved.getIntOr("BurnTime", 0) > 0, "the machine was not burning, so the reload would prove nothing");
-            helper.assertTrue(saved.getIntOr("CookTime", 0) > 0, "the machine had no cook progress, so the reload would prove nothing");
+            helper.assertTrue(saved.getInt("BurnTime") > 0, "the machine was not burning, so the reload would prove nothing");
+            helper.assertTrue(saved.getInt("CookTime") > 0, "the machine had no cook progress, so the reload would prove nothing");
 
             BlockEntity reloaded = BlockEntity.loadStatic(absolute, state, saved, registries);
             helper.assertTrue(reloaded instanceof AlloyForgeBlockEntity, "the saved machine did not load back as an alloy forge");

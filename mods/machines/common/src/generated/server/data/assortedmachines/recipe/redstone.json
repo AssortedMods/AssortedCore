@@ -15,7 +15,9 @@
     }
   ],
   "ingredient": {
-    "ingredient": "#c:ores/redstone"
+    "ingredient": {
+      "tag": "c:ores/redstone"
+    }
   },
   "result": {
     "count": 5,

@@ -2,14 +2,14 @@ package com.grim3212.assorted.machines.data;
 
 import com.grim3212.assorted.machines.common.blocks.MachinesBlocks;
 import com.grim3212.assorted.lib.data.LibBlockLootProvider;
-import net.minecraft.data.loot.LootTableSubProvider;
+import net.minecraft.core.HolderLookup;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
 public class MachinesBlockLoot extends LibBlockLootProvider {
 
-    public MachinesBlockLoot(LootTableSubProvider.Context context) {
-        super(context, () -> MachinesBlocks.BLOCKS.getEntries().stream().map(Supplier::get).collect(Collectors.toList()));
+    public MachinesBlockLoot(HolderLookup.Provider registries) {
+        super(registries, () -> MachinesBlocks.BLOCKS.getEntries().stream().map(Supplier::get).collect(Collectors.toList()));
     }
 
     @Override

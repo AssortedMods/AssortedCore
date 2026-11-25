@@ -23,7 +23,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipes": "assortedores:platinum_dust_from_raw_ore"
+        "recipe": "assortedores:platinum_dust_from_raw_ore"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

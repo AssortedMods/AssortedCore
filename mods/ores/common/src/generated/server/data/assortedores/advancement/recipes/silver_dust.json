@@ -23,7 +23,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipes": "assortedores:silver_dust"
+        "recipe": "assortedores:silver_dust"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

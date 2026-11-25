@@ -14,6 +14,7 @@ import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 
 import static com.grim3212.assorted.machines.gametest.MachinesTestSupport.MACHINE;
+import static com.grim3212.assorted.machines.gametest.MachinesTestSupport.blockEntity;
 
 /** What a machine burns and what its slots let in, which 26.3 moved onto the cooking_fuel component and the crafting remainder template. */
 final class MachineFuelTests {
@@ -28,7 +29,7 @@ final class MachineFuelTests {
 
     private static void lavaBucketFuelLeavesABucket(GameTestHelper helper) {
         helper.setBlock(MACHINE, MachinesBlocks.EXPERT_ALLOY_FORGE.get());
-        AlloyForgeBlockEntity forge = helper.getBlockEntity(MACHINE, AlloyForgeBlockEntity.class);
+        AlloyForgeBlockEntity forge = blockEntity(helper, MACHINE, AlloyForgeBlockEntity.class);
         BaseMachineInventory inventory = forge.getInventory(null);
         inventory.setStackInSlot(2, new ItemStack(Items.LAVA_BUCKET));
         inventory.setStackInSlot(0, new ItemStack(Items.COAL, 4));
@@ -43,7 +44,7 @@ final class MachineFuelTests {
     /** Through a hopper's side, as a player's automation reaches it; the menu's own slots ask the same handler. */
     private static void machineSlotsTurnAwayTheWrongItems(GameTestHelper helper) {
         helper.setBlock(MACHINE, MachinesBlocks.BASIC_GRINDING_MILL.get());
-        GrindingMillBlockEntity mill = helper.getBlockEntity(MACHINE, GrindingMillBlockEntity.class);
+        GrindingMillBlockEntity mill = blockEntity(helper, MACHINE, GrindingMillBlockEntity.class);
         BaseMachineInventory side = mill.getInventory(Direction.NORTH);
         BaseMachineInventory all = mill.getInventory(null);
 
@@ -54,7 +55,7 @@ final class MachineFuelTests {
         helper.assertTrue(side.insertItem(2, new ItemStack(Items.COAL), true).isEmpty(), "a hopper on the side cannot fuel the grinding mill");
 
         helper.setBlock(MACHINE.east(2), MachinesBlocks.BASIC_ALLOY_FORGE.get());
-        BaseMachineInventory forge = helper.getBlockEntity(MACHINE.east(2), AlloyForgeBlockEntity.class).getInventory(null);
+        BaseMachineInventory forge = blockEntity(helper, MACHINE.east(2), AlloyForgeBlockEntity.class).getInventory(null);
         refuses(helper, forge, 2, new ItemStack(Items.DIRT), "the alloy forge's fuel slot");
         refuses(helper, forge, 0, new ItemStack(Items.DIRT), "the alloy forge's input");
         refuses(helper, forge, 3, new ItemStack(MachinesItems.STEEL_INGOT.get()), "the alloy forge's output");

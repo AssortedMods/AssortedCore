@@ -19,12 +19,9 @@ public class JEIHelpers {
         grindingMillAcceptedTools = Services.PLATFORM.getRegistry(Registries.ITEM).getValues().filter((item) -> MachineUtil.allowedInGrindingMillToolSlot(new ItemStack(item))).map((item) -> new ItemStack(item)).collect(Collectors.toList());
     }
 
-    /**
-     * Fills a recipe slot from a machine ingredient. The stacks come out of the ingredient's
-     * {@code SlotDisplay}, which needs the slot's own context map to resolve.
-     */
+    /** Fills a recipe slot from a machine ingredient, each stack at the count the recipe takes. */
     public static void addMachineIngredient(IRecipeSlotBuilder slot, MachineIngredient ingredient) {
-        slot.addItemStacks(ingredient.getMatchingStacks(slot.getContextMap()));
+        slot.addItemStacks(ingredient.getMatchingStacks());
     }
 
 }

@@ -19,7 +19,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipes": "assortedores:dusts/tin_blasting"
+        "recipe": "assortedores:dusts/tin_blasting"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

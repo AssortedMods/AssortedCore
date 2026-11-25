@@ -6,6 +6,7 @@
     }
   ],
   "type": "minecraft:crafting_shapeless",
+  "category": "misc",
   "fabric:load_conditions": [
     {
       "condition": "assortedlib:part_enabled",
@@ -13,17 +14,36 @@
     }
   ],
   "ingredients": [
-    "#c:raw_materials/platinum",
-    "#c:raw_materials/platinum",
-    "#c:raw_materials/platinum",
-    "#c:raw_materials/platinum",
-    "#c:raw_materials/platinum",
-    "#c:raw_materials/platinum",
-    "#c:raw_materials/platinum",
-    "#c:raw_materials/platinum",
-    "#c:raw_materials/platinum"
+    {
+      "tag": "c:raw_materials/platinum"
+    },
+    {
+      "tag": "c:raw_materials/platinum"
+    },
+    {
+      "tag": "c:raw_materials/platinum"
+    },
+    {
+      "tag": "c:raw_materials/platinum"
+    },
+    {
+      "tag": "c:raw_materials/platinum"
+    },
+    {
+      "tag": "c:raw_materials/platinum"
+    },
+    {
+      "tag": "c:raw_materials/platinum"
+    },
+    {
+      "tag": "c:raw_materials/platinum"
+    },
+    {
+      "tag": "c:raw_materials/platinum"
+    }
   ],
   "result": {
+    "count": 1,
     "id": "assortedores:raw_platinum_block"
   }
 }

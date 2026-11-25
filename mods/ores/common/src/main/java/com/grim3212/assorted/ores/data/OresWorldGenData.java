@@ -10,35 +10,36 @@ import net.minecraft.core.RegistrySetBuilder;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
+import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
-import net.minecraft.world.level.levelgen.feature.OreFeature;
+import net.minecraft.world.level.levelgen.feature.configurations.OreConfiguration;
 import net.minecraft.world.level.levelgen.placement.*;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
 public class OresWorldGenData extends LibDatapackRegistryProvider {
 
-    public static final Identifier ORE_ALUMINUM_KEY = Identifier.fromNamespaceAndPath(Constants.MOD_ID, "ore_aluminum");
-    public static final Identifier ORE_NICKEL_KEY = Identifier.fromNamespaceAndPath(Constants.MOD_ID, "ore_nickel");
-    public static final Identifier ORE_TIN_KEY = Identifier.fromNamespaceAndPath(Constants.MOD_ID, "ore_tin");
-    public static final Identifier ORE_LEAD_KEY = Identifier.fromNamespaceAndPath(Constants.MOD_ID, "ore_lead");
-    public static final Identifier ORE_SILVER_KEY = Identifier.fromNamespaceAndPath(Constants.MOD_ID, "ore_silver");
-    public static final Identifier ORE_PLATINUM_KEY = Identifier.fromNamespaceAndPath(Constants.MOD_ID, "ore_platinum");
+    public static final ResourceLocation ORE_ALUMINUM_KEY = ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "ore_aluminum");
+    public static final ResourceLocation ORE_NICKEL_KEY = ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "ore_nickel");
+    public static final ResourceLocation ORE_TIN_KEY = ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "ore_tin");
+    public static final ResourceLocation ORE_LEAD_KEY = ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "ore_lead");
+    public static final ResourceLocation ORE_SILVER_KEY = ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "ore_silver");
+    public static final ResourceLocation ORE_PLATINUM_KEY = ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "ore_platinum");
 
-    public static final Identifier ORE_RUBY_KEY = Identifier.fromNamespaceAndPath(Constants.MOD_ID, "ore_ruby");
-    public static final Identifier ORE_SAPPHIRE_KEY = Identifier.fromNamespaceAndPath(Constants.MOD_ID, "ore_sapphire");
-    public static final Identifier ORE_TOPAZ_KEY = Identifier.fromNamespaceAndPath(Constants.MOD_ID, "ore_topaz");
-    public static final Identifier ORE_PERIDOT_KEY = Identifier.fromNamespaceAndPath(Constants.MOD_ID, "ore_peridot");
+    public static final ResourceLocation ORE_RUBY_KEY = ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "ore_ruby");
+    public static final ResourceLocation ORE_SAPPHIRE_KEY = ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "ore_sapphire");
+    public static final ResourceLocation ORE_TOPAZ_KEY = ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "ore_topaz");
+    public static final ResourceLocation ORE_PERIDOT_KEY = ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "ore_peridot");
 
     @Override
     public void addEntries(RegistrySetBuilder builder) {
-        builder.add(Registries.FEATURE, context -> {
+        builder.add(Registries.CONFIGURED_FEATURE, context -> {
             OresWorldGenData.getConfiguredFeatures().forEach((r, f) -> {
-                context.register(ResourceKey.create(Registries.FEATURE, r), f);
+                context.register(ResourceKey.create(Registries.CONFIGURED_FEATURE, r), f);
             });
         });
 
@@ -51,35 +52,35 @@ public class OresWorldGenData extends LibDatapackRegistryProvider {
 
     @Override
     public List<ResourceKey<? extends Registry<?>>> registries() {
-        return Lists.newArrayList(Registries.FEATURE, Registries.PLACED_FEATURE);
+        return Lists.newArrayList(Registries.CONFIGURED_FEATURE, Registries.PLACED_FEATURE);
     }
 
-    private static ResourceKey<Feature> configuredFeatureResourceKey(Identifier key) {
-        return ResourceKey.create(Registries.FEATURE, key);
+    private static ResourceKey<ConfiguredFeature<?, ?>> configuredFeatureResourceKey(ResourceLocation key) {
+        return ResourceKey.create(Registries.CONFIGURED_FEATURE, key);
     }
 
-    private static Map<Identifier, Feature> getConfiguredFeatures() {
-        Map<Identifier, Feature> map = new HashMap<>();
+    private static Map<ResourceLocation, ConfiguredFeature<?, ?>> getConfiguredFeatures() {
+        Map<ResourceLocation, ConfiguredFeature<?, ?>> map = new LinkedHashMap<>();
 
-        map.put(ORE_ALUMINUM_KEY, new OreFeature(OresWorldGenTargets.ORE_ALUMINUM_TARGET_LIST, 12));
-        map.put(ORE_NICKEL_KEY, new OreFeature(OresWorldGenTargets.ORE_NICKEL_TARGET_LIST, 9));
-        map.put(ORE_TIN_KEY, new OreFeature(OresWorldGenTargets.ORE_TIN_TARGET_LIST, 9));
-        map.put(ORE_LEAD_KEY, new OreFeature(OresWorldGenTargets.ORE_LEAD_TARGET_LIST, 8));
-        map.put(ORE_SILVER_KEY, new OreFeature(OresWorldGenTargets.ORE_SILVER_TARGET_LIST, 8));
-        map.put(ORE_PLATINUM_KEY, new OreFeature(OresWorldGenTargets.ORE_PLATINUM_TARGET_LIST, 7));
+        map.put(ORE_ALUMINUM_KEY, ore(OresWorldGenTargets.ORE_ALUMINUM_TARGET_LIST, 12));
+        map.put(ORE_NICKEL_KEY, ore(OresWorldGenTargets.ORE_NICKEL_TARGET_LIST, 9));
+        map.put(ORE_TIN_KEY, ore(OresWorldGenTargets.ORE_TIN_TARGET_LIST, 9));
+        map.put(ORE_LEAD_KEY, ore(OresWorldGenTargets.ORE_LEAD_TARGET_LIST, 8));
+        map.put(ORE_SILVER_KEY, ore(OresWorldGenTargets.ORE_SILVER_TARGET_LIST, 8));
+        map.put(ORE_PLATINUM_KEY, ore(OresWorldGenTargets.ORE_PLATINUM_TARGET_LIST, 7));
 
-        map.put(ORE_RUBY_KEY, new OreFeature(OresWorldGenTargets.ORE_RUBY_TARGET_LIST, 8));
-        map.put(ORE_SAPPHIRE_KEY, new OreFeature(OresWorldGenTargets.ORE_SAPPHIRE_TARGET_LIST, 8));
-        map.put(ORE_TOPAZ_KEY, new OreFeature(OresWorldGenTargets.ORE_TOPAZ_TARGET_LIST, 8));
-        map.put(ORE_PERIDOT_KEY, new OreFeature(OresWorldGenTargets.ORE_PERIDOT_TARGET_LIST, 8));
+        map.put(ORE_RUBY_KEY, ore(OresWorldGenTargets.ORE_RUBY_TARGET_LIST, 8));
+        map.put(ORE_SAPPHIRE_KEY, ore(OresWorldGenTargets.ORE_SAPPHIRE_TARGET_LIST, 8));
+        map.put(ORE_TOPAZ_KEY, ore(OresWorldGenTargets.ORE_TOPAZ_TARGET_LIST, 8));
+        map.put(ORE_PERIDOT_KEY, ore(OresWorldGenTargets.ORE_PERIDOT_TARGET_LIST, 8));
 
         return map;
     }
 
-    private static Map<Identifier, PlacedFeature> getPlacedFeatures(BootstrapContext<PlacedFeature> context) {
-        Map<Identifier, PlacedFeature> map = new HashMap<>();
+    private static Map<ResourceLocation, PlacedFeature> getPlacedFeatures(BootstrapContext<PlacedFeature> context) {
+        Map<ResourceLocation, PlacedFeature> map = new LinkedHashMap<>();
 
-        HolderGetter<Feature> holderGetter = context.lookup(Registries.FEATURE);
+        HolderGetter<ConfiguredFeature<?, ?>> holderGetter = context.lookup(Registries.CONFIGURED_FEATURE);
 
         map.put(ORE_ALUMINUM_KEY, new PlacedFeature(holderGetter.getOrThrow(configuredFeatureResourceKey(ORE_ALUMINUM_KEY)), commonOrePlacement(16, HeightRangePlacement.triangle(VerticalAnchor.absolute(16), VerticalAnchor.absolute(125)))));
         map.put(ORE_NICKEL_KEY, new PlacedFeature(holderGetter.getOrThrow(configuredFeatureResourceKey(ORE_NICKEL_KEY)), commonOrePlacement(14, HeightRangePlacement.triangle(VerticalAnchor.absolute(-40), VerticalAnchor.absolute(40)))));
@@ -94,6 +95,10 @@ public class OresWorldGenData extends LibDatapackRegistryProvider {
         map.put(ORE_PERIDOT_KEY, new PlacedFeature(holderGetter.getOrThrow(configuredFeatureResourceKey(ORE_PERIDOT_KEY)), commonOrePlacement(6, HeightRangePlacement.triangle(VerticalAnchor.absolute(48), VerticalAnchor.absolute(256)))));
 
         return map;
+    }
+
+    private static ConfiguredFeature<?, ?> ore(List<OreConfiguration.TargetBlockState> targets, int size) {
+        return new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(targets, size));
     }
 
     private static List<PlacementModifier> orePlacement(PlacementModifier p_195347_, PlacementModifier modifier) {

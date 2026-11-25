@@ -10,6 +10,7 @@
     }
   ],
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
   "fabric:load_conditions": [
     {
       "condition": "fabric:tags_populated",
@@ -24,8 +25,12 @@
     }
   ],
   "key": {
-    "P": "#c:ingots/platinum",
-    "X": "assortedmachines:advanced_grinding_mill"
+    "P": {
+      "tag": "c:ingots/platinum"
+    },
+    "X": {
+      "item": "assortedmachines:advanced_grinding_mill"
+    }
   },
   "pattern": [
     " P ",
@@ -33,6 +38,7 @@
     " P "
   ],
   "result": {
+    "count": 1,
     "id": "assortedmachines:expert_grinding_mill"
   }
 }

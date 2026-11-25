@@ -19,7 +19,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipes": "assortedmachines:dusts/steel_smelting"
+        "recipe": "assortedmachines:dusts/steel_smelting"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

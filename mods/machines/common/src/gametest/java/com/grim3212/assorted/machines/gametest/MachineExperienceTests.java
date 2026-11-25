@@ -18,6 +18,7 @@ import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 
 import static com.grim3212.assorted.machines.gametest.MachinesTestSupport.MACHINE;
+import static com.grim3212.assorted.machines.gametest.MachinesTestSupport.blockEntity;
 
 /** The experience a machine banks as it cooks, paid out like a furnace's: to whoever takes the result, or onto the floor when it is broken. */
 final class MachineExperienceTests {
@@ -52,7 +53,7 @@ final class MachineExperienceTests {
     /** Steel is worth half a point, so two smelts bank at least one whole point. */
     private static AlloyForgeBlockEntity twoSteelSmelts(GameTestHelper helper) {
         helper.setBlock(MACHINE, MachinesBlocks.EXPERT_ALLOY_FORGE.get());
-        AlloyForgeBlockEntity forge = helper.getBlockEntity(MACHINE, AlloyForgeBlockEntity.class);
+        AlloyForgeBlockEntity forge = blockEntity(helper, MACHINE, AlloyForgeBlockEntity.class);
         BaseMachineInventory inventory = forge.getInventory(null);
         inventory.setStackInSlot(2, new ItemStack(Items.COAL_BLOCK, 4));
         inventory.setStackInSlot(0, new ItemStack(Items.COAL, 8));

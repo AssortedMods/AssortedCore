@@ -25,7 +25,9 @@
     }
   ],
   "ingredient": {
-    "ingredient": "#c:ores/tin"
+    "ingredient": {
+      "tag": "c:ores/tin"
+    }
   },
   "result": {
     "count": 2,

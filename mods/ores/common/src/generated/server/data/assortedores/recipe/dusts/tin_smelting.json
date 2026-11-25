@@ -6,6 +6,7 @@
     }
   ],
   "type": "minecraft:smelting",
+  "category": "misc",
   "cookingtime": 200,
   "experience": 0.1,
   "fabric:load_conditions": [
@@ -14,8 +15,11 @@
       "part": "assortedores"
     }
   ],
-  "ingredient": "#c:dusts/tin",
+  "ingredient": {
+    "tag": "c:dusts/tin"
+  },
   "result": {
+    "count": 1,
     "id": "assortedores:tin_ingot"
   }
 }

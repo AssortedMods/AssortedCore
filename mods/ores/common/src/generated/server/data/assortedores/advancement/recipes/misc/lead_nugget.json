@@ -19,7 +19,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipes": "assortedores:lead_nugget"
+        "recipe": "assortedores:lead_nugget"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

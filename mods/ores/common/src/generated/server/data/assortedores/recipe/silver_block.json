@@ -6,6 +6,7 @@
     }
   ],
   "type": "minecraft:crafting_shapeless",
+  "category": "misc",
   "fabric:load_conditions": [
     {
       "condition": "assortedlib:part_enabled",
@@ -13,17 +14,36 @@
     }
   ],
   "ingredients": [
-    "#c:ingots/silver",
-    "#c:ingots/silver",
-    "#c:ingots/silver",
-    "#c:ingots/silver",
-    "#c:ingots/silver",
-    "#c:ingots/silver",
-    "#c:ingots/silver",
-    "#c:ingots/silver",
-    "#c:ingots/silver"
+    {
+      "tag": "c:ingots/silver"
+    },
+    {
+      "tag": "c:ingots/silver"
+    },
+    {
+      "tag": "c:ingots/silver"
+    },
+    {
+      "tag": "c:ingots/silver"
+    },
+    {
+      "tag": "c:ingots/silver"
+    },
+    {
+      "tag": "c:ingots/silver"
+    },
+    {
+      "tag": "c:ingots/silver"
+    },
+    {
+      "tag": "c:ingots/silver"
+    },
+    {
+      "tag": "c:ingots/silver"
+    }
   ],
   "result": {
+    "count": 1,
     "id": "assortedores:silver_block"
   }
 }

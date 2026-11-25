@@ -3,7 +3,6 @@ package com.grim3212.assorted.ores.data;
 import com.grim3212.assorted.ores.api.OresTags;
 import com.grim3212.assorted.ores.common.blocks.OresBlocks;
 import com.grim3212.assorted.lib.data.LibBlockTagProvider;
-import net.minecraft.data.tags.TagAppender;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
@@ -61,7 +60,7 @@ public class OresBlockTagProvider extends LibBlockTagProvider {
         tagger.apply(OresTags.Blocks.ORES_TOPAZ).add(OresBlocks.TOPAZ_ORE.get(), OresBlocks.DEEPSLATE_TOPAZ_ORE.get());
 
         tagger.apply(OresTags.Blocks.STORAGE_BLOCKS).add(OresBlocks.TIN_BLOCK.get());
-        tagger.apply(OresTags.Blocks.STORAGE_BLOCKS).add(Blocks.COPPER_BLOCK.weathering().unaffected());
+        tagger.apply(OresTags.Blocks.STORAGE_BLOCKS).add(Blocks.COPPER_BLOCK);
         tagger.apply(OresTags.Blocks.STORAGE_BLOCKS).add(OresBlocks.SILVER_BLOCK.get());
         tagger.apply(OresTags.Blocks.STORAGE_BLOCKS).add(OresBlocks.ALUMINUM_BLOCK.get());
         tagger.apply(OresTags.Blocks.STORAGE_BLOCKS).add(OresBlocks.NICKEL_BLOCK.get());
@@ -73,7 +72,7 @@ public class OresBlockTagProvider extends LibBlockTagProvider {
         tagger.apply(OresTags.Blocks.STORAGE_BLOCKS).add(OresBlocks.TOPAZ_BLOCK.get());
 
         tagger.apply(OresTags.Blocks.STORAGE_BLOCKS_TIN).add(OresBlocks.TIN_BLOCK.get());
-        tagger.apply(OresTags.Blocks.STORAGE_BLOCKS_COPPER).add(Blocks.COPPER_BLOCK.weathering().unaffected());
+        tagger.apply(OresTags.Blocks.STORAGE_BLOCKS_COPPER).add(Blocks.COPPER_BLOCK);
         tagger.apply(OresTags.Blocks.STORAGE_BLOCKS_SILVER).add(OresBlocks.SILVER_BLOCK.get());
         tagger.apply(OresTags.Blocks.STORAGE_BLOCKS_ALUMINUM).add(OresBlocks.ALUMINUM_BLOCK.get());
         tagger.apply(OresTags.Blocks.STORAGE_BLOCKS_NICKEL).add(OresBlocks.NICKEL_BLOCK.get());

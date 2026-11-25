@@ -45,7 +45,8 @@
         "assortedores:raw_nickel",
         "assortedores:raw_platinum",
         "assortedores:raw_silver",
-        "assortedores:raw_tin"
+        "assortedores:raw_tin",
+        "assortedores:copper_nugget"
       ],
       "page": "assortedcore:metals/ores"
     },

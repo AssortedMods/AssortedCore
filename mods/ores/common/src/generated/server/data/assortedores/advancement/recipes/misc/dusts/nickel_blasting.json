@@ -19,7 +19,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipes": "assortedores:dusts/nickel_blasting"
+        "recipe": "assortedores:dusts/nickel_blasting"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

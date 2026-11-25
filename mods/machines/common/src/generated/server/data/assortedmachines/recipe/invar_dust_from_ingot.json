@@ -14,9 +14,12 @@
     }
   ],
   "ingredient": {
-    "ingredient": "#c:ingots/invar"
+    "ingredient": {
+      "tag": "c:ingots/invar"
+    }
   },
   "result": {
+    "count": 1,
     "id": "assortedmachines:invar_dust"
   }
 }

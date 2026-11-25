@@ -6,6 +6,7 @@
     }
   ],
   "type": "minecraft:smelting",
+  "category": "misc",
   "cookingtime": 200,
   "experience": 1.0,
   "fabric:load_conditions": [
@@ -14,8 +15,11 @@
       "part": "assortedores"
     }
   ],
-  "ingredient": "#c:raw_materials/lead",
+  "ingredient": {
+    "tag": "c:raw_materials/lead"
+  },
   "result": {
+    "count": 1,
     "id": "assortedores:lead_ingot"
   }
 }

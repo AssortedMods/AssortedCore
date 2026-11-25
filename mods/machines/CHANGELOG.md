@@ -1,17 +1,9 @@
 # Changelog
 
-## 2.0.0
+## 21.1.0.0
 
-Updated to Minecraft 26.3, for NeoForge and Fabric.
+First release for Minecraft 1.21.1, for NeoForge and Fabric. Releases for 1.21.1 are numbered 21.1.x.y, where 21.1 is the Minecraft version.
 
-- Requires Assorted Lib 5.0.0
-- Taking what a machine made out of it now gives you the experience it earned. Before you only got it by breaking the machine
-- The manual's machine core page shows the copper recipe, so it no longer says the recipe is missing without Assorted Ores
-
-## 1.0.0
-
-- First release as its own mod. It used to only be part of Assorted Core
-- Worlds from Assorted Core 10.x keep all of the machines and alloys, and the iron, gold and copper dusts and gears
-- Machine recipes from other mods keep working
-- The machine core can also be made with copper ingots, so you don't need Assorted Ores to get started
-- Requires Assorted Lib 4.3.0
+- Matches Assorted Machines 2.0.0 for Minecraft 26.3
+- No recipe book; JEI's recipe transfer fills the machines instead
+- Requires Assorted Lib 21.1.0.0

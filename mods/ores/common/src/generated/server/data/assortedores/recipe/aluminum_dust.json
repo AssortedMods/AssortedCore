@@ -25,7 +25,9 @@
     }
   ],
   "ingredient": {
-    "ingredient": "#c:ores/aluminum"
+    "ingredient": {
+      "tag": "c:ores/aluminum"
+    }
   },
   "result": {
     "count": 2,

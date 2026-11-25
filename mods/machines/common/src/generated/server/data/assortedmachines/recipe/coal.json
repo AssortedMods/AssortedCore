@@ -15,7 +15,9 @@
     }
   ],
   "ingredient": {
-    "ingredient": "#c:ores/coal"
+    "ingredient": {
+      "tag": "c:ores/coal"
+    }
   },
   "result": {
     "count": 3,

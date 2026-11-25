@@ -19,7 +19,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipes": "assortedmachines:electrum_nugget"
+        "recipe": "assortedmachines:electrum_nugget"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
